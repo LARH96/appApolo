@@ -22,5 +22,53 @@ namespace UTN.Winforms.Apolo.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Login {
+            get {
+                return ((string)(this["Login"]));
+            }
+            set {
+                this["Login"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Password {
+            get {
+                return ((string)(this["Password"]));
+            }
+            set {
+                this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Apolo;User ID=LabClinico;Password=C0mpl1c4d4")]
+        public string ApoloConnectionString {
+            get {
+                return ((string)(this["ApoloConnectionString"]));
+            }
+            set {
+                this["ApoloConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TipoPerfil {
+            get {
+                return ((string)(this["TipoPerfil"]));
+            }
+            set {
+                this["TipoPerfil"] = value;
+            }
+        }
     }
 }

@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +52,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\DoctorEspecialista.cs" />
+    <Compile Include="Entities\Examen.cs" />
+    <Compile Include="Entities\Paciente.cs" />
+    <Compile Include="Entities\TipoExamen.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Enumerations\EstadoMantenimiento.cs" />
     <Compile Include="Enumerations\TipoPerfil.cs" />
+    <Compile Include="Interfaces\IBLLDoctorEspecialista.cs" />
+    <Compile Include="Interfaces\IBLLExamen.cs" />
+    <Compile Include="Interfaces\IBLLLogin.cs" />
+    <Compile Include="Interfaces\IBLLPaciente.cs" />
+    <Compile Include="Interfaces\IBLLTipoExamen.cs" />
+    <Compile Include="Interfaces\IDALDoctorEspecialista.cs" />
+    <Compile Include="Interfaces\IDALExamen.cs" />
+    <Compile Include="Interfaces\IDALLogin.cs" />
+    <Compile Include="Interfaces\IDALPaciente.cs" />
+    <Compile Include="Interfaces\IDALTipoExamen.cs" />
+    <Compile Include="Layers\BLL\BLLDoctorEspecialista.cs" />
+    <Compile Include="Layers\BLL\BLLExamen.cs" />
+    <Compile Include="Layers\BLL\BLLLogin.cs" />
+    <Compile Include="Layers\BLL\BLLPaciente.cs" />
+    <Compile Include="Layers\BLL\BLLTipoExamen.cs" />
+    <Compile Include="Layers\DAL\DALDoctorEspecialista.cs" />
+    <Compile Include="Layers\DAL\DALExamen.cs" />
+    <Compile Include="Layers\DAL\DALLogin.cs" />
+    <Compile Include="Layers\DAL\DALPaciente.cs" />
+    <Compile Include="Layers\DAL\DALTipoExamen.cs" />
     <Compile Include="Layers\UI\Administration\frmAdministracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,8 +199,14 @@
     <Compile Include="Layers\UI\Reports\frmReporteSolicitudesDiarias.Designer.cs">
       <DependentUpon>frmReporteSolicitudesDiarias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistencia\DataBase.cs" />
+    <Compile Include="Persistencia\FactoryConexion.cs" />
+    <Compile Include="Persistencia\FactoryDataBase.cs" />
+    <Compile Include="Persistencia\IDataBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\JSONGeneric.cs" />
+    <Compile Include="Util\Utilitarios.cs" />
     <EmbeddedResource Include="Layers\UI\Administration\frmAdministracion.resx">
       <DependentUpon>frmAdministracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +274,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -286,10 +325,6 @@
     <Folder Include="Abstracts\" />
     <Folder Include="Entities\DTO\" />
     <Folder Include="Factory\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Layers\BLL\" />
-    <Folder Include="Layers\DAL\" />
-    <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\baseline_medical_services_black_48dp.png" />

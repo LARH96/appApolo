@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tlpPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -38,9 +39,11 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.epError = new System.Windows.Forms.ErrorProvider(this.components);
             this.tlpPanel.SuspendLayout();
             this.sttBarraInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epError)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpPanel
@@ -149,6 +152,10 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // epError
+            // 
+            this.epError.ContainerControl = this;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,6 +176,7 @@
             this.sttBarraInferior.ResumeLayout(false);
             this.sttBarraInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +194,6 @@
         private System.Windows.Forms.StatusStrip sttBarraInferior;
         private System.Windows.Forms.ToolStripProgressBar toolStripPbBarra;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ErrorProvider epError;
     }
 }

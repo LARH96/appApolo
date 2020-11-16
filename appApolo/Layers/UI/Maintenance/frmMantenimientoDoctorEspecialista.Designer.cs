@@ -42,14 +42,12 @@
             this.llblApellidos = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.chBoxMedicamentos = new System.Windows.Forms.CheckBox();
-            this.chBxHumoTabaco = new System.Windows.Forms.CheckBox();
+            this.chBxAlcoholTabaco = new System.Windows.Forms.CheckBox();
             this.chBxEjercicioFisico = new System.Windows.Forms.CheckBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtAltura = new System.Windows.Forms.TextBox();
-            this.txtEdad = new System.Windows.Forms.TextBox();
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblAltura = new System.Windows.Forms.Label();
-            this.lblEdad = new System.Windows.Forms.Label();
             this.mkdtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.lblCorreoElectronico = new System.Windows.Forms.Label();
@@ -182,14 +180,12 @@
             this.pnlPaciente.Controls.Add(this.llblApellidos);
             this.pnlPaciente.Controls.Add(this.lblNombre);
             this.pnlPaciente.Controls.Add(this.chBoxMedicamentos);
-            this.pnlPaciente.Controls.Add(this.chBxHumoTabaco);
+            this.pnlPaciente.Controls.Add(this.chBxAlcoholTabaco);
             this.pnlPaciente.Controls.Add(this.chBxEjercicioFisico);
             this.pnlPaciente.Controls.Add(this.txtPeso);
             this.pnlPaciente.Controls.Add(this.txtAltura);
-            this.pnlPaciente.Controls.Add(this.txtEdad);
             this.pnlPaciente.Controls.Add(this.lblPeso);
             this.pnlPaciente.Controls.Add(this.lblAltura);
-            this.pnlPaciente.Controls.Add(this.lblEdad);
             this.pnlPaciente.Controls.Add(this.mkdtxtTelefono);
             this.pnlPaciente.Controls.Add(this.txtCorreoElectronico);
             this.pnlPaciente.Controls.Add(this.lblCorreoElectronico);
@@ -254,15 +250,15 @@
             this.chBoxMedicamentos.Text = "Medicamentos";
             this.chBoxMedicamentos.UseVisualStyleBackColor = true;
             // 
-            // chBxHumoTabaco
+            // chBxAlcoholTabaco
             // 
-            this.chBxHumoTabaco.AutoSize = true;
-            this.chBxHumoTabaco.Location = new System.Drawing.Point(132, 234);
-            this.chBxHumoTabaco.Name = "chBxHumoTabaco";
-            this.chBxHumoTabaco.Size = new System.Drawing.Size(96, 17);
-            this.chBxHumoTabaco.TabIndex = 33;
-            this.chBxHumoTabaco.Text = "Humo/Tabaco";
-            this.chBxHumoTabaco.UseVisualStyleBackColor = true;
+            this.chBxAlcoholTabaco.AutoSize = true;
+            this.chBxAlcoholTabaco.Location = new System.Drawing.Point(132, 234);
+            this.chBxAlcoholTabaco.Name = "chBxAlcoholTabaco";
+            this.chBxAlcoholTabaco.Size = new System.Drawing.Size(103, 17);
+            this.chBxAlcoholTabaco.TabIndex = 33;
+            this.chBxAlcoholTabaco.Text = "Alcohol/Tabaco";
+            this.chBxAlcoholTabaco.UseVisualStyleBackColor = true;
             // 
             // chBxEjercicioFisico
             // 
@@ -276,29 +272,22 @@
             // 
             // txtPeso
             // 
-            this.txtPeso.Location = new System.Drawing.Point(292, 257);
+            this.txtPeso.Location = new System.Drawing.Point(290, 235);
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(38, 20);
             this.txtPeso.TabIndex = 31;
             // 
             // txtAltura
             // 
-            this.txtAltura.Location = new System.Drawing.Point(292, 230);
+            this.txtAltura.Location = new System.Drawing.Point(290, 208);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(38, 20);
             this.txtAltura.TabIndex = 30;
             // 
-            // txtEdad
-            // 
-            this.txtEdad.Location = new System.Drawing.Point(292, 204);
-            this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(38, 20);
-            this.txtEdad.TabIndex = 29;
-            // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(238, 259);
+            this.lblPeso.Location = new System.Drawing.Point(236, 237);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(55, 13);
             this.lblPeso.TabIndex = 28;
@@ -307,21 +296,12 @@
             // lblAltura
             // 
             this.lblAltura.AutoSize = true;
-            this.lblAltura.Location = new System.Drawing.Point(238, 233);
+            this.lblAltura.Location = new System.Drawing.Point(236, 211);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(54, 13);
             this.lblAltura.TabIndex = 27;
             this.lblAltura.Text = "Altura( m )";
             this.lblAltura.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblEdad
-            // 
-            this.lblEdad.AutoSize = true;
-            this.lblEdad.Location = new System.Drawing.Point(238, 211);
-            this.lblEdad.Name = "lblEdad";
-            this.lblEdad.Size = new System.Drawing.Size(32, 13);
-            this.lblEdad.TabIndex = 26;
-            this.lblEdad.Text = "Edad";
             // 
             // mkdtxtTelefono
             // 
@@ -596,14 +576,12 @@
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblGenero;
         private System.Windows.Forms.CheckBox chBoxMedicamentos;
-        private System.Windows.Forms.CheckBox chBxHumoTabaco;
+        private System.Windows.Forms.CheckBox chBxAlcoholTabaco;
         private System.Windows.Forms.CheckBox chBxEjercicioFisico;
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtAltura;
-        private System.Windows.Forms.TextBox txtEdad;
         private System.Windows.Forms.Label lblPeso;
         private System.Windows.Forms.Label lblAltura;
-        private System.Windows.Forms.Label lblEdad;
         private System.Windows.Forms.DataGridView dgvDoctorEspecialista;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.TextBox textBox1;

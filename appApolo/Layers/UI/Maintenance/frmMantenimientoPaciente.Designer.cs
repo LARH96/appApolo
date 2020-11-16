@@ -38,19 +38,16 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pnlPaciente = new System.Windows.Forms.Panel();
             this.txtApellidos = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.llblApellidos = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.chBoxMedicamentos = new System.Windows.Forms.CheckBox();
-            this.chBxHumoTabaco = new System.Windows.Forms.CheckBox();
+            this.chBxAlcoholTabaco = new System.Windows.Forms.CheckBox();
             this.chBxEjercicioFisico = new System.Windows.Forms.CheckBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtAltura = new System.Windows.Forms.TextBox();
-            this.txtEdad = new System.Windows.Forms.TextBox();
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblAltura = new System.Windows.Forms.Label();
-            this.lblEdad = new System.Windows.Forms.Label();
-            this.mkdtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.lblCorreoElectronico = new System.Windows.Forms.Label();
             this.pbxFotografia = new System.Windows.Forms.PictureBox();
@@ -77,6 +74,7 @@
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opnFlDlogFotografia = new System.Windows.Forms.OpenFileDialog();
+            this.mkdtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.tspDoctorEspecialista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -125,6 +123,7 @@
             this.toolStripBtnLeer.Text = "Leer";
             this.toolStripBtnLeer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnLeer.ToolTipText = "Leer los usuarios existentes";
+            this.toolStripBtnLeer.Click += new System.EventHandler(this.toolStripBtnLeer_Click);
             // 
             // toolStripBtnActualizar
             // 
@@ -136,6 +135,7 @@
             this.toolStripBtnActualizar.Text = "Actualizar";
             this.toolStripBtnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnActualizar.ToolTipText = "Actualiza datos del usuario y recarga los usuarios";
+            this.toolStripBtnActualizar.Click += new System.EventHandler(this.toolStripBtnActualizar_Click);
             // 
             // toolStripBtnBorrar
             // 
@@ -147,6 +147,7 @@
             this.toolStripBtnBorrar.Text = "Borrar";
             this.toolStripBtnBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnBorrar.ToolTipText = "Borra el usuario de la fila seleccionada";
+            this.toolStripBtnBorrar.Click += new System.EventHandler(this.toolStripBtnBorrar_Click);
             // 
             // toolStripBtnSalir
             // 
@@ -181,18 +182,16 @@
             // 
             this.pnlPaciente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPaciente.Controls.Add(this.txtApellidos);
-            this.pnlPaciente.Controls.Add(this.textBox1);
+            this.pnlPaciente.Controls.Add(this.txtNombre);
             this.pnlPaciente.Controls.Add(this.llblApellidos);
             this.pnlPaciente.Controls.Add(this.lblNombre);
             this.pnlPaciente.Controls.Add(this.chBoxMedicamentos);
-            this.pnlPaciente.Controls.Add(this.chBxHumoTabaco);
+            this.pnlPaciente.Controls.Add(this.chBxAlcoholTabaco);
             this.pnlPaciente.Controls.Add(this.chBxEjercicioFisico);
             this.pnlPaciente.Controls.Add(this.txtPeso);
             this.pnlPaciente.Controls.Add(this.txtAltura);
-            this.pnlPaciente.Controls.Add(this.txtEdad);
             this.pnlPaciente.Controls.Add(this.lblPeso);
             this.pnlPaciente.Controls.Add(this.lblAltura);
-            this.pnlPaciente.Controls.Add(this.lblEdad);
             this.pnlPaciente.Controls.Add(this.mkdtxtTelefono);
             this.pnlPaciente.Controls.Add(this.txtCorreoElectronico);
             this.pnlPaciente.Controls.Add(this.lblCorreoElectronico);
@@ -221,12 +220,12 @@
             this.txtApellidos.Size = new System.Drawing.Size(100, 20);
             this.txtApellidos.TabIndex = 29;
             // 
-            // textBox1
+            // txtNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 142);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 28;
+            this.txtNombre.Location = new System.Drawing.Point(135, 142);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 28;
             // 
             // llblApellidos
             // 
@@ -256,15 +255,15 @@
             this.chBoxMedicamentos.Text = "Medicamentos";
             this.chBoxMedicamentos.UseVisualStyleBackColor = true;
             // 
-            // chBxHumoTabaco
+            // chBxAlcoholTabaco
             // 
-            this.chBxHumoTabaco.AutoSize = true;
-            this.chBxHumoTabaco.Location = new System.Drawing.Point(135, 217);
-            this.chBxHumoTabaco.Name = "chBxHumoTabaco";
-            this.chBxHumoTabaco.Size = new System.Drawing.Size(96, 17);
-            this.chBxHumoTabaco.TabIndex = 24;
-            this.chBxHumoTabaco.Text = "Humo/Tabaco";
-            this.chBxHumoTabaco.UseVisualStyleBackColor = true;
+            this.chBxAlcoholTabaco.AutoSize = true;
+            this.chBxAlcoholTabaco.Location = new System.Drawing.Point(135, 217);
+            this.chBxAlcoholTabaco.Name = "chBxAlcoholTabaco";
+            this.chBxAlcoholTabaco.Size = new System.Drawing.Size(103, 17);
+            this.chBxAlcoholTabaco.TabIndex = 24;
+            this.chBxAlcoholTabaco.Text = "Alcohol/Tabaco";
+            this.chBxAlcoholTabaco.UseVisualStyleBackColor = true;
             // 
             // chBxEjercicioFisico
             // 
@@ -278,29 +277,22 @@
             // 
             // txtPeso
             // 
-            this.txtPeso.Location = new System.Drawing.Point(295, 240);
+            this.txtPeso.Location = new System.Drawing.Point(305, 218);
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(38, 20);
             this.txtPeso.TabIndex = 22;
             // 
             // txtAltura
             // 
-            this.txtAltura.Location = new System.Drawing.Point(295, 213);
+            this.txtAltura.Location = new System.Drawing.Point(305, 191);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(38, 20);
             this.txtAltura.TabIndex = 21;
             // 
-            // txtEdad
-            // 
-            this.txtEdad.Location = new System.Drawing.Point(295, 187);
-            this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(38, 20);
-            this.txtEdad.TabIndex = 20;
-            // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(241, 242);
+            this.lblPeso.Location = new System.Drawing.Point(251, 220);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(55, 13);
             this.lblPeso.TabIndex = 19;
@@ -309,28 +301,12 @@
             // lblAltura
             // 
             this.lblAltura.AutoSize = true;
-            this.lblAltura.Location = new System.Drawing.Point(241, 216);
+            this.lblAltura.Location = new System.Drawing.Point(251, 194);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(54, 13);
             this.lblAltura.TabIndex = 18;
             this.lblAltura.Text = "Altura( m )";
             this.lblAltura.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblEdad
-            // 
-            this.lblEdad.AutoSize = true;
-            this.lblEdad.Location = new System.Drawing.Point(241, 194);
-            this.lblEdad.Name = "lblEdad";
-            this.lblEdad.Size = new System.Drawing.Size(32, 13);
-            this.lblEdad.TabIndex = 17;
-            this.lblEdad.Text = "Edad";
-            // 
-            // mkdtxtTelefono
-            // 
-            this.mkdtxtTelefono.Location = new System.Drawing.Point(135, 412);
-            this.mkdtxtTelefono.Name = "mkdtxtTelefono";
-            this.mkdtxtTelefono.Size = new System.Drawing.Size(200, 20);
-            this.mkdtxtTelefono.TabIndex = 16;
             // 
             // txtCorreoElectronico
             // 
@@ -550,6 +526,14 @@
             // 
             this.opnFlDlogFotografia.FileName = "objectopnFlDlogFotografia";
             // 
+            // mkdtxtTelefono
+            // 
+            this.mkdtxtTelefono.Location = new System.Drawing.Point(135, 412);
+            this.mkdtxtTelefono.Mask = "0000-0000";
+            this.mkdtxtTelefono.Name = "mkdtxtTelefono";
+            this.mkdtxtTelefono.Size = new System.Drawing.Size(200, 20);
+            this.mkdtxtTelefono.TabIndex = 16;
+            // 
             // frmMantenimientoPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,7 +543,6 @@
             this.Controls.Add(this.tspDoctorEspecialista);
             this.Name = "frmMantenimientoPaciente";
             this.Text = "Paciente";
-            this.Load += new System.EventHandler(this.frmMantenimientoPaciente_Load);
             this.tspDoctorEspecialista.ResumeLayout(false);
             this.tspDoctorEspecialista.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -605,15 +588,12 @@
         private System.Windows.Forms.PictureBox pbxFotografia;
         private System.Windows.Forms.TextBox txtCorreoElectronico;
         private System.Windows.Forms.Label lblCorreoElectronico;
-        private System.Windows.Forms.MaskedTextBox mkdtxtTelefono;
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtAltura;
-        private System.Windows.Forms.TextBox txtEdad;
         private System.Windows.Forms.Label lblPeso;
         private System.Windows.Forms.Label lblAltura;
-        private System.Windows.Forms.Label lblEdad;
         private System.Windows.Forms.CheckBox chBxEjercicioFisico;
-        private System.Windows.Forms.CheckBox chBxHumoTabaco;
+        private System.Windows.Forms.CheckBox chBxAlcoholTabaco;
         private System.Windows.Forms.CheckBox chBoxMedicamentos;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewImageColumn fotografia;
@@ -623,8 +603,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
         private System.Windows.Forms.TextBox txtApellidos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label llblApellidos;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.MaskedTextBox mkdtxtTelefono;
     }
 }

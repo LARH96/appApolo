@@ -1,1 +1,1 @@
-﻿
+﻿public enum TipoPerfil { Administrador, Procesos, Reportes}

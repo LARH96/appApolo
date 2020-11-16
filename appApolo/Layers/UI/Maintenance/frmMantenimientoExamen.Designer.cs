@@ -36,13 +36,10 @@
             this.toolStripBtnBorrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorMaximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pnlExamen = new System.Windows.Forms.Panel();
+            this.cmbTipoExamen = new System.Windows.Forms.ComboBox();
+            this.LblTipoExamen = new System.Windows.Forms.Label();
             this.lblValorMinimo = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -53,6 +50,12 @@
             this.lblCosto = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoExamen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorMaximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tspDoctorEspecialista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -73,7 +76,7 @@
             this.toolStripBtnSalir});
             this.tspDoctorEspecialista.Location = new System.Drawing.Point(0, 0);
             this.tspDoctorEspecialista.Name = "tspDoctorEspecialista";
-            this.tspDoctorEspecialista.Size = new System.Drawing.Size(838, 75);
+            this.tspDoctorEspecialista.Size = new System.Drawing.Size(997, 75);
             this.tspDoctorEspecialista.TabIndex = 2;
             this.tspDoctorEspecialista.Text = "toolStrip1";
             // 
@@ -139,39 +142,15 @@
             this.dgvPacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.nombre,
+            this.TipoExamen,
             this.costo,
             this.valorMinimo,
             this.valorMaximo});
             this.dgvPacientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPacientes.Location = new System.Drawing.Point(0, 0);
             this.dgvPacientes.Name = "dgvPacientes";
-            this.dgvPacientes.Size = new System.Drawing.Size(537, 375);
+            this.dgvPacientes.Size = new System.Drawing.Size(640, 375);
             this.dgvPacientes.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Código";
-            this.id.Name = "id";
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // costo
-            // 
-            this.costo.HeaderText = "Costo";
-            this.costo.Name = "costo";
-            // 
-            // valorMinimo
-            // 
-            this.valorMinimo.HeaderText = "Valor mínimo";
-            this.valorMinimo.Name = "valorMinimo";
-            // 
-            // valorMaximo
-            // 
-            this.valorMaximo.HeaderText = "Valor Máximo";
-            this.valorMaximo.Name = "valorMaximo";
             // 
             // splitContainer1
             // 
@@ -186,13 +165,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvPacientes);
-            this.splitContainer1.Size = new System.Drawing.Size(838, 375);
-            this.splitContainer1.SplitterDistance = 297;
+            this.splitContainer1.Size = new System.Drawing.Size(997, 375);
+            this.splitContainer1.SplitterDistance = 353;
             this.splitContainer1.TabIndex = 3;
             // 
             // pnlExamen
             // 
             this.pnlExamen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlExamen.Controls.Add(this.cmbTipoExamen);
+            this.pnlExamen.Controls.Add(this.LblTipoExamen);
             this.pnlExamen.Controls.Add(this.lblValorMinimo);
             this.pnlExamen.Controls.Add(this.textBox3);
             this.pnlExamen.Controls.Add(this.textBox5);
@@ -206,13 +187,30 @@
             this.pnlExamen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlExamen.Location = new System.Drawing.Point(0, 0);
             this.pnlExamen.Name = "pnlExamen";
-            this.pnlExamen.Size = new System.Drawing.Size(297, 375);
+            this.pnlExamen.Size = new System.Drawing.Size(353, 375);
             this.pnlExamen.TabIndex = 10;
+            // 
+            // cmbTipoExamen
+            // 
+            this.cmbTipoExamen.FormattingEnabled = true;
+            this.cmbTipoExamen.Location = new System.Drawing.Point(136, 94);
+            this.cmbTipoExamen.Name = "cmbTipoExamen";
+            this.cmbTipoExamen.Size = new System.Drawing.Size(121, 21);
+            this.cmbTipoExamen.TabIndex = 12;
+            // 
+            // LblTipoExamen
+            // 
+            this.LblTipoExamen.AutoSize = true;
+            this.LblTipoExamen.Location = new System.Drawing.Point(52, 102);
+            this.LblTipoExamen.Name = "LblTipoExamen";
+            this.LblTipoExamen.Size = new System.Drawing.Size(69, 13);
+            this.LblTipoExamen.TabIndex = 11;
+            this.LblTipoExamen.Text = "Tipo Exámen";
             // 
             // lblValorMinimo
             // 
             this.lblValorMinimo.AutoSize = true;
-            this.lblValorMinimo.Location = new System.Drawing.Point(52, 138);
+            this.lblValorMinimo.Location = new System.Drawing.Point(52, 168);
             this.lblValorMinimo.Name = "lblValorMinimo";
             this.lblValorMinimo.Size = new System.Drawing.Size(68, 13);
             this.lblValorMinimo.TabIndex = 3;
@@ -220,14 +218,14 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(136, 101);
+            this.textBox3.Location = new System.Drawing.Point(136, 131);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 7;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(136, 177);
+            this.textBox5.Location = new System.Drawing.Point(136, 207);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 9;
@@ -242,7 +240,7 @@
             // lblValorMaximo
             // 
             this.lblValorMaximo.AutoSize = true;
-            this.lblValorMaximo.Location = new System.Drawing.Point(52, 177);
+            this.lblValorMaximo.Location = new System.Drawing.Point(52, 207);
             this.lblValorMaximo.Name = "lblValorMaximo";
             this.lblValorMaximo.Size = new System.Drawing.Size(69, 13);
             this.lblValorMaximo.TabIndex = 4;
@@ -257,7 +255,7 @@
             // 
             // txtValorMinimo
             // 
-            this.txtValorMinimo.Location = new System.Drawing.Point(136, 138);
+            this.txtValorMinimo.Location = new System.Drawing.Point(136, 168);
             this.txtValorMinimo.Name = "txtValorMinimo";
             this.txtValorMinimo.Size = new System.Drawing.Size(100, 20);
             this.txtValorMinimo.TabIndex = 8;
@@ -265,7 +263,7 @@
             // lblCosto
             // 
             this.lblCosto.AutoSize = true;
-            this.lblCosto.Location = new System.Drawing.Point(52, 101);
+            this.lblCosto.Location = new System.Drawing.Point(52, 131);
             this.lblCosto.Name = "lblCosto";
             this.lblCosto.Size = new System.Drawing.Size(34, 13);
             this.lblCosto.TabIndex = 2;
@@ -289,11 +287,41 @@
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre";
             // 
+            // id
+            // 
+            this.id.HeaderText = "Código";
+            this.id.Name = "id";
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // TipoExamen
+            // 
+            this.TipoExamen.HeaderText = "Tipo Exámen";
+            this.TipoExamen.Name = "TipoExamen";
+            // 
+            // costo
+            // 
+            this.costo.HeaderText = "Costo";
+            this.costo.Name = "costo";
+            // 
+            // valorMinimo
+            // 
+            this.valorMinimo.HeaderText = "Valor mínimo";
+            this.valorMinimo.Name = "valorMinimo";
+            // 
+            // valorMaximo
+            // 
+            this.valorMaximo.HeaderText = "Valor Máximo";
+            this.valorMaximo.Name = "valorMaximo";
+            // 
             // frmMantenimientoExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 450);
+            this.ClientSize = new System.Drawing.Size(997, 450);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.tspDoctorEspecialista);
             this.Name = "frmMantenimientoExamen";
@@ -331,11 +359,14 @@
         private System.Windows.Forms.Label lblCosto;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Panel pnlExamen;
+        private System.Windows.Forms.ComboBox cmbTipoExamen;
+        private System.Windows.Forms.Label LblTipoExamen;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoExamen;
         private System.Windows.Forms.DataGridViewTextBoxColumn costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorMinimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorMaximo;
-        private System.Windows.Forms.Panel pnlExamen;
     }
 }

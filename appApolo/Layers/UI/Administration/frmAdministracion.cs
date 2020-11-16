@@ -74,6 +74,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
             //si elijo un doctor se desbloquea campos contraseña
             txtContrasenna.Enabled = true;
             txtConfirmarContrasenna.Enabled = true;
+            cmbTipoPerfil.Enabled = true;
         }
     }
 }
