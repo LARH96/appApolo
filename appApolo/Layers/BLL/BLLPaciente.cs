@@ -36,10 +36,16 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             return _IDALPaciente.ReadPacienteByFilter(pDescripcion);
         }
 
-        public bool UpdatePaciente(Paciente pPaciente)
+        public bool SavePaciente(Paciente pPaciente)
         {
             IDALPaciente _IDALPaciente = new DALPaciente();
-            return _IDALPaciente.UpdatePaciente(pPaciente);
+            bool result = false;
+            if (_IDALPaciente.ReadPacienteById(pPaciente.IdPaciente) == null)
+                result = _IDALPaciente.CreatePaciente(pPaciente);
+            else
+                result = _IDALPaciente.UpdatePaciente(pPaciente);
+
+            return result;
         }
 
         public bool DeletePaciente(string pId)

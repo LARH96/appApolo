@@ -35,10 +35,16 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             return _IDALTipoExamen.ReadTipoExamenByFilter(pDescripcion);
         }
 
-        public bool UpdateTipoExamen(TipoExamen pTipoExamen)
+        public bool SaveTipoExamen(TipoExamen pTipoExamen)
         {
             IDALTipoExamen _IDALTipoExamen = new DALTipoExamen();
-            return _IDALTipoExamen.UpdateTipoExamen(pTipoExamen);
+            bool result = false;
+            if (_IDALTipoExamen.ReadTipoExamenById(pTipoExamen.IdTipoExamen) == null)
+                result = _IDALTipoExamen.CreateTipoExamen(pTipoExamen);
+            else
+                result = _IDALTipoExamen.UpdateTipoExamen(pTipoExamen);
+
+            return result;
         }
 
         public bool DeleteTipoExamen(string pId)

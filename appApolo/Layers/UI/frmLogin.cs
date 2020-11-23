@@ -77,6 +77,7 @@ namespace UTN.Winforms.Apolo.UI
                 // Mensaje de Error
                 MessageBox.Show("Se ha producido el siguiente error: " + er.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
 
             frmPrincipalMenu ofrmPrincipalMenu = new frmPrincipalMenu();
             ofrmPrincipalMenu.Show();

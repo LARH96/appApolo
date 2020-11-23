@@ -20,7 +20,7 @@ namespace UTN.Winforms.Apolo.Interfaces
         #endregion
 
         #region Update
-        bool UpdateExamen(Examen pExamen);
+        bool SaveExamen(Examen pExamen);
         #endregion
 
         #region Delete

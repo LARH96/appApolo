@@ -35,10 +35,16 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             return _IDALDoctorEspecialista.ReadDoctorEspecialistaByFilter(pDescripcion);
         }
 
-        public bool UpdateDoctorEspecialista(DoctorEspecialista pDoctorEspecialista)
+        public bool SaveDoctorEspecialista(DoctorEspecialista pDoctorEspecialista)
         {
             IDALDoctorEspecialista _IDALDoctorEspecialista = new DALDoctorEspecialista();
-            return _IDALDoctorEspecialista.UpdateDoctorEspecialista(pDoctorEspecialista);
+            bool result = false;
+            if (_IDALDoctorEspecialista.ReadDoctorEspecialistaById(pDoctorEspecialista.CodigoEspecialista) == null)
+                result = _IDALDoctorEspecialista.CreateDoctorEspecialista(pDoctorEspecialista);
+            else
+                result = _IDALDoctorEspecialista.UpdateDoctorEspecialista(pDoctorEspecialista);
+
+            return result;
         }
 
         public bool DeleteDoctorEspecialista(string pId)

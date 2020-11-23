@@ -32,7 +32,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
             try
             {
-                command.Parameters.AddWithValue("@id", pExamen.idExamen);
+                command.Parameters.AddWithValue("@id", pExamen.IdExamen);
                 command.Parameters.AddWithValue("@idTipoExamen", pExamen.TipoExamen);
                 command.Parameters.AddWithValue("@Descripcion", pExamen.Descripcion);
                 command.Parameters.AddWithValue("@Costo", pExamen.Costo);
@@ -92,12 +92,12 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
                         oExamen = new Examen();
-                        oExamen.idExamen = dr["id"].ToString();
-                        oExamen.TipoExamen = dr["TipoExamen"].ToString();
+                        oExamen.IdExamen = dr["id"].ToString();
+                        oExamen.TipoExamen = dr["idTipoExamen"].ToString();
                         oExamen.Descripcion = dr["Descripcion"].ToString();
-                        oExamen.Costo = (double)dr["Costo"];
-                        oExamen.ValorMinimo = (double)dr["ValorMinimo"];
-                        oExamen.ValorMaximo = (double)dr["ValorMaximo"];
+                        oExamen.Costo = Convert.ToDouble(dr["Costo"]);
+                        oExamen.ValorMinimo = Convert.ToDouble(dr["ValorMinimo"]);
+                        oExamen.ValorMaximo = Convert.ToDouble(dr["ValorMaximo"]);
                     }
                 }
 
@@ -143,12 +143,12 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
                         Examen oExamen = new Examen();
-                        oExamen.idExamen = dr["id"].ToString();
-                        oExamen.TipoExamen = dr["TipoExamen"].ToString();
+                        oExamen.IdExamen = dr["id"].ToString();
                         oExamen.Descripcion = dr["Descripcion"].ToString();
-                        oExamen.Costo = (double)dr["Costo"];
-                        oExamen.ValorMinimo = (double)dr["ValorMinimo"];
-                        oExamen.ValorMaximo = (double)dr["ValorMaximo"];
+                        oExamen.TipoExamen = dr["idTipoExamen"].ToString();
+                        oExamen.Costo = Convert.ToDouble(dr["Costo"]);
+                        oExamen.ValorMinimo = Convert.ToDouble(dr["ValorMinimo"]);
+                        oExamen.ValorMaximo = Convert.ToDouble(dr["ValorMaximo"]);
 
                         lista.Add(oExamen);
                     }
@@ -197,7 +197,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
                         Examen oExamen = new Examen();
-                        oExamen.idExamen = dr["id"].ToString();
+                        oExamen.IdExamen = dr["id"].ToString();
                         oExamen.TipoExamen = dr["TipoExamen"].ToString();
                         oExamen.Descripcion = dr["Descripcion"].ToString();
                         oExamen.Costo = (double)dr["Costo"];
@@ -235,14 +235,14 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             try
             {
                 // Pasar parámetros
-                command.Parameters.AddWithValue("@id", pExamen.idExamen);
+                command.Parameters.AddWithValue("@id", pExamen.IdExamen);
                 command.Parameters.AddWithValue("@idTipoExamen", pExamen.TipoExamen);
                 command.Parameters.AddWithValue("@Descripcion", pExamen.Descripcion);
                 command.Parameters.AddWithValue("@Costo", pExamen.Costo);
                 command.Parameters.AddWithValue("@ValorMinimo", pExamen.ValorMinimo);
                 command.Parameters.AddWithValue("@ValorMaximo", pExamen.ValorMaximo);
                 command.CommandText = sql;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
                 {

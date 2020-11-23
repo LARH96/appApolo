@@ -58,6 +58,7 @@
     <Compile Include="Entities\TipoExamen.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enumerations\EstadoMantenimiento.cs" />
+    <Compile Include="Enumerations\Sexo.cs" />
     <Compile Include="Enumerations\TipoPerfil.cs" />
     <Compile Include="Interfaces\IBLLDoctorEspecialista.cs" />
     <Compile Include="Interfaces\IBLLExamen.cs" />

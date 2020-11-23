@@ -35,10 +35,16 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             return _IDALExamen.ReadExamenByFilter(pDescripcion);
         }
 
-        public bool UpdateExamen(Examen pExamen)
+        public bool SaveExamen(Examen pExamen)
         {
             IDALExamen _IDALExamen = new DALExamen();
-            return _IDALExamen.UpdateExamen(pExamen);
+            bool result = false;
+            if (_IDALExamen.ReadExamenById(pExamen.IdExamen) == null)
+                result = _IDALExamen.CreateExamen(pExamen);
+            else
+                result = _IDALExamen.UpdateExamen(pExamen);
+
+            return result;
         }
 
         public bool DeleteExamen(string pId)

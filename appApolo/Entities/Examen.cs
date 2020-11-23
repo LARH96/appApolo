@@ -8,7 +8,7 @@ namespace UTN.Winforms.Apolo.Entities
 {
     class Examen
     {
-        public string idExamen { get; set; }
+        public string IdExamen { get; set; }
 
         public string Descripcion { get; set; }
 

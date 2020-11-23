@@ -26,7 +26,6 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
         public bool CreatePaciente(Paciente pPaciente)
         {
-         
             string sql = @"usp_INSERT_Paciente";
             SqlCommand command = new SqlCommand();
             double rows = 0;
@@ -40,13 +39,14 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 command.Parameters.AddWithValue("@Direccion", pPaciente.Direccion);
                 command.Parameters.AddWithValue("@Email", pPaciente.Email);
                 command.Parameters.AddWithValue("@FechaNacimiento", pPaciente.FechaNacimiento);
-                command.Parameters.AddWithValue("@Fotografia", pPaciente.Fotografia);
+                command.Parameters.AddWithValue("@Fotografia", pPaciente.Fotografia.ToArray());
                 command.Parameters.AddWithValue("@EjercicioFisico", pPaciente.EjercicioFisico);
                 command.Parameters.AddWithValue("@AlcoholTabaco", pPaciente.AlcoholTabaco);
                 command.Parameters.AddWithValue("@Medicamentos", pPaciente.Medicamentos);
                 command.Parameters.AddWithValue("@Altura", pPaciente.Altura);
                 command.Parameters.AddWithValue("@Peso", pPaciente.Peso);
                 command.Parameters.AddWithValue("@Telefono", pPaciente.Telefono);
+
                 command.CommandText = sql;
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -107,13 +107,13 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                         oPaciente.Genero = dr["Genero"].ToString();
                         oPaciente.Direccion = dr["Direccion"].ToString();
                         oPaciente.Email = dr["Email"].ToString(); ;
-                        oPaciente.FechaNacimiento = DateTime.Parse(dr["Direccion"].ToString());
+                        oPaciente.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
                         oPaciente.Fotografia = (byte[])dr["Fotografia"];
                         oPaciente.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
                         oPaciente.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;
                         oPaciente.Medicamentos = dr["Medicamentos"].ToString(); ;
-                        oPaciente.Altura = (double)dr["Altura"];
-                        oPaciente.Peso = (double)dr["Peso"];
+                        oPaciente.Altura = Convert.ToDouble(dr["Altura"]);
+                        oPaciente.Peso = Convert.ToDouble(dr["Peso"]);
                         oPaciente.Telefono = dr["Telefono"].ToString();
                     }
                 }
@@ -166,13 +166,13 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                         oPaciente.Genero = dr["Genero"].ToString();
                         oPaciente.Direccion = dr["Direccion"].ToString();
                         oPaciente.Email = dr["Email"].ToString(); ;
-                        oPaciente.FechaNacimiento = DateTime.Parse(dr["Direccion"].ToString());
+                        oPaciente.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
                         oPaciente.Fotografia = (byte[])dr["Fotografia"];
-                        oPaciente.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
+                        oPaciente.EjercicioFisico = dr["EjercicioFisico"].ToString();
                         oPaciente.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;
                         oPaciente.Medicamentos = dr["Medicamentos"].ToString(); ;
-                        oPaciente.Altura = (double)dr["Altura"];
-                        oPaciente.Peso = (double)dr["Peso"];
+                        oPaciente.Altura = Convert.ToDouble(dr["Altura"]);
+                        oPaciente.Peso = Convert.ToDouble(dr["Peso"]);
                         oPaciente.Telefono = dr["Telefono"].ToString();
 
                         lista.Add(oPaciente);
@@ -275,7 +275,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 command.Parameters.AddWithValue("@Direccion", pPaciente.Direccion);
                 command.Parameters.AddWithValue("@Email", pPaciente.Email);
                 command.Parameters.AddWithValue("@FechaNacimiento", pPaciente.FechaNacimiento);
-                command.Parameters.AddWithValue("@Fotografia", pPaciente.Fotografia);
+                command.Parameters.AddWithValue("@Fotografia", pPaciente.Fotografia.ToArray());
                 command.Parameters.AddWithValue("@EjercicioFisico", pPaciente.EjercicioFisico);
                 command.Parameters.AddWithValue("@AlcoholTabaco", pPaciente.AlcoholTabaco);
                 command.Parameters.AddWithValue("@Medicamentos", pPaciente.Medicamentos);
@@ -283,7 +283,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 command.Parameters.AddWithValue("@Peso", pPaciente.Peso);
                 command.Parameters.AddWithValue("@Telefono", pPaciente.Telefono);
                 command.CommandText = sql;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
 
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))

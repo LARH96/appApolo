@@ -27,7 +27,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
         public bool CreateTipoExamen(TipoExamen pTipoExamen)
         {
 
-            string sql = @"usp_INSERT_TipoExamen";
+            string sql = @"[usp_INSERT_TipoExamen]";
             SqlCommand command = new SqlCommand();
             double rows = 0;
 
@@ -71,10 +71,10 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
             try
             {
-                string sql = @"SELECT * FROM TipoExamen WHERE id = @id";
+                string sql = @"usp_SELECT_TipoExamen_ByID";
                 command.Parameters.AddWithValue("@Id", pId);
                 command.CommandText = sql;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
 
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
@@ -120,9 +120,10 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
             try
             {
-                string sql = @"SELECT * FROM  TipoExamen  WITH (NOLOCK)  ";
+                //string sql = @"SELECT * FROM TipoExamen WITH (NOLOCK)";
+                string sql = @"usp_SELECT_TipoExamen_All";
                 command.CommandText = sql;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
                 {
@@ -136,7 +137,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
                         TipoExamen oTipoExamen = new TipoExamen();
-                        oTipoExamen.IdTipoExamen = dr["id"].ToString();
+                        oTipoExamen.IdTipoExamen = dr["id"].ToString().Trim();
                         oTipoExamen.Descripcion = dr["Descripcion"].ToString();
 
                         lista.Add(oTipoExamen);
@@ -223,7 +224,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 command.Parameters.AddWithValue("@id", pTipoExamen.IdTipoExamen);
                 command.Parameters.AddWithValue("@Descripcion", pTipoExamen.Descripcion);
                 command.CommandText = sql;
-                command.CommandType = CommandType.Text;
+                command.CommandType = CommandType.StoredProcedure;
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
                 {

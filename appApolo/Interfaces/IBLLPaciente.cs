@@ -20,7 +20,7 @@ namespace UTN.Winforms.Apolo.Interfaces
         #endregion
 
         #region Update
-        bool UpdatePaciente(Paciente pPaciente);
+        bool SavePaciente(Paciente pPaciente);
         #endregion
 
         #region Delete

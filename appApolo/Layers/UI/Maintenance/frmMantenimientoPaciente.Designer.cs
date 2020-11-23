@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoPaciente));
             this.tspDoctorEspecialista = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnCrear = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnLeer = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnBorrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pnlPaciente = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.llblApellidos = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.txtAltura = new System.Windows.Forms.TextBox();
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblAltura = new System.Windows.Forms.Label();
+            this.mkdtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.lblCorreoElectronico = new System.Windows.Forms.Label();
             this.pbxFotografia = new System.Windows.Forms.PictureBox();
@@ -67,6 +69,8 @@
             this.lblGenero = new System.Windows.Forms.Label();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fotografia = new System.Windows.Forms.DataGridViewImageColumn();
             this.fechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +78,6 @@
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opnFlDlogFotografia = new System.Windows.Forms.OpenFileDialog();
-            this.mkdtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.tspDoctorEspecialista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -91,7 +94,6 @@
             this.tspDoctorEspecialista.AutoSize = false;
             this.tspDoctorEspecialista.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtnCrear,
-            this.toolStripBtnLeer,
             this.toolStripBtnActualizar,
             this.toolStripBtnBorrar,
             this.toolStripBtnSalir});
@@ -112,18 +114,6 @@
             this.toolStripBtnCrear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnCrear.ToolTipText = "Crear un nuevo usuario";
             this.toolStripBtnCrear.Click += new System.EventHandler(this.toolStripBtnCrear_Click);
-            // 
-            // toolStripBtnLeer
-            // 
-            this.toolStripBtnLeer.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtnLeer.Image")));
-            this.toolStripBtnLeer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnLeer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnLeer.Name = "toolStripBtnLeer";
-            this.toolStripBtnLeer.Size = new System.Drawing.Size(52, 72);
-            this.toolStripBtnLeer.Text = "Leer";
-            this.toolStripBtnLeer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnLeer.ToolTipText = "Leer los usuarios existentes";
-            this.toolStripBtnLeer.Click += new System.EventHandler(this.toolStripBtnLeer_Click);
             // 
             // toolStripBtnActualizar
             // 
@@ -174,13 +164,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvPacientes);
-            this.splitContainer1.Size = new System.Drawing.Size(813, 504);
+            this.splitContainer1.Size = new System.Drawing.Size(813, 565);
             this.splitContainer1.SplitterDistance = 386;
             this.splitContainer1.TabIndex = 2;
             // 
             // pnlPaciente
             // 
             this.pnlPaciente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPaciente.Controls.Add(this.btnCancelar);
+            this.pnlPaciente.Controls.Add(this.btnAceptar);
             this.pnlPaciente.Controls.Add(this.txtApellidos);
             this.pnlPaciente.Controls.Add(this.txtNombre);
             this.pnlPaciente.Controls.Add(this.llblApellidos);
@@ -210,8 +202,33 @@
             this.pnlPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPaciente.Location = new System.Drawing.Point(0, 0);
             this.pnlPaciente.Name = "pnlPaciente";
-            this.pnlPaciente.Size = new System.Drawing.Size(386, 504);
+            this.pnlPaciente.Size = new System.Drawing.Size(386, 565);
             this.pnlPaciente.TabIndex = 7;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_cancel_black_48dp1;
+            this.btnCancelar.Location = new System.Drawing.Point(190, 494);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(106, 59);
+            this.btnCancelar.TabIndex = 31;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_done_outline_black_48dp;
+            this.btnAceptar.Location = new System.Drawing.Point(82, 494);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(102, 58);
+            this.btnAceptar.TabIndex = 30;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtApellidos
             // 
@@ -307,6 +324,14 @@
             this.lblAltura.TabIndex = 18;
             this.lblAltura.Text = "Altura( m )";
             this.lblAltura.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // mkdtxtTelefono
+            // 
+            this.mkdtxtTelefono.Location = new System.Drawing.Point(135, 412);
+            this.mkdtxtTelefono.Mask = "0000-0000";
+            this.mkdtxtTelefono.Name = "mkdtxtTelefono";
+            this.mkdtxtTelefono.Size = new System.Drawing.Size(200, 20);
+            this.mkdtxtTelefono.TabIndex = 16;
             // 
             // txtCorreoElectronico
             // 
@@ -470,9 +495,13 @@
             // 
             // dgvPacientes
             // 
+            this.dgvPacientes.AllowUserToAddRows = false;
+            this.dgvPacientes.AllowUserToDeleteRows = false;
             this.dgvPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.nombre,
+            this.Apellid,
             this.fotografia,
             this.fechaNacimiento,
             this.genero,
@@ -482,67 +511,89 @@
             this.dgvPacientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPacientes.Location = new System.Drawing.Point(0, 0);
             this.dgvPacientes.Name = "dgvPacientes";
-            this.dgvPacientes.Size = new System.Drawing.Size(423, 504);
+            this.dgvPacientes.ReadOnly = true;
+            this.dgvPacientes.Size = new System.Drawing.Size(423, 565);
             this.dgvPacientes.TabIndex = 0;
             // 
             // id
             // 
+            this.id.DataPropertyName = "idPaciente";
             this.id.HeaderText = "Identificación";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "Nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // Apellid
+            // 
+            this.Apellid.DataPropertyName = "Apellidos";
+            this.Apellid.HeaderText = "Apellidos";
+            this.Apellid.Name = "Apellid";
+            this.Apellid.ReadOnly = true;
             // 
             // fotografia
             // 
+            this.fotografia.DataPropertyName = "Fotografia";
             this.fotografia.HeaderText = "Fotografía";
+            this.fotografia.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.fotografia.Name = "fotografia";
+            this.fotografia.ReadOnly = true;
             this.fotografia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.fotografia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // fechaNacimiento
             // 
+            this.fechaNacimiento.DataPropertyName = "FechaNacimiento";
             this.fechaNacimiento.HeaderText = "Fecha de Nacimiento";
             this.fechaNacimiento.Name = "fechaNacimiento";
+            this.fechaNacimiento.ReadOnly = true;
             // 
             // genero
             // 
+            this.genero.DataPropertyName = "Genero";
             this.genero.HeaderText = "Género";
             this.genero.Name = "genero";
+            this.genero.ReadOnly = true;
             // 
             // email
             // 
+            this.email.DataPropertyName = "Email";
             this.email.HeaderText = "Correo Electrónico";
             this.email.Name = "email";
+            this.email.ReadOnly = true;
             // 
             // telefono
             // 
+            this.telefono.DataPropertyName = "Telefono";
             this.telefono.HeaderText = "Teléfono";
             this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
             // 
             // direccion
             // 
+            this.direccion.DataPropertyName = "Direccion";
             this.direccion.HeaderText = "Dirección";
             this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
             // 
             // opnFlDlogFotografia
             // 
             this.opnFlDlogFotografia.FileName = "objectopnFlDlogFotografia";
             // 
-            // mkdtxtTelefono
-            // 
-            this.mkdtxtTelefono.Location = new System.Drawing.Point(135, 412);
-            this.mkdtxtTelefono.Mask = "0000-0000";
-            this.mkdtxtTelefono.Name = "mkdtxtTelefono";
-            this.mkdtxtTelefono.Size = new System.Drawing.Size(200, 20);
-            this.mkdtxtTelefono.TabIndex = 16;
-            // 
             // frmMantenimientoPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 579);
+            this.ClientSize = new System.Drawing.Size(813, 640);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.tspDoctorEspecialista);
             this.Name = "frmMantenimientoPaciente";
             this.Text = "Paciente";
+            this.Load += new System.EventHandler(this.frmMantenimientoPaciente_Load);
             this.tspDoctorEspecialista.ResumeLayout(false);
             this.tspDoctorEspecialista.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -575,7 +626,6 @@
         private System.Windows.Forms.DateTimePicker dtpkrFechaNacimiento;
         private System.Windows.Forms.ToolStripButton toolStripBtnCrear;
         private System.Windows.Forms.MaskedTextBox mkdtxtIdentificación;
-        private System.Windows.Forms.ToolStripButton toolStripBtnLeer;
         private System.Windows.Forms.ToolStripButton toolStripBtnActualizar;
         private System.Windows.Forms.ToolStripButton toolStripBtnBorrar;
         private System.Windows.Forms.ToolStripButton toolStripBtnSalir;
@@ -595,17 +645,21 @@
         private System.Windows.Forms.CheckBox chBxEjercicioFisico;
         private System.Windows.Forms.CheckBox chBxAlcoholTabaco;
         private System.Windows.Forms.CheckBox chBoxMedicamentos;
+        private System.Windows.Forms.TextBox txtApellidos;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label llblApellidos;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.MaskedTextBox mkdtxtTelefono;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellid;
         private System.Windows.Forms.DataGridViewImageColumn fotografia;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
-        private System.Windows.Forms.TextBox txtApellidos;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label llblApellidos;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.MaskedTextBox mkdtxtTelefono;
     }
 }

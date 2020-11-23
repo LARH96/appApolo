@@ -11,5 +11,10 @@ namespace UTN.Winforms.Apolo.Entities
         public string IdTipoExamen { get; set; }
 
         public string Descripcion { get; set; }
+
+        public override string ToString()
+        {
+            return IdTipoExamen + " - " + Descripcion;
+        }
     }
 }
