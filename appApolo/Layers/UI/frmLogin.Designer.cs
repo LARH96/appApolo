@@ -80,7 +80,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(128, 20);
             this.txtUsuario.TabIndex = 2;
-            this.txtUsuario.Text = "sa";
             // 
             // txtContrasena
             // 
@@ -89,7 +88,6 @@
             this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(128, 20);
             this.txtContrasena.TabIndex = 3;
-            this.txtContrasena.Text = "123456";
             // 
             // label2
             // 

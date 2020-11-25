@@ -228,7 +228,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                         oPaciente.Genero = dr["Genero"].ToString();
                         oPaciente.Direccion = dr["Direccion"].ToString();
                         oPaciente.Email = dr["Email"].ToString(); ;
-                        oPaciente.FechaNacimiento = DateTime.Parse(dr["Direccion"].ToString());
+                        oPaciente.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
                         oPaciente.Fotografia = (byte[])dr["Fotografia"];
                         oPaciente.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
                         oPaciente.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;

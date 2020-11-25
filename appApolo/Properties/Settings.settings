@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="Login" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">LabClinicoApolo</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">C0mpl1c4d4</Value>
     </Setting>
     <Setting Name="ApoloConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=.;Initial Catalog=Apolo;User ID=LabClinico;Password=C0mpl1c4d4</Value>
+      <Value Profile="(Default)">Data Source=.;Initial Catalog=Apolo;User LabClinicoApolo;Password=C0mpl1c4d4</Value>
     </Setting>
     <Setting Name="TipoPerfil" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

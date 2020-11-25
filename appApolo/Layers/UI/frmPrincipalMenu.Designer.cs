@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCambiarUsuario = new System.Windows.Forms.Button();
-            this.btnAcercaDe = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnMantenimiento = new System.Windows.Forms.Button();
             this.btnProcesos = new System.Windows.Forms.Button();
             this.btnAdministracion = new System.Windows.Forms.Button();
+            this.btnCambiarUsuario = new System.Windows.Forms.Button();
+            this.btnAcercaDe = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,8 +46,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnReportes, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnMantenimiento, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnProcesos, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAdministracion, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnProcesos, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -55,6 +55,66 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(798, 394);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReportes.Enabled = false;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_analytics_black_48dp2;
+            this.btnReportes.Location = new System.Drawing.Point(3, 200);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(393, 191);
+            this.btnReportes.TabIndex = 2;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
+            // btnMantenimiento
+            // 
+            this.btnMantenimiento.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnMantenimiento.Enabled = false;
+            this.btnMantenimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMantenimiento.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_edit_black_48dp;
+            this.btnMantenimiento.Location = new System.Drawing.Point(3, 3);
+            this.btnMantenimiento.Name = "btnMantenimiento";
+            this.btnMantenimiento.Size = new System.Drawing.Size(393, 191);
+            this.btnMantenimiento.TabIndex = 0;
+            this.btnMantenimiento.Text = "Mantenimientos";
+            this.btnMantenimiento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMantenimiento.UseVisualStyleBackColor = false;
+            this.btnMantenimiento.Click += new System.EventHandler(this.btnMantenimiento_Click);
+            // 
+            // btnProcesos
+            // 
+            this.btnProcesos.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnProcesos.Enabled = false;
+            this.btnProcesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcesos.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_miscellaneous_services_black_48dp;
+            this.btnProcesos.Location = new System.Drawing.Point(402, 3);
+            this.btnProcesos.Name = "btnProcesos";
+            this.btnProcesos.Size = new System.Drawing.Size(393, 191);
+            this.btnProcesos.TabIndex = 1;
+            this.btnProcesos.Text = "Procesos";
+            this.btnProcesos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnProcesos.UseVisualStyleBackColor = false;
+            this.btnProcesos.Click += new System.EventHandler(this.btnProcesos_Click);
+            // 
+            // btnAdministracion
+            // 
+            this.btnAdministracion.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnAdministracion.Enabled = false;
+            this.btnAdministracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministracion.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_lock_black_48dp1;
+            this.btnAdministracion.Location = new System.Drawing.Point(402, 200);
+            this.btnAdministracion.Name = "btnAdministracion";
+            this.btnAdministracion.Size = new System.Drawing.Size(393, 191);
+            this.btnAdministracion.TabIndex = 3;
+            this.btnAdministracion.Text = "Administración";
+            this.btnAdministracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdministracion.UseVisualStyleBackColor = false;
+            this.btnAdministracion.Click += new System.EventHandler(this.btnAdministracion_Click);
             // 
             // btnCambiarUsuario
             // 
@@ -86,62 +146,6 @@
             this.btnSalir.TabIndex = 3;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnReportes
-            // 
-            this.btnReportes.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_analytics_black_48dp2;
-            this.btnReportes.Location = new System.Drawing.Point(3, 200);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(393, 191);
-            this.btnReportes.TabIndex = 2;
-            this.btnReportes.Text = "Reportes";
-            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnReportes.UseVisualStyleBackColor = false;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
-            // 
-            // btnMantenimiento
-            // 
-            this.btnMantenimiento.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnMantenimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMantenimiento.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_edit_black_48dp;
-            this.btnMantenimiento.Location = new System.Drawing.Point(3, 3);
-            this.btnMantenimiento.Name = "btnMantenimiento";
-            this.btnMantenimiento.Size = new System.Drawing.Size(393, 191);
-            this.btnMantenimiento.TabIndex = 0;
-            this.btnMantenimiento.Text = "Mantenimientos";
-            this.btnMantenimiento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMantenimiento.UseVisualStyleBackColor = false;
-            this.btnMantenimiento.Click += new System.EventHandler(this.btnMantenimiento_Click);
-            // 
-            // btnProcesos
-            // 
-            this.btnProcesos.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnProcesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcesos.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_miscellaneous_services_black_48dp;
-            this.btnProcesos.Location = new System.Drawing.Point(402, 3);
-            this.btnProcesos.Name = "btnProcesos";
-            this.btnProcesos.Size = new System.Drawing.Size(393, 191);
-            this.btnProcesos.TabIndex = 1;
-            this.btnProcesos.Text = "Procesos";
-            this.btnProcesos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnProcesos.UseVisualStyleBackColor = false;
-            this.btnProcesos.Click += new System.EventHandler(this.btnProcesos_Click);
-            // 
-            // btnAdministracion
-            // 
-            this.btnAdministracion.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnAdministracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdministracion.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_lock_black_48dp1;
-            this.btnAdministracion.Location = new System.Drawing.Point(402, 200);
-            this.btnAdministracion.Name = "btnAdministracion";
-            this.btnAdministracion.Size = new System.Drawing.Size(393, 191);
-            this.btnAdministracion.TabIndex = 3;
-            this.btnAdministracion.Text = "Administración";
-            this.btnAdministracion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdministracion.UseVisualStyleBackColor = false;
-            this.btnAdministracion.Click += new System.EventHandler(this.btnAdministracion_Click);
             // 
             // frmPrincipalMenu
             // 

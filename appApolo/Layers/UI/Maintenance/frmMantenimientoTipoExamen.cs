@@ -200,7 +200,7 @@ namespace UTN.Winforms.Apolo
             this.CambiarEstado(EstadoMantenimiento.Ninguno);
         }
 
-        private void limpiarCasillas()
+        private void LimpiarCasillas()
         {
             txtCodigo.Clear();
             txtTipoExamen.Clear();
@@ -240,7 +240,7 @@ namespace UTN.Winforms.Apolo
                     txtTipoExamen.Enabled = false;
                     btnAceptar.Enabled = false;
                     btnCancelar.Enabled = false;
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     break;
             }
         }

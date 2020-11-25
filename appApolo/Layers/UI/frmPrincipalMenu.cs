@@ -11,6 +11,7 @@ using UTN.Winforms.Apolo.Layers.UI;
 using UTN.Winforms.Apolo.Layers.UI.Administration;
 using UTN.Winforms.Apolo.Layers.UI.Process;
 using UTN.Winforms.Apolo.Layers.UI.Reports;
+using UTN.Winforms.Apolo.Properties;
 using UTN.Winforms.Apolo.UI;
 
 namespace UTN.Winforms.Apolo
@@ -52,6 +53,27 @@ namespace UTN.Winforms.Apolo
 
         private void frmPrincipalMenu_Load(object sender, EventArgs e)
         {
+            AsignaPermisosPerfil();
+        }
+
+        public void AsignaPermisosPerfil()
+        {
+            
+
+            if (Settings.Default.TipoPerfil == "Procesos")
+            {
+                btnProcesos.Enabled = true;   
+            }else if(Settings.Default.TipoPerfil == "Reportes")
+            {
+                btnReportes.Enabled = true;
+            }
+            else if (Settings.Default.TipoPerfil == "Administrador")
+            {
+                btnMantenimiento.Enabled = true;
+                btnProcesos.Enabled = true;
+                btnReportes.Enabled = true;
+                btnAdministracion.Enabled = true;
+            }
         }
 
         private void btnCambiarUsuario_Click(object sender, EventArgs e)

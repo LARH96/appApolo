@@ -76,7 +76,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Maintenance
         {
             Paciente oPaciente = null;
             IBLLPaciente _IBLLPaciente = new BLLPaciente();
-            limpiarCasillas();
+            LimpiarCasillas();
             try
             {
                 if (this.dgvPacientes.SelectedRows.Count > 0)
@@ -277,12 +277,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Maintenance
                 oPaciente.Altura = Convert.ToDouble(txtAltura.Text);
                 oPaciente.Peso = Convert.ToDouble(txtPeso.Text);
                 oPaciente.FechaNacimiento = dtpkrFechaNacimiento.Value;
-                if (rdBtnFemenino.Checked)
-                    oPaciente.Genero = Sexo.f.ToString();
-                else if (rdBtnMasculino.Checked)
-                    oPaciente.Genero = Sexo.m.ToString();
-                else
-                    oPaciente.Genero = Sexo.o.ToString();
+                oPaciente.Genero = _IBLLPaciente.SeleccionaSexo(rdBtnFemenino.Checked, rdBtnMasculino.Checked, rdBtnOtro.Checked);
                 oPaciente.Email = txtCorreoElectronico.Text;
                 oPaciente.Telefono = mkdtxtTelefono.Text;
                 oPaciente.Direccion = txtDireccion.Text;
@@ -317,7 +312,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Maintenance
             switch (estado)
             {
                 case EstadoMantenimiento.Crear:
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     this.pbxFotografia.Enabled = true;
                     mkdtxtIdentificación.Enabled = true;
                     txtNombre.Enabled = true;
@@ -378,7 +373,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Maintenance
                     txtDireccion.Enabled = false;
                     btnAceptar.Enabled = false;
                     btnCancelar.Enabled = false;
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     break;
             }
         }
@@ -435,7 +430,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Maintenance
             this.dgvPacientes.DataSource = _IBLLPaciente.ReadAllPaciente();
         }
 
-        private void limpiarCasillas()
+        private void LimpiarCasillas()
         {
             this.pbxFotografia.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_add_photo_alternate_black_48dp;
             this.pbxFotografia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

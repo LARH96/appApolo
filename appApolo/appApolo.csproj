@@ -54,7 +54,11 @@
   <ItemGroup>
     <Compile Include="Entities\DoctorEspecialista.cs" />
     <Compile Include="Entities\Examen.cs" />
+    <Compile Include="Entities\FacturaDetalle.cs" />
+    <Compile Include="Entities\FacturaEncabezado.cs" />
+    <Compile Include="Entities\Impuesto.cs" />
     <Compile Include="Entities\Paciente.cs" />
+    <Compile Include="Entities\Tarjeta.cs" />
     <Compile Include="Entities\TipoExamen.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enumerations\EstadoMantenimiento.cs" />
@@ -62,24 +66,40 @@
     <Compile Include="Enumerations\TipoPerfil.cs" />
     <Compile Include="Interfaces\IBLLDoctorEspecialista.cs" />
     <Compile Include="Interfaces\IBLLExamen.cs" />
+    <Compile Include="Interfaces\IBLLFactura.cs" />
+    <Compile Include="Interfaces\IBLLImpuesto.cs" />
     <Compile Include="Interfaces\IBLLLogin.cs" />
     <Compile Include="Interfaces\IBLLPaciente.cs" />
+    <Compile Include="Interfaces\IBLLTarjeta.cs" />
     <Compile Include="Interfaces\IBLLTipoExamen.cs" />
+    <Compile Include="Interfaces\IBLLUsuario.cs" />
     <Compile Include="Interfaces\IDALDoctorEspecialista.cs" />
     <Compile Include="Interfaces\IDALExamen.cs" />
+    <Compile Include="Interfaces\IDALFactura.cs" />
+    <Compile Include="Interfaces\IDALImpuesto.cs" />
     <Compile Include="Interfaces\IDALLogin.cs" />
     <Compile Include="Interfaces\IDALPaciente.cs" />
     <Compile Include="Interfaces\IDALTipoExamen.cs" />
+    <Compile Include="Interfaces\IDALUsuario.cs" />
     <Compile Include="Layers\BLL\BLLDoctorEspecialista.cs" />
     <Compile Include="Layers\BLL\BLLExamen.cs" />
+    <Compile Include="Layers\BLL\BLLFactura.cs" />
+    <Compile Include="Layers\BLL\BLLImpuesto.cs" />
     <Compile Include="Layers\BLL\BLLLogin.cs" />
     <Compile Include="Layers\BLL\BLLPaciente.cs" />
+    <Compile Include="Layers\BLL\BLLTarjeta.cs" />
     <Compile Include="Layers\BLL\BLLTipoExamen.cs" />
+    <Compile Include="Layers\BLL\BLLUsuario.cs" />
     <Compile Include="Layers\DAL\DALDoctorEspecialista.cs" />
     <Compile Include="Layers\DAL\DALExamen.cs" />
+    <Compile Include="Layers\DAL\DALFactura.cs" />
+    <Compile Include="Layers\DAL\DALImpuesto.cs" />
     <Compile Include="Layers\DAL\DALLogin.cs" />
     <Compile Include="Layers\DAL\DALPaciente.cs" />
+    <Compile Include="Layers\DAL\DALTarjeta.cs" />
     <Compile Include="Layers\DAL\DALTipoExamen.cs" />
+    <Compile Include="Layers\DAL\DALUsuario.cs" />
+    <Compile Include="Interfaces\IDALTarjeta.cs" />
     <Compile Include="Layers\UI\Administration\frmAdministracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +230,9 @@
     <Compile Include="Util\Utilitarios.cs" />
     <EmbeddedResource Include="Layers\UI\Administration\frmAdministracion.resx">
       <DependentUpon>frmAdministracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\UI\Filter\frmFiltroDoctorEspecialista.resx">
+      <DependentUpon>frmFiltroDoctorEspecialista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>

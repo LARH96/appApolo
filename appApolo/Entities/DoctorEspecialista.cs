@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UTN.Winforms.Apolo.Entities
 {
-    class DoctorEspecialista
+    public class DoctorEspecialista
     {
         public byte[] Fotografia { get; set; }
         public string CodigoEspecialista { get; set; }

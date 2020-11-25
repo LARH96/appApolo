@@ -26,5 +26,7 @@ namespace UTN.Winforms.Apolo.Interfaces
         #region Delete
         bool DeletePaciente(string pId);
         #endregion
+
+        string SeleccionaSexo(bool femenino, bool masculino, bool otro);
     }
 }

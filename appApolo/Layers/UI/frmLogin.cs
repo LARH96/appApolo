@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTN.Winforms.Apolo.Entities;
 using UTN.Winforms.Apolo.Interfaces;
 using UTN.Winforms.Apolo.Layers.BLL;
 using UTN.Winforms.Apolo.Properties;
@@ -28,12 +29,13 @@ namespace UTN.Winforms.Apolo.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            // Debe validar los datos requeridos
-            IBLLLogin _BLLLogin = new BLLLogin();
+            IBLLUsuario _IBLLUsuario = new BLLUsuario();
+            Usuario oUsuario = new Usuario();
             epError.Clear();
 
             try
             {
+                //verifica campos
                 if (string.IsNullOrEmpty(this.txtUsuario.Text))
                 {
                     epError.SetError(txtUsuario, "Usuario requerido");
@@ -42,24 +44,32 @@ namespace UTN.Winforms.Apolo.UI
                 }
                 if (string.IsNullOrEmpty(this.txtContrasena.Text))
                 {
-                    epError.SetError(txtContrasena, "Contraseá requerida");
+                    epError.SetError(txtContrasena, "Contraseñá requerida");
                     this.txtContrasena.Focus();
                     return;
                 }
 
-                Settings.Default.Login = this.txtUsuario.Text.Trim();
-                Settings.Default.Password = this.txtContrasena.Text.Trim();
+                //Activar para brincarse a Menú
+                //frmPrincipalMenu ofrmPrincipalMenu1 = new frmPrincipalMenu();
+                //ofrmPrincipalMenu1.Show();
 
-                _BLLLogin.Login(Settings.Default.Login,
-                                Settings.Default.Password);
+                oUsuario.NombreUsuario = txtUsuario.Text;
+                oUsuario.Contrasenna = txtContrasena.Text;
 
-                _MyLogControlEventos.InfoFormat("Entró a la aplicación");
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (SqlException sqlError)
-            {
-                // Mensaje de Error
-                MessageBox.Show("Se ha producido el siguiente error: \n" + Utilitarios.GetCustomErrorByNumber(sqlError), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_IBLLUsuario.VerificaLoginUsuario(oUsuario))
+                {
+                    _MyLogControlEventos.InfoFormat("Entró a la aplicación");
+                    this.DialogResult = DialogResult.OK;
+                    frmPrincipalMenu ofrmPrincipalMenu = new frmPrincipalMenu();
+                    ofrmPrincipalMenu.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrecta");
+                    contador++;
+                }
+
                 // Si el contador es 3 cierre la aplicación
                 if (contador == 3)
                 {
@@ -69,6 +79,11 @@ namespace UTN.Winforms.Apolo.UI
                     Application.Exit();
                 }
             }
+            catch (SqlException sqlError)
+            {
+                // Mensaje de Error
+                MessageBox.Show("Se ha producido el siguiente error: \n" + Utilitarios.GetCustomErrorByNumber(sqlError), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception er)
             {
                 StringBuilder msg = new StringBuilder();
@@ -77,11 +92,6 @@ namespace UTN.Winforms.Apolo.UI
                 // Mensaje de Error
                 MessageBox.Show("Se ha producido el siguiente error: " + er.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-
-            frmPrincipalMenu ofrmPrincipalMenu = new frmPrincipalMenu();
-            ofrmPrincipalMenu.Show();
-            this.Hide();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

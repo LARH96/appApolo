@@ -25,7 +25,7 @@ namespace UTN.Winforms.Apolo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("LabClinicoApolo")]
         public string Login {
             get {
                 return ((string)(this["Login"]));
@@ -37,7 +37,7 @@ namespace UTN.Winforms.Apolo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C0mpl1c4d4")]
         public string Password {
             get {
                 return ((string)(this["Password"]));
@@ -49,7 +49,7 @@ namespace UTN.Winforms.Apolo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Apolo;User ID=LabClinico;Password=C0mpl1c4d4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Apolo;User LabClinicoApolo;Password=C0mpl1c4d4")]
         public string ApoloConnectionString {
             get {
                 return ((string)(this["ApoloConnectionString"]));

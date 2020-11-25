@@ -13,39 +13,37 @@ using UTN.Winforms.Apolo.Properties;
 
 namespace UTN.Winforms.Apolo.Layers.DAL
 {
-    class DALDoctorEspecialista : IDALDoctorEspecialista
+    class DALUsuario : IDALUsuario
     {
         private static readonly ILog _MyLogControlEventos = LogManager.GetLogger("MyControlEventos");
 
         private Usuario _Usuario = new Usuario();
-        public DALDoctorEspecialista()
+
+        public DALUsuario()
         {
             _Usuario.Login = Settings.Default.Login;
             _Usuario.Password = Settings.Default.Password;
         }
 
-        public bool CreateDoctorEspecialista(DoctorEspecialista pDoctorEspecialista)
+
+        public bool CreateUsuario(Usuario pUsuario)
         {
-            string sql = @"usp_INSERT_DoctorEspecialista";
+            string sql = @"usp_INSERT_Usuario";
             SqlCommand command = new SqlCommand();
             double rows = 0;
 
             try
             {
-                command.Parameters.AddWithValue("@id", pDoctorEspecialista.CodigoEspecialista);
-                command.Parameters.AddWithValue("@Nombre", pDoctorEspecialista.Nombre);
-                command.Parameters.AddWithValue("@Apellidos", pDoctorEspecialista.Apellidos);
-                command.Parameters.AddWithValue("@Genero", pDoctorEspecialista.Genero);
-                command.Parameters.AddWithValue("@Direccion", pDoctorEspecialista.Direccion);
-                command.Parameters.AddWithValue("@Email", pDoctorEspecialista.Email);
-                command.Parameters.AddWithValue("@FechaNacimiento", pDoctorEspecialista.FechaNacimiento);
-                command.Parameters.AddWithValue("@Fotografia", pDoctorEspecialista.Fotografia.ToArray());
-                command.Parameters.AddWithValue("@EjercicioFisico", pDoctorEspecialista.EjercicioFisico);
-                command.Parameters.AddWithValue("@AlcoholTabaco", pDoctorEspecialista.AlcoholTabaco);
-                command.Parameters.AddWithValue("@Medicamentos", pDoctorEspecialista.Medicamentos);
-                command.Parameters.AddWithValue("@Altura", pDoctorEspecialista.Altura);
-                command.Parameters.AddWithValue("@Peso", pDoctorEspecialista.Peso);
-                command.Parameters.AddWithValue("@Telefono", pDoctorEspecialista.Telefono);
+                //TODO
+                //command.Parameters.AddWithValue("@Fotografia", pUsuario.Fotografia.ToArray());
+                command.Parameters.AddWithValue("@Fotografia", "foto");
+                command.Parameters.AddWithValue("@id", pUsuario.IdUsuario);
+                command.Parameters.AddWithValue("@Nombre", pUsuario.Nombre);
+                command.Parameters.AddWithValue("@Apellidos", pUsuario.Apellidos);
+                command.Parameters.AddWithValue("@NombreUsuario", pUsuario.NombreUsuario);
+                command.Parameters.AddWithValue("@Contrasenna", pUsuario.Contrasenna);
+                command.Parameters.AddWithValue("@idPerfil", pUsuario.TipoPerfil);
+
                 command.CommandText = sql;
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -56,6 +54,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
                 // Si devuelve filas quiere decir que se salvo
                 return rows > 0;
+
             }
             catch (SqlException sqlError)
             {
@@ -73,15 +72,15 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
         }
 
-        public DoctorEspecialista ReadDoctorEspecialistaById(string pId)
+        public Usuario ReadUsuarioById(string pId)
         {
             DataSet ds = null;
-            DoctorEspecialista oDoctorEspecialista = null;
+            Usuario oUsuario = null;
             SqlCommand command = new SqlCommand();
 
             try
             {
-                string sql = @"SELECT * FROM  DoctorEspecialista WHERE id = @id";
+                string sql = @"SELECT * FROM Usuario WHERE id = @id";
                 command.Parameters.AddWithValue("@Id", pId);
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
@@ -98,25 +97,19 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     // Iterar en todas las filas y Mapearlas
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
-                        oDoctorEspecialista = new DoctorEspecialista();
-                        oDoctorEspecialista.CodigoEspecialista = dr["id"].ToString();
-                        oDoctorEspecialista.Nombre = dr["Nombre"].ToString();
-                        oDoctorEspecialista.Apellidos = dr["Apellidos"].ToString();
-                        oDoctorEspecialista.Genero = dr["Genero"].ToString();
-                        oDoctorEspecialista.Direccion = dr["Direccion"].ToString();
-                        oDoctorEspecialista.Email = dr["Email"].ToString(); ;
-                        oDoctorEspecialista.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
-                        oDoctorEspecialista.Fotografia = (byte[])dr["Fotografia"];
-                        oDoctorEspecialista.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
-                        oDoctorEspecialista.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;
-                        oDoctorEspecialista.Medicamentos = dr["Medicamentos"].ToString(); ;
-                        oDoctorEspecialista.Altura = Convert.ToDouble(dr["Altura"]);
-                        oDoctorEspecialista.Peso = Convert.ToDouble(dr["Peso"]);
-                        oDoctorEspecialista.Telefono = dr["Telefono"].ToString();
+                        oUsuario = new Usuario();
+                        oUsuario.IdUsuario = dr["id"].ToString();
+                        oUsuario.NombreUsuario = dr["NombreUsuario"].ToString();
+                        oUsuario.TipoPerfil = Convert.ToInt32(dr["idPerfil"].ToString());
+                        oUsuario.Contrasenna = dr["Contrasenna"].ToString();
+                        oUsuario.Nombre = dr["Nombre"].ToString();
+                        oUsuario.Apellidos = dr["Apellidos"].ToString(); ;
+                        //oUsuario.Fotografia = (byte[])dr["Fotografia"]; //TODO
+                        oUsuario.Fotografia = dr["Fotografia"].ToString();
                     }
-                } // end if
+                }
 
-                return oDoctorEspecialista;
+                return oUsuario;
             }
             catch (SqlException sqlError)
             {
@@ -134,15 +127,15 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
         }
 
-        public List<DoctorEspecialista> ReadAllDoctorEspecialista()
+        public List<Usuario> ReadAllUsuario()
         {
             DataSet ds = null;
-            List<DoctorEspecialista> lista = new List<DoctorEspecialista>();
+            List<Usuario> lista = new List<Usuario>();
             SqlCommand command = new SqlCommand();
 
             try
             {
-                string sql = @"SELECT * FROM  DoctorEspecialista  WITH (NOLOCK)  ";
+                string sql = @"SELECT * FROM Usuario  WITH (NOLOCK)  ";
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
 
@@ -157,23 +150,16 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     // Iterar en todas las filas y Mapearlas
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
-                        DoctorEspecialista oDoctorEspecialista = new DoctorEspecialista();
-                        oDoctorEspecialista.CodigoEspecialista = dr["id"].ToString();
-                        oDoctorEspecialista.Nombre = dr["Nombre"].ToString();
-                        oDoctorEspecialista.Apellidos = dr["Apellidos"].ToString();
-                        oDoctorEspecialista.Genero = dr["Genero"].ToString();
-                        oDoctorEspecialista.Direccion = dr["Direccion"].ToString();
-                        oDoctorEspecialista.Email = dr["Email"].ToString(); ;
-                        oDoctorEspecialista.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
-                        oDoctorEspecialista.Fotografia = (byte[])dr["Fotografia"];
-                        oDoctorEspecialista.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
-                        oDoctorEspecialista.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;
-                        oDoctorEspecialista.Medicamentos = dr["Medicamentos"].ToString(); ;
-                        oDoctorEspecialista.Altura = Convert.ToDouble(dr["Altura"]);
-                        oDoctorEspecialista.Peso = Convert.ToDouble(dr["Peso"]);
-                        oDoctorEspecialista.Telefono = dr["Telefono"].ToString();
+                        Usuario oUsuario = new Usuario();
+                        oUsuario.IdUsuario = dr["id"].ToString();
+                        oUsuario.NombreUsuario = dr["NombreUsuario"].ToString();
+                        oUsuario.TipoPerfil = Convert.ToInt32(dr["idPerfil"].ToString());
+                        oUsuario.Nombre = dr["Nombre"].ToString();
+                        oUsuario.Apellidos = dr["Apellidos"].ToString(); ;
+                        //oUsuario.Fotografia = (byte[])dr["Fotografia"]; //TODO
+                        oUsuario.Fotografia = dr["Fotografia"].ToString();
 
-                        lista.Add(oDoctorEspecialista);
+                        lista.Add(oUsuario);
                     }
                 }
 
@@ -195,15 +181,15 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
         }
 
-        public List<DoctorEspecialista> ReadDoctorEspecialistaByFilter(string pDescripcion)
+        public List<Usuario> ReadUsuarioByFilter(string pDescripcion)
         {
             DataSet ds = null;
-            List<DoctorEspecialista> lista = new List<DoctorEspecialista>();
+            List<Usuario> lista = new List<Usuario>();
             SqlCommand command = new SqlCommand();
 
             try
             {
-                string sql = @"SELECT * FROM DoctorEspecialista WITH (NOLOCK) Where Nombre+Apellidos like @filtro ";
+                string sql = @"SELECT * FROM Usuario WITH (NOLOCK) Where Nombre+Apellidos like @filtro ";
                 command.Parameters.AddWithValue("@filtro", pDescripcion);
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
@@ -219,23 +205,17 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     // Iterar en todas las filas y Mapearlas
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
-                        DoctorEspecialista oDoctorEspecialista = new DoctorEspecialista();
-                        oDoctorEspecialista.CodigoEspecialista = dr["id"].ToString();
-                        oDoctorEspecialista.Nombre = dr["Nombre"].ToString();
-                        oDoctorEspecialista.Apellidos = dr["Apellidos"].ToString();
-                        oDoctorEspecialista.Genero = dr["Genero"].ToString();
-                        oDoctorEspecialista.Direccion = dr["Direccion"].ToString();
-                        oDoctorEspecialista.Email = dr["Email"].ToString(); ;
-                        oDoctorEspecialista.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
-                        oDoctorEspecialista.Fotografia = (byte[])dr["Fotografia"];
-                        oDoctorEspecialista.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
-                        oDoctorEspecialista.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;
-                        oDoctorEspecialista.Medicamentos = dr["Medicamentos"].ToString(); ;
-                        oDoctorEspecialista.Altura = Convert.ToDouble(dr["Altura"]);
-                        oDoctorEspecialista.Peso = Convert.ToDouble(dr["Peso"]);
-                        oDoctorEspecialista.Telefono = dr["Telefono"].ToString();
+                        Usuario oUsuario = new Usuario();
+                        oUsuario.IdUsuario = dr["id"].ToString();
+                        oUsuario.NombreUsuario = dr["NombreUsuario"].ToString();
+                        oUsuario.TipoPerfil = Convert.ToInt32(dr["idPerfil"].ToString());
+                        oUsuario.Contrasenna = dr["Contrasenna"].ToString();
+                        oUsuario.Nombre = dr["Nombre"].ToString();
+                        oUsuario.Apellidos = dr["Apellidos"].ToString(); ;
+                        //oUsuario.Fotografia = (byte[])dr["Fotografia"]; //TODO
+                        oUsuario.Fotografia = dr["Fotografia"].ToString();
 
-                        lista.Add(oDoctorEspecialista);
+                        lista.Add(oUsuario);
                     }
                 }
 
@@ -257,29 +237,22 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
         }
 
-        public bool UpdateDoctorEspecialista(DoctorEspecialista pDoctorEspecialista)
+        public bool UpdateUsuario(Usuario pUsuario)
         {
-            string sql = @"usp_UPDATE_DoctorEspecialista";
+            string sql = @"usp_UPDATE_Usuario";
             SqlCommand command = new SqlCommand();
             double rows = 0;
 
             try
             {
                 // Pasar parámetros
-                command.Parameters.AddWithValue("@id", pDoctorEspecialista.CodigoEspecialista);
-                command.Parameters.AddWithValue("@Nombre", pDoctorEspecialista.Nombre);
-                command.Parameters.AddWithValue("@Apellidos", pDoctorEspecialista.Apellidos);
-                command.Parameters.AddWithValue("@Genero", pDoctorEspecialista.Genero);
-                command.Parameters.AddWithValue("@Direccion", pDoctorEspecialista.Direccion);
-                command.Parameters.AddWithValue("@Email", pDoctorEspecialista.Email);
-                command.Parameters.AddWithValue("@FechaNacimiento", pDoctorEspecialista.FechaNacimiento);
-                command.Parameters.AddWithValue("@Fotografia", pDoctorEspecialista.Fotografia.ToArray());
-                command.Parameters.AddWithValue("@EjercicioFisico", pDoctorEspecialista.EjercicioFisico);
-                command.Parameters.AddWithValue("@AlcoholTabaco", pDoctorEspecialista.AlcoholTabaco);
-                command.Parameters.AddWithValue("@Medicamentos", pDoctorEspecialista.Medicamentos);
-                command.Parameters.AddWithValue("@Altura", pDoctorEspecialista.Altura); 
-                command.Parameters.AddWithValue("@Peso", pDoctorEspecialista.Peso);
-                command.Parameters.AddWithValue("@Telefono", pDoctorEspecialista.Telefono);
+                command.Parameters.AddWithValue("@id", pUsuario.IdUsuario);
+                command.Parameters.AddWithValue("@NombreUsuario", pUsuario.NombreUsuario);
+                command.Parameters.AddWithValue("@idPerfil", pUsuario.TipoPerfil);
+                command.Parameters.AddWithValue("@Contrasenna", pUsuario.Contrasenna);
+                command.Parameters.AddWithValue("@Nombre", pUsuario.Nombre);
+                command.Parameters.AddWithValue("@Apellidos", pUsuario.Apellidos);
+                command.Parameters.AddWithValue("@Fotografia", pUsuario.Fotografia.ToArray());
                 command.CommandText = sql;
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -308,9 +281,9 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
         }
 
-        public bool DeleteDoctorEspecialista(string pId)
+        public bool DeleteUsuario(string pId)
         {
-            string sql = @"usp_DELETE_DoctorEspecialista_ByID";
+            string sql = @"usp_DELETE_Usuario_ByID";
             SqlCommand command = new SqlCommand();
             double rows = 0;
 
@@ -329,6 +302,57 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
                 // Si devuelve filas quiere decir que se salvo
                 return rows > 0;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public Usuario ReadUsuarioParaLogin(Usuario pUsuario)
+        {
+
+            DataSet ds = null;
+            SqlCommand command = new SqlCommand();
+
+            try
+            {
+                string sql = @"SELECT NombreUsuario, Contrasenna, idPerfil FROM Usuario WHERE NombreUsuario = @NombreUsuario";
+                command.Parameters.AddWithValue("@NombreUsuario", pUsuario.NombreUsuario);
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                Usuario oUsuario = new Usuario();
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        oUsuario.NombreUsuario = dr["NombreUsuario"].ToString();
+                        oUsuario.Contrasenna = dr["Contrasenna"].ToString();
+                        oUsuario.TipoPerfil = Convert.ToInt32(dr["idPerfil"].ToString());
+                    }
+                }
+
+                return oUsuario;
             }
             catch (SqlException sqlError)
             {

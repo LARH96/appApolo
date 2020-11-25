@@ -160,6 +160,7 @@ namespace UTN.Winforms.Apolo.UI
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             IBLLExamen _IBLLExamen = new BLLExamen();
+            erp.Clear();
             try
             {
                 Examen oExamen = new Examen();
@@ -174,12 +175,6 @@ namespace UTN.Winforms.Apolo.UI
                 if (string.IsNullOrEmpty(txtNombre.Text))
                 {
                     erp.SetError(txtNombre, "Nombre es requerido");
-                    txtNombre.Focus();
-                    return;
-                }
-                if (string.IsNullOrEmpty(txtNombre.Text))
-                {
-                    erp.SetError(txtNombre, "Debe ingresar un Tipo Examen, para esto dirigirse a mantenimiento->Tipo Exámen");
                     txtNombre.Focus();
                     return;
                 }
@@ -254,6 +249,16 @@ namespace UTN.Winforms.Apolo.UI
             this.CambiarEstado(EstadoMantenimiento.Ninguno);
         }
 
+        private void LimpiarCasillas()
+        {
+            txtCodigo.Clear();
+            txtNombre.Clear();
+            this.cmbTipoExamen.SelectedIndex = 0;
+            txtCosto.Clear();
+            txtValorMinimo.Clear();
+            txtValorMaximo.Clear();
+        }
+
         private void CargaDatosComboBox()
         {
             IBLLTipoExamen _IBLLTipoExamen = new BLLTipoExamen();
@@ -266,19 +271,9 @@ namespace UTN.Winforms.Apolo.UI
             {
                 this.cmbTipoExamen.Items.Add(oTipoExamen);
             }
-            
+
             // Colocar el primero como default
             this.cmbTipoExamen.SelectedIndex = 0;
-        }
-
-        private void limpiarCasillas()
-        {
-            txtCodigo.Clear();
-            txtNombre.Clear();
-            this.cmbTipoExamen.SelectedIndex = 0;
-            txtCosto.Clear();
-            txtValorMinimo.Clear();
-            txtValorMaximo.Clear();
         }
 
         private void CargarDatosDataGridView()
@@ -305,7 +300,7 @@ namespace UTN.Winforms.Apolo.UI
                     txtValorMaximo.Enabled = true;
                     btnAceptar.Enabled = true;
                     btnCancelar.Enabled = true;
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     CargaDatosComboBox();
                     break;
                 case EstadoMantenimiento.Actualizar:
@@ -330,7 +325,7 @@ namespace UTN.Winforms.Apolo.UI
                     btnAceptar.Enabled = false;
                     btnCancelar.Enabled = false;
                     CargaDatosComboBox();
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     erp.Clear();
                     break;
             }

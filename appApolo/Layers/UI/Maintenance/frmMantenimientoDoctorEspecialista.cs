@@ -75,7 +75,7 @@ namespace UTN.Winforms.Apolo.UI
         {
             DoctorEspecialista oDoctorEspecialista = null;
             IBLLDoctorEspecialista _IBLLDoctorEspecialista = new BLLDoctorEspecialista();
-            limpiarCasillas();
+            LimpiarCasillas();
             try
             {
                 if (this.dgvDoctorEspecialista.SelectedRows.Count > 0)
@@ -191,7 +191,7 @@ namespace UTN.Winforms.Apolo.UI
             switch (estado)
             {
                 case EstadoMantenimiento.Crear:
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     this.pbxFotografia.Enabled = true;
                     mkdtxtIdentificación.Enabled = true;
                     txtNombre.Enabled = true;
@@ -252,7 +252,7 @@ namespace UTN.Winforms.Apolo.UI
                     txtDireccion.Enabled = false;
                     btnAceptar.Enabled = false;
                     btnCancelar.Enabled = false;
-                    limpiarCasillas();
+                    LimpiarCasillas();
                     break;
             }
         }
@@ -287,6 +287,7 @@ namespace UTN.Winforms.Apolo.UI
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             IBLLDoctorEspecialista _IBLLDoctorEspecialista = new BLLDoctorEspecialista();
+
             try
             {
                 DoctorEspecialista oDoctorEspecialista = new DoctorEspecialista();
@@ -379,12 +380,8 @@ namespace UTN.Winforms.Apolo.UI
                 oDoctorEspecialista.Altura = Convert.ToDouble(txtAltura.Text);
                 oDoctorEspecialista.Peso = Convert.ToDouble(txtPeso.Text);
                 oDoctorEspecialista.FechaNacimiento = dtpkrFechaNacimiento.Value;
-                if (rdBtnFemenino.Checked)
-                    oDoctorEspecialista.Genero = Sexo.f.ToString();
-                else if (rdBtnMasculino.Checked)
-                    oDoctorEspecialista.Genero = Sexo.m.ToString();
-                else
-                    oDoctorEspecialista.Genero = Sexo.o.ToString();
+                oDoctorEspecialista.Genero = _IBLLDoctorEspecialista.SeleccionaSexo(rdBtnFemenino.Checked,
+                    rdBtnMasculino.Checked, rdBtnOtro.Checked);
                 oDoctorEspecialista.Email = txtCorreoElectronico.Text;
                 oDoctorEspecialista.Telefono = mkdtxtTelefono.Text;
                 oDoctorEspecialista.Direccion = txtDireccion.Text;
@@ -439,7 +436,7 @@ namespace UTN.Winforms.Apolo.UI
             this.dgvDoctorEspecialista.DataSource = _IBLLDoctorEspecialista.ReadAllDoctorEspecialista();
         }
 
-        private void limpiarCasillas()
+        private void LimpiarCasillas()
         {
             this.pbxFotografia.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_add_photo_alternate_black_48dp;
             this.pbxFotografia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

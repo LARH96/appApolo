@@ -53,5 +53,19 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             IDALPaciente _IDALPaciente = new DALPaciente();
             return _IDALPaciente.DeletePaciente(pId);
         }
+
+        public string SeleccionaSexo(bool femenino, bool masculino, bool otro)
+        {
+            string sexo = "";
+
+            if (femenino)
+                sexo = Sexo.f.ToString();
+            else if (masculino)
+                sexo = Sexo.m.ToString();
+            else
+                sexo = Sexo.o.ToString();
+
+            return sexo;
+        }
     }
 }
