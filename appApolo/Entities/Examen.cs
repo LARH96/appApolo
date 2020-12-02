@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UTN.Winforms.Apolo.Entities
 {
-    class Examen
+    public class Examen
     {
         public string IdExamen { get; set; }
 

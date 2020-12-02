@@ -30,38 +30,38 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             string sqlElectronico = string.Empty;
             SqlCommand cmdFacturaEncabezado = new SqlCommand();
             SqlCommand cmdFacturaDetalle = new SqlCommand();
-            SqlCommand cmdElectronico = new SqlCommand();
             List<IDbCommand> listaCommands = new List<IDbCommand>();
             double rows = 0;
 
             sqlEncabezado = @"  
                             INSERT INTO [dbo].[FacturaEncabezado]
-                                       ([IdFactura]
-                                       ,[IdTarjeta]
-                                       ,[FechaFacturacion]
-                                       ,[IdCliente]
-                                       ,[EstadoFactura]
-                                       ,[TipoPago]
-                                       ,TarjetaNumero )
+                                       ([id]
+                                       ,[Fecha]
+                                       ,[idPaciente]
+                                       ,[XML]
+                                       ,[idTipoPago]
+                                       ,[ReferenciaMedica]
+                                       ,[idTipoEntregaExamen] )
                                  VALUES
-                                        (@IdFactura
-                                       ,@IdTarjeta
-                                       ,getdate()
-                                       ,@IdCliente
-                                       ,@EstadoFactura
-                                       ,@TipoPago
-                                       ,@TarjetaNumero )  ";
+                                       (@Id
+                                       ,@Fecha
+                                       ,@idPaciente
+                                       ,@XML
+                                       ,@idTipoPago
+                                       ,@ReferenciaMedica
+                                       ,@idTipoEntregaExamen ) ";
 
 
             try
             {
                 // Encabezado de factura
-                cmdFacturaEncabezado.Parameters.AddWithValue("@IdFactura", pFactura.IdFactura);
-                cmdFacturaEncabezado.Parameters.AddWithValue("@IdTarjeta", pFactura._Tarjeta.IdTarjeta);
-                cmdFacturaEncabezado.Parameters.AddWithValue("@IdCliente", pFactura._Paciente.IdPaciente);
-                cmdFacturaEncabezado.Parameters.AddWithValue("@EstadoFactura", pFactura.EstadoFactura);
-                cmdFacturaEncabezado.Parameters.AddWithValue("@TipoPago", pFactura.TipoPago);
-                cmdFacturaEncabezado.Parameters.AddWithValue("@TarjetaNumero", pFactura.TarjetaNumero);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@Id", pFactura.IdFactura);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@Fecha", pFactura.FechaFacturacion);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@idPaciente", pFactura._Paciente.IdPaciente);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@XML", pFactura.XML);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@idTipoPago", pFactura.TipoPago);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@ReferenciaMedica", pFactura.ReferenciaMedica);
+                cmdFacturaEncabezado.Parameters.AddWithValue("@idTipoEntregaExamen", pFactura.TipoEntregaExamen);
                 cmdFacturaEncabezado.CommandText = sqlEncabezado;
                 cmdFacturaEncabezado.CommandType = CommandType.Text;
                 // Agregar a la lista de commands
@@ -70,47 +70,32 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
                 // Detalle de factura
                 sqlDetalle = @" 
-                    INSERT INTO[dbo].[FacturaDetalle]
-                               ([IdFactura]
+                    INSERT INTO[dbo].[DetalleFactura]
+                               ([idFactura]
                                ,[Secuencia]
-                               ,[IdElectronico]
-                               ,[Cantidad]
-                               ,[Precio]
+                               ,[idExamen]
+                               ,[Costo]
                                ,[Impuesto])
                          VALUES
-                               (@IdFactura
+                               (@idFactura
                                ,@Secuencia
-                               ,@IdElectronico
-                               ,@Cantidad
-                               ,@Precio
+                               ,@IdExamen
+                               ,@Costo
                                ,@Impuesto) ";
 
                 // Guardar el detalle de la factura y a la vez rebajar el saldo del producto en Electronico
                 foreach (FacturaDetalle pFacturaDetalle in pFactura._ListaFacturaDetalle)
                 {
                     cmdFacturaDetalle = new SqlCommand();
-                    cmdFacturaDetalle.Parameters.AddWithValue("@IdFactura", pFacturaDetalle.IdFactura);
+                    cmdFacturaDetalle.Parameters.AddWithValue("@idFactura", pFacturaDetalle.IdFactura);
                     cmdFacturaDetalle.Parameters.AddWithValue("@Secuencia", pFacturaDetalle.Secuencia);
-                    cmdFacturaDetalle.Parameters.AddWithValue("@IdElectronico", pFacturaDetalle.IdExamen);
-                    cmdFacturaDetalle.Parameters.AddWithValue("@Cantidad", pFacturaDetalle.Cantidad);
-                    cmdFacturaDetalle.Parameters.AddWithValue("@Precio", pFacturaDetalle.Precio);
+                    cmdFacturaDetalle.Parameters.AddWithValue("@IdExamen", pFacturaDetalle.Examen);
+                    cmdFacturaDetalle.Parameters.AddWithValue("@Costo", pFacturaDetalle.Costo);
                     cmdFacturaDetalle.Parameters.AddWithValue("@Impuesto", pFacturaDetalle.Impuesto);
                     cmdFacturaDetalle.CommandText = sqlDetalle;
                     cmdFacturaDetalle.CommandType = CommandType.Text;
                     // Agregar a la lista de comandos
                     listaCommands.Add(cmdFacturaDetalle);
-
-                    // Rebajar 
-                    cmdElectronico = new SqlCommand();
-                    cmdElectronico.Parameters.AddWithValue("@IdElectronico", pFacturaDetalle.IdExamen);
-                    cmdElectronico.Parameters.AddWithValue("@Cantidad", pFacturaDetalle.Cantidad);
-                    sqlElectronico = @"Update Electronico 
-                                       Set Cantidad =  Cantidad - @Cantidad 
-                                       Where IdElectronico = @IdElectronico";
-                    cmdElectronico.CommandText = sqlElectronico;
-                    cmdElectronico.CommandType = CommandType.Text;
-                    listaCommands.Add(cmdElectronico);
-
                 }
 
 
@@ -244,12 +229,11 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
         }
 
-
         public double GetTotalFactura(double pNumeroFactura)
         {
 
             double sumatoria = 0d;
-            string sql = @"  select sum(Cantidad * Precio + Impuesto) from FacturaDetalle  f
+            string sql = @"  select sum(Cantidad * Precio + Impuesto) from DetalleFactura  f
                              where f.IdFactura = @pNumeroFactura";
             SqlCommand command = new SqlCommand();
             command.CommandText = sql;
@@ -268,7 +252,6 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
         private FacturaEncabezado GetFactura(double pNumeroFactura)
         {
-
             FacturaEncabezado oFacturaEncabezado = new FacturaEncabezado();
             DataSet ds = null;
             IDALPaciente _IDALPaciente = new DALPaciente();
@@ -278,17 +261,17 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             string sql = @"  ";
 
 
-            sql = @"SELECT        FacturaEncabezado.IdFactura, FacturaEncabezado.IdTarjeta, FacturaEncabezado.IdCliente, FacturaEncabezado.FechaFacturacion, FacturaEncabezado.EstadoFactura, FacturaEncabezado.TipoPago, 
-                                             FacturaEncabezado.TarjetaNumero, FacturaDetalle.Secuencia, FacturaDetalle.idExamen, FacturaDetalle.Cantidad, FacturaDetalle.Precio, FacturaDetalle.Impuesto
-                    FROM            FacturaEncabezado INNER JOIN FacturaDetalle 
-                                                      ON FacturaEncabezado.IdFactura = FacturaDetalle.IdFactura
-                    WHERE        (FacturaEncabezado.IdFactura = @IdFactura";
+            sql = @"SELECT        FacturaEncabezado.id, FacturaEncabezado.Fecha, FacturaEncabezado.IdPaciente, FacturaEncabezado.XML, FacturaEncabezado.idTipoPago, FacturaEncabezado.ReferenciaMedica, FacturaEncabezado.idTipoEntregaExamen, 
+                                             DetalleFactura.idFactura, DetalleFactura.Secuencia, DetalleFactura.idExamen, DetalleFactura.Costo, DetalleFactura.Impuesto
+                    FROM          FacturaEncabezado INNER JOIN DetalleFactura
+                                                      ON FacturaEncabezado.id = DetalleFactura.idFactura
+                    WHERE        (FacturaEncabezado.id = @id) ";
 
             try
             {
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
-                command.Parameters.AddWithValue("@IdFactura", pNumeroFactura);
+                command.Parameters.AddWithValue("@id", pNumeroFactura);
 
                 using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
                 {
@@ -301,27 +284,22 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     DataRow dr = ds.Tables[0].Rows[0];
                     oFacturaEncabezado = new FacturaEncabezado()
                     {
-                        EstadoFactura = (bool)dr["EstadoFactura"],
-                        FechaFacturacion = DateTime.Parse(dr["FechaFacturacion"].ToString()),
-                        IdFactura = double.Parse(dr["IdFactura"].ToString()),
-                        _Paciente = _IDALPaciente.ReadPacienteById(dr["IdCliente"].ToString()),
-                        _Tarjeta = _DALTarjeta.GetTarjetaById(int.Parse(dr["IdTarjeta"].ToString())),
-                        TipoPago = (int)dr["TipoPago"]
+                        IdFactura = int.Parse(dr["id"].ToString()),
+                        FechaFacturacion = DateTime.Parse(dr["Fecha"].ToString()),
+                        _Paciente = _IDALPaciente.ReadPacienteById(dr["idPaciente"].ToString()),
+                        XML = dr["XML"].ToString(),
+                        TipoPago = (int)dr["idTipoPago"]
                     };
 
 
                     foreach (var item in ds.Tables[0].Rows)
                     {
                         FacturaDetalle oFacturaDetalle = new FacturaDetalle();
-                        oFacturaDetalle.IdExamen = dr["idExamen"].ToString();
-                        oFacturaDetalle.Cantidad = int.Parse(dr["Cantidad"].ToString());
-                        oFacturaDetalle.Precio = double.Parse(dr["Precio"].ToString());
-                        oFacturaDetalle.IdFactura = double.Parse(dr["IdFactura"].ToString());
-                        // Calcular el Impuesto
-                        oFacturaDetalle.Impuesto = double.Parse(dr["Impuesto"].ToString());
-                        // Enumerar la secuencia
+                        oFacturaDetalle.IdFactura = int.Parse(dr["id"].ToString());
                         oFacturaDetalle.Secuencia = int.Parse(dr["Secuencia"].ToString());
-                        // Agregar
+                        oFacturaDetalle.Examen = dr["idExamen"].ToString();
+                        oFacturaDetalle.Costo = double.Parse(dr["Costo"].ToString());
+                        oFacturaDetalle.Impuesto = double.Parse(dr["Impuesto"].ToString());
                         oFacturaEncabezado.AddDetalle(oFacturaDetalle);
                     }
                 }

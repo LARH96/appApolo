@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmReporteDinerosRecibidos";
             this.Text = "Dineros Recibidos";
+            this.Load += new System.EventHandler(this.frmReporteDinerosRecibidos_Load);
             this.ResumeLayout(false);
 
         }

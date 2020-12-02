@@ -233,8 +233,8 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                         oPaciente.EjercicioFisico = dr["EjercicioFisico"].ToString(); ;
                         oPaciente.AlcoholTabaco = dr["AlcoholTabaco"].ToString(); ;
                         oPaciente.Medicamentos = dr["Medicamentos"].ToString(); ;
-                        oPaciente.Altura = (double)dr["Altura"];
-                        oPaciente.Peso = (double)dr["Peso"];
+                        oPaciente.Altura = Convert.ToDouble(dr["Altura"]);
+                        oPaciente.Peso = Convert.ToDouble(dr["Peso"]);
                         oPaciente.Telefono = dr["Telefono"].ToString();
 
                         lista.Add(oPaciente);

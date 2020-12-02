@@ -8,6 +8,7 @@ namespace UTN.Winforms.Apolo.Entities
 {
     class Impuesto
     {
-        public int Porcentaje { get; set; }
+        public DateTime Fecha { get; set; }
+        public double Porcentaje { get; set; }
     }
 }

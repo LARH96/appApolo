@@ -1,6 +1,6 @@
 ﻿namespace UTN.Winforms.Apolo.Layers.UI.Process
 {
-    partial class frmProcesoAtencionClientePaciente
+    partial class frmProcesoAtencionPaciente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcesoAtencionClientePaciente));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcesoAtencionPaciente));
             this.tspDoctorEspecialista = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnFacturar = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
             this.sptContainer = new System.Windows.Forms.SplitContainer();
             this.grpBxFacturacion = new System.Windows.Forms.GroupBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
             this.mskNoTarjeta = new System.Windows.Forms.MaskedTextBox();
             this.cmbTipoTarjeta = new System.Windows.Forms.ComboBox();
             this.btnBuscarExamen = new System.Windows.Forms.Button();
@@ -49,32 +53,31 @@
             this.rdbEfectivo = new System.Windows.Forms.RadioButton();
             this.rdbTarjeta = new System.Windows.Forms.RadioButton();
             this.lblReferenciaMedica = new System.Windows.Forms.Label();
-            this.lblNombreCliente = new System.Windows.Forms.Label();
+            this.lblNombrePaciente = new System.Windows.Forms.Label();
             this.txtReferenciaMedica = new System.Windows.Forms.TextBox();
-            this.lblIdentificacionCliente = new System.Windows.Forms.Label();
-            this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.lblIdentificacionPaciente = new System.Windows.Forms.Label();
+            this.txtNombrePaciente = new System.Windows.Forms.TextBox();
             this.lblNumeroFactura = new System.Windows.Forms.Label();
             this.LblNoTarjeta = new System.Windows.Forms.Label();
             this.txtNoFactura = new System.Windows.Forms.TextBox();
-            this.txtIdentificacionCliente = new System.Windows.Forms.TextBox();
+            this.txtIdentificacionPaciente = new System.Windows.Forms.TextBox();
             this.lblTipoTarjeta = new System.Windows.Forms.Label();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnBuscarPaciente = new System.Windows.Forms.Button();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtImpuesto = new System.Windows.Forms.TextBox();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblImpuesto = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.grpBxDetalle = new System.Windows.Forms.GroupBox();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.erpError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Secuencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codExamen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.impuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblPrecio = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.tspDoctorEspecialista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sptContainer)).BeginInit();
             this.sptContainer.Panel1.SuspendLayout();
@@ -85,6 +88,7 @@
             this.grpBxTipoPago.SuspendLayout();
             this.grpBxDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpError)).BeginInit();
             this.SuspendLayout();
             // 
             // tspDoctorEspecialista
@@ -146,19 +150,20 @@
             // 
             // sptContainer.Panel2
             // 
-            this.sptContainer.Panel2.Controls.Add(this.textBox3);
-            this.sptContainer.Panel2.Controls.Add(this.textBox2);
-            this.sptContainer.Panel2.Controls.Add(this.textBox1);
+            this.sptContainer.Panel2.Controls.Add(this.txtTotal);
+            this.sptContainer.Panel2.Controls.Add(this.txtImpuesto);
+            this.sptContainer.Panel2.Controls.Add(this.txtSubTotal);
             this.sptContainer.Panel2.Controls.Add(this.lblTotal);
             this.sptContainer.Panel2.Controls.Add(this.lblImpuesto);
             this.sptContainer.Panel2.Controls.Add(this.lblSubtotal);
             this.sptContainer.Panel2.Controls.Add(this.grpBxDetalle);
-            this.sptContainer.Size = new System.Drawing.Size(994, 375);
+            this.sptContainer.Size = new System.Drawing.Size(994, 420);
             this.sptContainer.SplitterDistance = 327;
             this.sptContainer.TabIndex = 4;
             // 
             // grpBxFacturacion
             // 
+            this.grpBxFacturacion.Controls.Add(this.btnAgregar);
             this.grpBxFacturacion.Controls.Add(this.txtPrecio);
             this.grpBxFacturacion.Controls.Add(this.lblPrecio);
             this.grpBxFacturacion.Controls.Add(this.mskNoTarjeta);
@@ -171,26 +176,54 @@
             this.grpBxFacturacion.Controls.Add(this.grpBxEntregaExamen);
             this.grpBxFacturacion.Controls.Add(this.grpBxTipoPago);
             this.grpBxFacturacion.Controls.Add(this.lblReferenciaMedica);
-            this.grpBxFacturacion.Controls.Add(this.lblNombreCliente);
+            this.grpBxFacturacion.Controls.Add(this.lblNombrePaciente);
             this.grpBxFacturacion.Controls.Add(this.txtReferenciaMedica);
-            this.grpBxFacturacion.Controls.Add(this.lblIdentificacionCliente);
-            this.grpBxFacturacion.Controls.Add(this.txtNombreCliente);
+            this.grpBxFacturacion.Controls.Add(this.lblIdentificacionPaciente);
+            this.grpBxFacturacion.Controls.Add(this.txtNombrePaciente);
             this.grpBxFacturacion.Controls.Add(this.lblNumeroFactura);
             this.grpBxFacturacion.Controls.Add(this.LblNoTarjeta);
             this.grpBxFacturacion.Controls.Add(this.txtNoFactura);
-            this.grpBxFacturacion.Controls.Add(this.txtIdentificacionCliente);
+            this.grpBxFacturacion.Controls.Add(this.txtIdentificacionPaciente);
             this.grpBxFacturacion.Controls.Add(this.lblTipoTarjeta);
-            this.grpBxFacturacion.Controls.Add(this.btnBuscarCliente);
+            this.grpBxFacturacion.Controls.Add(this.btnBuscarPaciente);
             this.grpBxFacturacion.Location = new System.Drawing.Point(3, 3);
             this.grpBxFacturacion.Name = "grpBxFacturacion";
-            this.grpBxFacturacion.Size = new System.Drawing.Size(286, 369);
+            this.grpBxFacturacion.Size = new System.Drawing.Size(321, 414);
             this.grpBxFacturacion.TabIndex = 31;
             this.grpBxFacturacion.TabStop = false;
             this.grpBxFacturacion.Text = "Facturación";
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_done_outline_black_48dp;
+            this.btnAgregar.Location = new System.Drawing.Point(243, 340);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 46);
+            this.btnAgregar.TabIndex = 45;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Enabled = false;
+            this.txtPrecio.Location = new System.Drawing.Point(139, 343);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.TabIndex = 44;
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(20, 346);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(37, 13);
+            this.lblPrecio.TabIndex = 43;
+            this.lblPrecio.Text = "Precio";
+            // 
             // mskNoTarjeta
             // 
-            this.mskNoTarjeta.Location = new System.Drawing.Point(133, 180);
+            this.mskNoTarjeta.Enabled = false;
+            this.mskNoTarjeta.Location = new System.Drawing.Point(139, 180);
             this.mskNoTarjeta.Mask = "0000-0000-0000-0000";
             this.mskNoTarjeta.Name = "mskNoTarjeta";
             this.mskNoTarjeta.Size = new System.Drawing.Size(121, 20);
@@ -198,25 +231,27 @@
             // 
             // cmbTipoTarjeta
             // 
+            this.cmbTipoTarjeta.Enabled = false;
             this.cmbTipoTarjeta.FormattingEnabled = true;
-            this.cmbTipoTarjeta.Location = new System.Drawing.Point(133, 153);
+            this.cmbTipoTarjeta.Location = new System.Drawing.Point(139, 153);
             this.cmbTipoTarjeta.Name = "cmbTipoTarjeta";
             this.cmbTipoTarjeta.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoTarjeta.TabIndex = 41;
             // 
             // btnBuscarExamen
             // 
-            this.btnBuscarExamen.Image = global::UTN.Winforms.Apolo.Properties.Resources.round_person_search_black_48dp;
-            this.btnBuscarExamen.Location = new System.Drawing.Point(237, 288);
+            this.btnBuscarExamen.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_search_black_48dp;
+            this.btnBuscarExamen.Location = new System.Drawing.Point(243, 288);
             this.btnBuscarExamen.Name = "btnBuscarExamen";
-            this.btnBuscarExamen.Size = new System.Drawing.Size(42, 40);
+            this.btnBuscarExamen.Size = new System.Drawing.Size(44, 47);
             this.btnBuscarExamen.TabIndex = 40;
             this.btnBuscarExamen.UseVisualStyleBackColor = true;
+            this.btnBuscarExamen.Click += new System.EventHandler(this.btnBuscarExamen_Click);
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(133, 315);
+            this.txtDescripcion.Location = new System.Drawing.Point(139, 315);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
             this.txtDescripcion.TabIndex = 39;
@@ -224,7 +259,7 @@
             // txtCodigoExamen
             // 
             this.txtCodigoExamen.Enabled = false;
-            this.txtCodigoExamen.Location = new System.Drawing.Point(133, 289);
+            this.txtCodigoExamen.Location = new System.Drawing.Point(139, 289);
             this.txtCodigoExamen.Name = "txtCodigoExamen";
             this.txtCodigoExamen.Size = new System.Drawing.Size(100, 20);
             this.txtCodigoExamen.TabIndex = 38;
@@ -301,6 +336,7 @@
             this.rdbEfectivo.TabStop = true;
             this.rdbEfectivo.Text = "Efectivo";
             this.rdbEfectivo.UseVisualStyleBackColor = true;
+            this.rdbEfectivo.CheckedChanged += new System.EventHandler(this.rdbEfectivo_CheckedChanged);
             // 
             // rdbTarjeta
             // 
@@ -312,6 +348,7 @@
             this.rdbTarjeta.TabStop = true;
             this.rdbTarjeta.Text = "Tarjeta";
             this.rdbTarjeta.UseVisualStyleBackColor = true;
+            this.rdbTarjeta.CheckedChanged += new System.EventHandler(this.rdbTarjeta_CheckedChanged);
             // 
             // lblReferenciaMedica
             // 
@@ -322,38 +359,38 @@
             this.lblReferenciaMedica.TabIndex = 1;
             this.lblReferenciaMedica.Text = "Referencia Médica";
             // 
-            // lblNombreCliente
+            // lblNombrePaciente
             // 
-            this.lblNombreCliente.AutoSize = true;
-            this.lblNombreCliente.Location = new System.Drawing.Point(18, 80);
-            this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(79, 13);
-            this.lblNombreCliente.TabIndex = 7;
-            this.lblNombreCliente.Text = "Nombre Cliente";
+            this.lblNombrePaciente.AutoSize = true;
+            this.lblNombrePaciente.Location = new System.Drawing.Point(18, 80);
+            this.lblNombrePaciente.Name = "lblNombrePaciente";
+            this.lblNombrePaciente.Size = new System.Drawing.Size(89, 13);
+            this.lblNombrePaciente.TabIndex = 7;
+            this.lblNombrePaciente.Text = "Nombre Paciente";
             // 
             // txtReferenciaMedica
             // 
-            this.txtReferenciaMedica.Location = new System.Drawing.Point(133, 260);
+            this.txtReferenciaMedica.Location = new System.Drawing.Point(139, 260);
             this.txtReferenciaMedica.Name = "txtReferenciaMedica";
             this.txtReferenciaMedica.Size = new System.Drawing.Size(100, 20);
             this.txtReferenciaMedica.TabIndex = 0;
             // 
-            // lblIdentificacionCliente
+            // lblIdentificacionPaciente
             // 
-            this.lblIdentificacionCliente.AutoSize = true;
-            this.lblIdentificacionCliente.Location = new System.Drawing.Point(18, 54);
-            this.lblIdentificacionCliente.Name = "lblIdentificacionCliente";
-            this.lblIdentificacionCliente.Size = new System.Drawing.Size(105, 13);
-            this.lblIdentificacionCliente.TabIndex = 6;
-            this.lblIdentificacionCliente.Text = "Identificación Cliente";
+            this.lblIdentificacionPaciente.AutoSize = true;
+            this.lblIdentificacionPaciente.Location = new System.Drawing.Point(18, 54);
+            this.lblIdentificacionPaciente.Name = "lblIdentificacionPaciente";
+            this.lblIdentificacionPaciente.Size = new System.Drawing.Size(115, 13);
+            this.lblIdentificacionPaciente.TabIndex = 6;
+            this.lblIdentificacionPaciente.Text = "Identificación Paciente";
             // 
-            // txtNombreCliente
+            // txtNombrePaciente
             // 
-            this.txtNombreCliente.Enabled = false;
-            this.txtNombreCliente.Location = new System.Drawing.Point(131, 77);
-            this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtNombreCliente.TabIndex = 8;
+            this.txtNombrePaciente.Enabled = false;
+            this.txtNombrePaciente.Location = new System.Drawing.Point(139, 77);
+            this.txtNombrePaciente.Name = "txtNombrePaciente";
+            this.txtNombrePaciente.Size = new System.Drawing.Size(100, 20);
+            this.txtNombrePaciente.TabIndex = 8;
             // 
             // lblNumeroFactura
             // 
@@ -376,18 +413,18 @@
             // txtNoFactura
             // 
             this.txtNoFactura.Enabled = false;
-            this.txtNoFactura.Location = new System.Drawing.Point(131, 22);
+            this.txtNoFactura.Location = new System.Drawing.Point(139, 22);
             this.txtNoFactura.Name = "txtNoFactura";
             this.txtNoFactura.Size = new System.Drawing.Size(100, 20);
             this.txtNoFactura.TabIndex = 28;
             // 
-            // txtIdentificacionCliente
+            // txtIdentificacionPaciente
             // 
-            this.txtIdentificacionCliente.Enabled = false;
-            this.txtIdentificacionCliente.Location = new System.Drawing.Point(131, 51);
-            this.txtIdentificacionCliente.Name = "txtIdentificacionCliente";
-            this.txtIdentificacionCliente.Size = new System.Drawing.Size(100, 20);
-            this.txtIdentificacionCliente.TabIndex = 9;
+            this.txtIdentificacionPaciente.Enabled = false;
+            this.txtIdentificacionPaciente.Location = new System.Drawing.Point(139, 51);
+            this.txtIdentificacionPaciente.Name = "txtIdentificacionPaciente";
+            this.txtIdentificacionPaciente.Size = new System.Drawing.Size(100, 20);
+            this.txtIdentificacionPaciente.TabIndex = 9;
             // 
             // lblTipoTarjeta
             // 
@@ -398,35 +435,36 @@
             this.lblTipoTarjeta.TabIndex = 4;
             this.lblTipoTarjeta.Text = "Tipo tarjeta";
             // 
-            // btnBuscarCliente
+            // btnBuscarPaciente
             // 
-            this.btnBuscarCliente.Image = global::UTN.Winforms.Apolo.Properties.Resources.round_person_search_black_48dp;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(237, 51);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(42, 40);
-            this.btnBuscarCliente.TabIndex = 27;
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarPaciente.Image = global::UTN.Winforms.Apolo.Properties.Resources.round_person_search_black_48dp;
+            this.btnBuscarPaciente.Location = new System.Drawing.Point(245, 51);
+            this.btnBuscarPaciente.Name = "btnBuscarPaciente";
+            this.btnBuscarPaciente.Size = new System.Drawing.Size(42, 46);
+            this.btnBuscarPaciente.TabIndex = 27;
+            this.btnBuscarPaciente.UseVisualStyleBackColor = true;
+            this.btnBuscarPaciente.Click += new System.EventHandler(this.btnBuscarPaciente_Click);
             // 
-            // textBox3
+            // txtTotal
             // 
-            this.textBox3.Location = new System.Drawing.Point(552, 319);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtTotal.Location = new System.Drawing.Point(552, 319);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtTotal.TabIndex = 6;
             // 
-            // textBox2
+            // txtImpuesto
             // 
-            this.textBox2.Location = new System.Drawing.Point(552, 293);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtImpuesto.Location = new System.Drawing.Point(552, 293);
+            this.txtImpuesto.Name = "txtImpuesto";
+            this.txtImpuesto.Size = new System.Drawing.Size(100, 20);
+            this.txtImpuesto.TabIndex = 5;
             // 
-            // textBox1
+            // txtSubTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(552, 267);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtSubTotal.Location = new System.Drawing.Point(552, 267);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtSubTotal.TabIndex = 4;
             // 
             // lblTotal
             // 
@@ -471,11 +509,11 @@
             this.dgvDetalle.AllowUserToDeleteRows = false;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.no,
+            this.Secuencia,
             this.codExamen,
             this.descripcion,
-            this.cantidad,
             this.precio,
+            this.impuesto,
             this.total});
             this.dgvDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetalle.Location = new System.Drawing.Point(3, 16);
@@ -484,35 +522,43 @@
             this.dgvDetalle.Size = new System.Drawing.Size(649, 232);
             this.dgvDetalle.TabIndex = 0;
             // 
-            // no
+            // erpError
             // 
-            this.no.HeaderText = "No.";
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
+            this.erpError.ContainerControl = this;
+            // 
+            // Secuencia
+            // 
+            this.Secuencia.DataPropertyName = "Secuencia";
+            this.Secuencia.HeaderText = "No.";
+            this.Secuencia.Name = "Secuencia";
+            this.Secuencia.ReadOnly = true;
             // 
             // codExamen
             // 
+            this.codExamen.DataPropertyName = "idExamen";
             this.codExamen.HeaderText = "Código Examen";
             this.codExamen.Name = "codExamen";
             this.codExamen.ReadOnly = true;
             // 
             // descripcion
             // 
+            this.descripcion.DataPropertyName = "Descripcion";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
             // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            // 
             // precio
             // 
+            this.precio.DataPropertyName = "Costo";
             this.precio.HeaderText = "Precio";
             this.precio.Name = "precio";
             this.precio.ReadOnly = true;
+            // 
+            // impuesto
+            // 
+            this.impuesto.HeaderText = "Impuesto";
+            this.impuesto.Name = "impuesto";
+            this.impuesto.ReadOnly = true;
             // 
             // total
             // 
@@ -520,31 +566,16 @@
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
-            // lblPrecio
-            // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(20, 346);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(37, 13);
-            this.lblPrecio.TabIndex = 43;
-            this.lblPrecio.Text = "Precio";
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(133, 343);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecio.TabIndex = 44;
-            // 
-            // frmProcesoAtencionClientePaciente
+            // frmProcesoAtencionPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 450);
+            this.ClientSize = new System.Drawing.Size(994, 495);
             this.Controls.Add(this.sptContainer);
             this.Controls.Add(this.tspDoctorEspecialista);
-            this.Name = "frmProcesoAtencionClientePaciente";
-            this.Text = "Atención Cliente/Paciente";
+            this.Name = "frmProcesoAtencionPaciente";
+            this.Text = "Atención Paciente";
+            this.Load += new System.EventHandler(this.frmProcesoAtencionPaciente_Load);
             this.tspDoctorEspecialista.ResumeLayout(false);
             this.tspDoctorEspecialista.PerformLayout();
             this.sptContainer.Panel1.ResumeLayout(false);
@@ -560,6 +591,7 @@
             this.grpBxTipoPago.PerformLayout();
             this.grpBxDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,17 +606,17 @@
         private System.Windows.Forms.GroupBox grpBxFacturacion;
         private System.Windows.Forms.Label lblReferenciaMedica;
         private System.Windows.Forms.RadioButton rdbTarjeta;
-        private System.Windows.Forms.Label lblNombreCliente;
+        private System.Windows.Forms.Label lblNombrePaciente;
         private System.Windows.Forms.TextBox txtReferenciaMedica;
-        private System.Windows.Forms.Label lblIdentificacionCliente;
+        private System.Windows.Forms.Label lblIdentificacionPaciente;
         private System.Windows.Forms.RadioButton rdbEfectivo;
-        private System.Windows.Forms.TextBox txtNombreCliente;
+        private System.Windows.Forms.TextBox txtNombrePaciente;
         private System.Windows.Forms.Label lblNumeroFactura;
         private System.Windows.Forms.Label LblNoTarjeta;
         private System.Windows.Forms.TextBox txtNoFactura;
-        private System.Windows.Forms.TextBox txtIdentificacionCliente;
+        private System.Windows.Forms.TextBox txtIdentificacionPaciente;
         private System.Windows.Forms.Label lblTipoTarjeta;
-        private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.Button btnBuscarPaciente;
         private System.Windows.Forms.GroupBox grpBxDetalle;
         private System.Windows.Forms.DataGridView dgvDetalle;
         private System.Windows.Forms.GroupBox grpBxEntregaExamen;
@@ -596,21 +628,23 @@
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lbllblCodigoExamen;
         private System.Windows.Forms.Button btnBuscarExamen;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtImpuesto;
+        private System.Windows.Forms.TextBox txtSubTotal;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblImpuesto;
         private System.Windows.Forms.Label lblSubtotal;
         private System.Windows.Forms.ComboBox cmbTipoTarjeta;
         private System.Windows.Forms.MaskedTextBox mskNoTarjeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn no;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codExamen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ErrorProvider erpError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Secuencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codExamen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn impuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

@@ -26,7 +26,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
 
         private void atenciónDelPacienteclienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProcesoAtencionClientePaciente ofrmProcesoAtencionClientePaciente = new frmProcesoAtencionClientePaciente();
+            frmProcesoAtencionPaciente ofrmProcesoAtencionClientePaciente = new frmProcesoAtencionPaciente();
             ofrmProcesoAtencionClientePaciente.MdiParent = this;
             ofrmProcesoAtencionClientePaciente.Show();
         }

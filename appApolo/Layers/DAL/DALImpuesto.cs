@@ -42,10 +42,10 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
                     while (reader.Read())
                     {
-                        oImpuesto.Porcentaje = int.Parse(reader["porcentaje"].ToString());
+                        oImpuesto.Fecha = DateTime.Parse( reader["Fecha"].ToString() );
+                        oImpuesto.Porcentaje = Convert.ToDouble( reader["Porcentaje"].ToString() );
                     }
                 }
-
 
                 return oImpuesto;
             }

@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using UTN.Winforms.Apolo.Entities;
 using UTN.Winforms.Apolo.Interfaces;
 using UTN.Winforms.Apolo.Layers.BLL;
@@ -28,6 +29,52 @@ namespace UTN.Winforms.Apolo.UI
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            LogonUsuario();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Text += " - " + Application.ProductName + " - " + "Versión:  " + Application.ProductVersion;
+
+                _MyLogControlEventos.InfoFormat("Inicio Login");
+            }
+            catch (Exception er)
+            {
+
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                // Mensaje de Error
+                MessageBox.Show("Se ha producido el siguiente error " + er.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void txtContrasena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                LogonUsuario();
+            }
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtContrasena.Focus();
+            }
+        }
+
+        private void LogonUsuario()
         {
             IBLLUsuario _IBLLUsuario = new BLLUsuario();
             Usuario oUsuario = new Usuario();
@@ -67,6 +114,7 @@ namespace UTN.Winforms.Apolo.UI
                 else
                 {
                     MessageBox.Show("Usuario o contraseña incorrecta");
+                    txtContrasena.Clear();
                     contador++;
                 }
 
@@ -91,31 +139,6 @@ namespace UTN.Winforms.Apolo.UI
                 _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
                 // Mensaje de Error
                 MessageBox.Show("Se ha producido el siguiente error: " + er.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Text += " - " + Application.ProductName + " - " + "Versión:  " + Application.ProductVersion;
-
-                _MyLogControlEventos.InfoFormat("Inicio Login");
-            }
-            catch (Exception er)
-            {
-
-                StringBuilder msg = new StringBuilder();
-                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
-                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
-                // Mensaje de Error
-                MessageBox.Show("Se ha producido el siguiente error " + er.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
     }

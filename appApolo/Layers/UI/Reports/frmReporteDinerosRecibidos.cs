@@ -16,5 +16,9 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
         {
             InitializeComponent();
         }
+
+        private void frmReporteDinerosRecibidos_Load(object sender, EventArgs e)
+        {           
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace UTN.Winforms.Apolo.Layers.UI.Reports
 {
-    partial class frmReporteListadoExamenes
+    partial class frmReporteFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -32,19 +32,19 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rptVisor = new Microsoft.Reporting.WinForms.ReportViewer();
             this.DSReportes = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportes();
-            this.ExamenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ExamenTableAdapter = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportesTableAdapters.ExamenTableAdapter();
+            this.FacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FacturaTableAdapter = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportesTableAdapters.FacturaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DSReportes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExamenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rptVisor
             // 
             this.rptVisor.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DSListaExamenes";
-            reportDataSource1.Value = this.ExamenBindingSource;
+            reportDataSource1.Name = "DSFactura";
+            reportDataSource1.Value = this.FacturaBindingSource;
             this.rptVisor.LocalReport.DataSources.Add(reportDataSource1);
-            this.rptVisor.LocalReport.ReportEmbeddedResource = "UTN.Winforms.Apolo.Layers.UI.Reports.rptListaExamen.rdlc";
+            this.rptVisor.LocalReport.ReportEmbeddedResource = "UTN.Winforms.Apolo.Layers.UI.Reports.rptReporteFactura.rdlc";
             this.rptVisor.Location = new System.Drawing.Point(0, 0);
             this.rptVisor.Name = "rptVisor";
             this.rptVisor.ServerReport.BearerToken = null;
@@ -56,26 +56,26 @@
             this.DSReportes.DataSetName = "DSReportes";
             this.DSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ExamenBindingSource
+            // FacturaBindingSource
             // 
-            this.ExamenBindingSource.DataMember = "Examen";
-            this.ExamenBindingSource.DataSource = this.DSReportes;
+            this.FacturaBindingSource.DataMember = "Factura";
+            this.FacturaBindingSource.DataSource = this.DSReportes;
             // 
-            // ExamenTableAdapter
+            // FacturaTableAdapter
             // 
-            this.ExamenTableAdapter.ClearBeforeFill = true;
+            this.FacturaTableAdapter.ClearBeforeFill = true;
             // 
-            // frmReporteListadoExamenes
+            // frmReporteFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.rptVisor);
-            this.Name = "frmReporteListadoExamenes";
-            this.Text = "Listado Examenes";
-            this.Load += new System.EventHandler(this.frmReporteListadoExamenes_Load);
+            this.Name = "frmReporteFactura";
+            this.Text = "Reporte de Factura";
+            this.Load += new System.EventHandler(this.frmReporteFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DSReportes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExamenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,8 +83,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rptVisor;
-        private System.Windows.Forms.BindingSource ExamenBindingSource;
+        private System.Windows.Forms.BindingSource FacturaBindingSource;
         private DSReportes DSReportes;
-        private DSReportesTableAdapters.ExamenTableAdapter ExamenTableAdapter;
+        private DSReportesTableAdapters.FacturaTableAdapter FacturaTableAdapter;
     }
 }

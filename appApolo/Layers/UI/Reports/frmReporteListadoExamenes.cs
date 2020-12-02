@@ -16,5 +16,13 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
         {
             InitializeComponent();
         }
+
+        private void frmReporteListadoExamenes_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'DSReportes.Examen' table. You can move, or remove it, as needed.
+            this.ExamenTableAdapter.Fill(this.DSReportes.Examen);
+
+            this.rptVisor.RefreshReport();
+        }
     }
 }

@@ -8,13 +8,13 @@ namespace UTN.Winforms.Apolo.Entities
 {
     class FacturaEncabezado
     {
-        public double IdFactura { set; get; }
-        public Tarjeta _Tarjeta { set; get; }
-        public string TarjetaNumero { set; get; }
+        public int IdFactura { set; get; }
         public DateTime FechaFacturacion { set; get; }
         public Paciente _Paciente { set; get; }
-        public bool EstadoFactura { set; get; }
+        public string XML { get; set; }
         public int TipoPago { set; get; }
+        public string ReferenciaMedica { set; get; }
+        public int TipoEntregaExamen { set; get; }
 
         public List<FacturaDetalle> _ListaFacturaDetalle { get; } = new List<FacturaDetalle>();
 
@@ -25,7 +25,7 @@ namespace UTN.Winforms.Apolo.Entities
 
         public double GetSubTotal()
         {
-            return _ListaFacturaDetalle.Sum(p => p.Cantidad * p.Precio);
+            return _ListaFacturaDetalle.Sum(p => p.Costo);
         }
 
         public double GetImpuesto()

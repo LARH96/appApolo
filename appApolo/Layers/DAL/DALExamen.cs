@@ -198,11 +198,11 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     {
                         Examen oExamen = new Examen();
                         oExamen.IdExamen = dr["id"].ToString();
-                        oExamen.TipoExamen = dr["TipoExamen"].ToString();
+                        oExamen.TipoExamen = dr["idTipoExamen"].ToString();
                         oExamen.Descripcion = dr["Descripcion"].ToString();
-                        oExamen.Costo = (double)dr["Costo"];
-                        oExamen.ValorMinimo = (double)dr["ValorMinimo"];
-                        oExamen.ValorMaximo = (double)dr["ValorMaximo"];
+                        oExamen.Costo = Convert.ToDouble(dr["Costo"]);
+                        oExamen.ValorMinimo = Convert.ToDouble(dr["ValorMinimo"]);
+                        oExamen.ValorMaximo = Convert.ToDouble(dr["ValorMaximo"]);
 
                         lista.Add(oExamen);
                     }

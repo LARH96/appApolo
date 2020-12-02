@@ -70,5 +70,15 @@ namespace UTN.Winforms.Apolo.Properties {
                 this["TipoPerfil"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Apolo;User ID=sa;Password=123456")]
+        public string ApoloConnectionStringReportes {
+            get {
+                return ((string)(this["ApoloConnectionStringReportes"]));
+            }
+        }
     }
 }

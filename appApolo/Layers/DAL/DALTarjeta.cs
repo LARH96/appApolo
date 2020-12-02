@@ -48,8 +48,8 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     while (reader.Read())
                     {
                         oTarjeta = new Tarjeta();
-                        oTarjeta.IdTarjeta = int.Parse(reader["IdTarjeta"].ToString());
-                        oTarjeta.DescripcionTarjeta = reader["DescripcionTarjeta"].ToString();
+                        oTarjeta.IdTarjeta = int.Parse(reader["id"].ToString());
+                        oTarjeta.DescripcionTarjeta = reader["Descripcion"].ToString();
                         lista.Add(oTarjeta);
                     }
                 }

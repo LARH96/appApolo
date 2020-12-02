@@ -1,21 +1,27 @@
 ﻿using log4net;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using UTN.Winforms.Apolo.Entities;
 using UTN.Winforms.Apolo.Interfaces;
 using UTN.Winforms.Apolo.Layers.BLL;
 
-namespace UTN.Winforms.Apolo.Layers.UI.Filtros
+namespace UTN.Winforms.Apolo.Layers.UI.Filter
 {
-    public partial class frmFiltroDoctorEspecialista : Form
+    public partial class frmFiltroPaciente : Form
     {
         private static readonly ILog _MyLogControlEventos = log4net.LogManager.GetLogger("MyControlEventos");
 
-        public DoctorEspecialista _DoctorEspecialista { get; private set; } = null;
+        public Paciente _Paciente { get; private set; } = null;
 
-        public frmFiltroDoctorEspecialista()
+        public frmFiltroPaciente()
         {
             InitializeComponent();
         }
@@ -29,7 +35,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Filtros
 
         private void toolStripBtnBuscar_Click(object sender, EventArgs e)
         {
-            IBLLDoctorEspecialista _BLLDoctorEspecialista = new BLLDoctorEspecialista();
+            IBLLPaciente _BLLPaciente = new BLLPaciente();
             string filtro = string.Empty;
             try
             {
@@ -42,7 +48,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Filtros
                 dgvDatos.RowTemplate.Height = 100;
                 dgvDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
-                this.dgvDatos.DataSource = _BLLDoctorEspecialista.ReadDoctorEspecialistaByFilter(filtro);
+                this.dgvDatos.DataSource = _BLLPaciente.ReadPacienteByFilter(filtro);
             }
             catch (Exception er)
             {
@@ -70,7 +76,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Filtros
                 {
                     if (dgvDatos.CurrentCell.Selected)
                     {
-                        _DoctorEspecialista = dgvDatos.SelectedRows[0].DataBoundItem as DoctorEspecialista;
+                        _Paciente = dgvDatos.SelectedRows[0].DataBoundItem as Paciente;
                         this.DialogResult = DialogResult.OK;
                     }
                 }
