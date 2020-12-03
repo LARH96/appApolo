@@ -96,7 +96,7 @@ namespace UTN.Winforms.Apolo.UI
                     return;
                 }
 
-                //Activar para brincarse a Menú
+                //Activar para brincarse directo a Menú
                 //frmPrincipalMenu ofrmPrincipalMenu1 = new frmPrincipalMenu();
                 //ofrmPrincipalMenu1.Show();
 

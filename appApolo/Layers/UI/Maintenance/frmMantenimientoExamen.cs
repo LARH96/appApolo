@@ -75,7 +75,6 @@ namespace UTN.Winforms.Apolo.UI
         private void toolStripBtnActualizar_Click(object sender, EventArgs e)
         {
             Examen oExamen = null;
-            IBLLExamen _IBLLExamen = new BLLExamen();
             try
             {
                 if (this.dgvExamen.SelectedRows.Count > 0)

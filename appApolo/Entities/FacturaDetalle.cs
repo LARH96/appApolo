@@ -13,5 +13,6 @@ namespace UTN.Winforms.Apolo.Entities
         public string Examen { set; get; }
         public double Costo { set; get; }
         public double Impuesto { set; get; }
+        public string EstadoExamen { set; get; }
     }
 }

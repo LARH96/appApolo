@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UTN.Winforms.Apolo.Entities;
+using UTN.Winforms.Apolo.Entities.DTO;
 using UTN.Winforms.Apolo.Interfaces;
 using UTN.Winforms.Apolo.Properties;
 
@@ -312,6 +313,168 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 StringBuilder msg = new StringBuilder();
                 msg.AppendFormat(Utilitarios.CreateSQLExceptionsErrorDetails(sqlError));
                 msg.AppendFormat("SQL             {0}\n", command.CommandText);
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public List<FacturaExamenDTO> GetAllFacturaPendiente()
+        {
+            DataSet ds = null;
+            List<FacturaExamenDTO> lista = new List<FacturaExamenDTO>();
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"SELECT FacturaEncabezado.idPaciente, DetalleFactura.idFactura, DetalleFactura.Secuencia, 
+                                  DetalleFactura.idExamen, Examen.Descripcion
+                           FROM   DetalleFactura INNER JOIN
+                                  Examen ON DetalleFactura.idExamen = Examen.id INNER JOIN
+                                  FacturaEncabezado ON DetalleFactura.idFactura = FacturaEncabezado.id
+                            WHERE        (DetalleFactura.EstadoExamen IS NULL)";
+
+            try
+            {
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        FacturaExamenDTO oFacturaExamenDTO = new FacturaExamenDTO();
+                        oFacturaExamenDTO.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
+                        oFacturaExamenDTO.IdFactura = Convert.ToInt32(dr["idFactura"].ToString());
+                        oFacturaExamenDTO.Secuencia = Convert.ToInt32(dr["Secuencia"].ToString());
+                        oFacturaExamenDTO.IdExamen = dr["idExamen"].ToString();
+                        oFacturaExamenDTO.DescripcionExamen = dr["Descripcion"].ToString();
+
+                        lista.Add(oFacturaExamenDTO);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public List<FacturaExamenDTO> ReadAllFacturaPendienteByFilter(string pIdPaciente)
+        {
+            DataSet ds = null;
+            List<FacturaExamenDTO> lista = new List<FacturaExamenDTO>();
+            SqlCommand command = new SqlCommand();
+
+            try
+            {
+                string sql = @"SELECT FacturaEncabezado.idPaciente, DetalleFactura.idFactura, DetalleFactura.Secuencia, 
+                                  DetalleFactura.idExamen, Examen.Descripcion
+                           FROM   DetalleFactura INNER JOIN
+                                  Examen ON DetalleFactura.idExamen = Examen.id INNER JOIN
+                                  FacturaEncabezado ON DetalleFactura.idFactura = FacturaEncabezado.id
+                            WHERE        (DetalleFactura.EstadoExamen IS NULL) 
+							             AND FacturaEncabezado.idPaciente like @filtro";
+
+                command.Parameters.AddWithValue("@filtro", pIdPaciente);
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        FacturaExamenDTO oFacturaExamenDTO = new FacturaExamenDTO();
+                        oFacturaExamenDTO.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
+                        oFacturaExamenDTO.IdFactura = Convert.ToInt32(dr["idFactura"].ToString());
+                        oFacturaExamenDTO.Secuencia = Convert.ToInt32(dr["Secuencia"].ToString());
+                        oFacturaExamenDTO.IdExamen = dr["idExamen"].ToString();
+                        oFacturaExamenDTO.DescripcionExamen = dr["Descripcion"].ToString();
+
+                        lista.Add(oFacturaExamenDTO);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
+        public bool UpdateEstadoDetalleFactura(FacturaDetalle oFacturaDetalle)
+        {
+            string sql = @"UPDATE DetalleFactura
+                           SET EstadoExamen = @EstadoExamen
+                           WHERE idFactura = @idFactura
+	                             AND
+	                             Secuencia = @Secuencia";
+            SqlCommand command = new SqlCommand();
+            double rows = 0;
+
+            try
+            {
+                // Pasar parámetros
+                command.Parameters.AddWithValue("@EstadoExamen", oFacturaDetalle.EstadoExamen);
+                command.Parameters.AddWithValue("@idFactura", oFacturaDetalle.IdFactura);
+                command.Parameters.AddWithValue("@Secuencia", oFacturaDetalle.Secuencia);
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    rows = db.ExecuteNonQuery(command, IsolationLevel.ReadCommitted);
+                }
+
+                // Si devuelve filas quiere decir que se salvo
+                return rows > 0;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
                 _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
                 throw;
             }

@@ -71,13 +71,13 @@
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.grpBxDetalle = new System.Windows.Forms.GroupBox();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.erpError = new System.Windows.Forms.ErrorProvider(this.components);
             this.Secuencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codExamen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.impuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.erpError = new System.Windows.Forms.ErrorProvider(this.components);
             this.tspDoctorEspecialista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sptContainer)).BeginInit();
             this.sptContainer.Panel1.SuspendLayout();
@@ -157,7 +157,7 @@
             this.sptContainer.Panel2.Controls.Add(this.lblImpuesto);
             this.sptContainer.Panel2.Controls.Add(this.lblSubtotal);
             this.sptContainer.Panel2.Controls.Add(this.grpBxDetalle);
-            this.sptContainer.Size = new System.Drawing.Size(994, 420);
+            this.sptContainer.Size = new System.Drawing.Size(994, 398);
             this.sptContainer.SplitterDistance = 327;
             this.sptContainer.TabIndex = 4;
             // 
@@ -447,21 +447,21 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(552, 319);
+            this.txtTotal.Location = new System.Drawing.Point(551, 357);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 6;
             // 
             // txtImpuesto
             // 
-            this.txtImpuesto.Location = new System.Drawing.Point(552, 293);
+            this.txtImpuesto.Location = new System.Drawing.Point(551, 331);
             this.txtImpuesto.Name = "txtImpuesto";
             this.txtImpuesto.Size = new System.Drawing.Size(100, 20);
             this.txtImpuesto.TabIndex = 5;
             // 
             // txtSubTotal
             // 
-            this.txtSubTotal.Location = new System.Drawing.Point(552, 267);
+            this.txtSubTotal.Location = new System.Drawing.Point(551, 305);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(100, 20);
             this.txtSubTotal.TabIndex = 4;
@@ -469,7 +469,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(484, 322);
+            this.lblTotal.Location = new System.Drawing.Point(483, 360);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(31, 13);
             this.lblTotal.TabIndex = 3;
@@ -478,7 +478,7 @@
             // lblImpuesto
             // 
             this.lblImpuesto.AutoSize = true;
-            this.lblImpuesto.Location = new System.Drawing.Point(484, 293);
+            this.lblImpuesto.Location = new System.Drawing.Point(483, 331);
             this.lblImpuesto.Name = "lblImpuesto";
             this.lblImpuesto.Size = new System.Drawing.Size(50, 13);
             this.lblImpuesto.TabIndex = 2;
@@ -487,7 +487,7 @@
             // lblSubtotal
             // 
             this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Location = new System.Drawing.Point(484, 270);
+            this.lblSubtotal.Location = new System.Drawing.Point(483, 308);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(46, 13);
             this.lblSubtotal.TabIndex = 1;
@@ -498,7 +498,7 @@
             this.grpBxDetalle.Controls.Add(this.dgvDetalle);
             this.grpBxDetalle.Location = new System.Drawing.Point(3, 3);
             this.grpBxDetalle.Name = "grpBxDetalle";
-            this.grpBxDetalle.Size = new System.Drawing.Size(655, 251);
+            this.grpBxDetalle.Size = new System.Drawing.Size(655, 296);
             this.grpBxDetalle.TabIndex = 0;
             this.grpBxDetalle.TabStop = false;
             this.grpBxDetalle.Text = "Detalle";
@@ -519,12 +519,8 @@
             this.dgvDetalle.Location = new System.Drawing.Point(3, 16);
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.ReadOnly = true;
-            this.dgvDetalle.Size = new System.Drawing.Size(649, 232);
+            this.dgvDetalle.Size = new System.Drawing.Size(649, 277);
             this.dgvDetalle.TabIndex = 0;
-            // 
-            // erpError
-            // 
-            this.erpError.ContainerControl = this;
             // 
             // Secuencia
             // 
@@ -566,11 +562,15 @@
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
+            // erpError
+            // 
+            this.erpError.ContainerControl = this;
+            // 
             // frmProcesoAtencionPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 495);
+            this.ClientSize = new System.Drawing.Size(994, 473);
             this.Controls.Add(this.sptContainer);
             this.Controls.Add(this.tspDoctorEspecialista);
             this.Name = "frmProcesoAtencionPaciente";

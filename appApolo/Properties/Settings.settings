@@ -22,5 +22,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.;Initial Catalog=Apolo;User ID=sa;Password=123456</Value>
     </Setting>
+    <Setting Name="IdUsuario" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

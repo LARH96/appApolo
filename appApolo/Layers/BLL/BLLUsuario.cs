@@ -111,6 +111,8 @@ namespace UTN.Winforms.Apolo.Layers.BLL
                 verificado = true;
                 //asignacion que controla seguridad del menú
                 Settings.Default.TipoPerfil = SeleccionaTipoPerfil(oUsuarioComparacion);
+                ////asignacion para control de quien ingresa las transacciones
+                Settings.Default.IdUsuario = oUsuarioComparacion.IdUsuario;
             }
 
             return verificado;

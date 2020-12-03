@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UTN.Winforms.Apolo.Layers.UI.Reports
 {
-    public partial class frmReporteHistoricoSolicitudPacienteCliente : Form
+    public partial class frmReporteHistoricoSolicitudPaciente : Form
     {
-        public frmReporteHistoricoSolicitudPacienteCliente()
+        public frmReporteHistoricoSolicitudPaciente()
         {
             InitializeComponent();
         }

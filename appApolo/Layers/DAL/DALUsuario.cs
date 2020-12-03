@@ -327,7 +327,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
 
             try
             {
-                string sql = @"SELECT NombreUsuario, Contrasenna, idPerfil FROM Usuario WHERE NombreUsuario = @NombreUsuario";
+                string sql = @"SELECT id, NombreUsuario, Contrasenna, idPerfil FROM Usuario WHERE NombreUsuario = @NombreUsuario";
                 command.Parameters.AddWithValue("@NombreUsuario", pUsuario.NombreUsuario);
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
@@ -346,6 +346,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     // Iterar en todas las filas y Mapearlas
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
+                        oUsuario.IdUsuario = dr["id"].ToString();
                         oUsuario.NombreUsuario = dr["NombreUsuario"].ToString();
                         oUsuario.Contrasenna = dr["Contrasenna"].ToString();
                         oUsuario.TipoPerfil = Convert.ToInt32(dr["idPerfil"].ToString());

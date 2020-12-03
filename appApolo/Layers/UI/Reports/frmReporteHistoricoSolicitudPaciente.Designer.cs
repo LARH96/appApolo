@@ -1,6 +1,6 @@
 ﻿namespace UTN.Winforms.Apolo.Layers.UI.Reports
 {
-    partial class frmReporteHistoricoSolicitudPacienteCliente
+    partial class frmReporteHistoricoSolicitudPaciente
     {
         /// <summary>
         /// Required designer variable.

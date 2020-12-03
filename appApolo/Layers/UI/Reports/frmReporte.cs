@@ -33,7 +33,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
 
         private void históricoDeSolicitudesDePacientesClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReporteHistoricoSolicitudPacienteCliente ofrmReporteHistoricoSolicitudPacienteCliente = new frmReporteHistoricoSolicitudPacienteCliente();
+            frmReporteHistoricoSolicitudPaciente ofrmReporteHistoricoSolicitudPacienteCliente = new frmReporteHistoricoSolicitudPaciente();
             ofrmReporteHistoricoSolicitudPacienteCliente.MdiParent = this;
             ofrmReporteHistoricoSolicitudPacienteCliente.Show();
         }

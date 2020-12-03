@@ -75,14 +75,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\DoctorEspecialista.cs" />
+    <Compile Include="Entities\DTO\FacturaExamenDTO.cs" />
     <Compile Include="Entities\Examen.cs" />
     <Compile Include="Entities\FacturaDetalle.cs" />
     <Compile Include="Entities\FacturaEncabezado.cs" />
     <Compile Include="Entities\Impuesto.cs" />
     <Compile Include="Entities\Paciente.cs" />
+    <Compile Include="Entities\RegistroExamen.cs" />
     <Compile Include="Entities\Tarjeta.cs" />
     <Compile Include="Entities\TipoExamen.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Enumerations\EstadoExamen.cs" />
     <Compile Include="Enumerations\EstadoMantenimiento.cs" />
     <Compile Include="Enumerations\Sexo.cs" />
     <Compile Include="Enumerations\TipoPerfil.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Interfaces\IBLLImpuesto.cs" />
     <Compile Include="Interfaces\IBLLLogin.cs" />
     <Compile Include="Interfaces\IBLLPaciente.cs" />
+    <Compile Include="Interfaces\IBLLRegistroExamen.cs" />
     <Compile Include="Interfaces\IBLLTarjeta.cs" />
     <Compile Include="Interfaces\IBLLTipoExamen.cs" />
     <Compile Include="Interfaces\IBLLUsuario.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Interfaces\IDALImpuesto.cs" />
     <Compile Include="Interfaces\IDALLogin.cs" />
     <Compile Include="Interfaces\IDALPaciente.cs" />
+    <Compile Include="Interfaces\IDALRegistroExamen.cs" />
     <Compile Include="Interfaces\IDALTipoExamen.cs" />
     <Compile Include="Interfaces\IDALUsuario.cs" />
     <Compile Include="Layers\BLL\BLLDoctorEspecialista.cs" />
@@ -109,6 +114,7 @@
     <Compile Include="Layers\BLL\BLLImpuesto.cs" />
     <Compile Include="Layers\BLL\BLLLogin.cs" />
     <Compile Include="Layers\BLL\BLLPaciente.cs" />
+    <Compile Include="Layers\BLL\BLLRegistroExamen.cs" />
     <Compile Include="Layers\BLL\BLLTarjeta.cs" />
     <Compile Include="Layers\BLL\BLLTipoExamen.cs" />
     <Compile Include="Layers\BLL\BLLUsuario.cs" />
@@ -118,6 +124,7 @@
     <Compile Include="Layers\DAL\DALImpuesto.cs" />
     <Compile Include="Layers\DAL\DALLogin.cs" />
     <Compile Include="Layers\DAL\DALPaciente.cs" />
+    <Compile Include="Layers\DAL\DALRegistroExamen.cs" />
     <Compile Include="Layers\DAL\DALTarjeta.cs" />
     <Compile Include="Layers\DAL\DALTipoExamen.cs" />
     <Compile Include="Layers\DAL\DALUsuario.cs" />
@@ -250,11 +257,11 @@
     <Compile Include="Layers\UI\Reports\frmReporteFactura.Designer.cs">
       <DependentUpon>frmReporteFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layers\UI\Reports\frmReporteHistoricoSolicitudPacienteCliente.cs">
+    <Compile Include="Layers\UI\Reports\frmReporteHistoricoSolicitudPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layers\UI\Reports\frmReporteHistoricoSolicitudPacienteCliente.Designer.cs">
-      <DependentUpon>frmReporteHistoricoSolicitudPacienteCliente.cs</DependentUpon>
+    <Compile Include="Layers\UI\Reports\frmReporteHistoricoSolicitudPaciente.Designer.cs">
+      <DependentUpon>frmReporteHistoricoSolicitudPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="Layers\UI\Reports\frmReporteListadoExamenes.cs">
       <SubType>Form</SubType>
@@ -338,8 +345,8 @@
     <EmbeddedResource Include="Layers\UI\Reports\frmReporteFactura.resx">
       <DependentUpon>frmReporteFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Layers\UI\Reports\frmReporteHistoricoSolicitudPacienteCliente.resx">
-      <DependentUpon>frmReporteHistoricoSolicitudPacienteCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Layers\UI\Reports\frmReporteHistoricoSolicitudPaciente.resx">
+      <DependentUpon>frmReporteHistoricoSolicitudPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Reports\frmReporteListadoExamenes.resx">
       <DependentUpon>frmReporteListadoExamenes.cs</DependentUpon>
@@ -419,7 +426,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstracts\" />
-    <Folder Include="Entities\DTO\" />
     <Folder Include="Factory\" />
   </ItemGroup>
   <ItemGroup>
@@ -547,6 +553,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\baseline_search_black_48dp.png" />
+    <None Include="Resources\baseline_save_black_48dp.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
