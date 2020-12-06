@@ -65,7 +65,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
         {
             IBLLFactura _BLLFactura = new BLLFactura();
             string rutaImagen = @"c:\temp\qr.png";
-            double numeroFactura = 0d;
+            int numeroFactura = 0;
 
             try
             {
@@ -107,7 +107,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
                 // Salvarla en c:\temp para luego ser leida
                 quickResponseImage.Save(rutaImagen, ImageFormat.Png);
 
-                frmReporteFactura ofrmReporteFactura = new frmReporteFactura((decimal)numeroFactura);
+                frmReporteFactura ofrmReporteFactura = new frmReporteFactura(numeroFactura);
                 ofrmReporteFactura.ShowDialog();
             }
             catch (SqlException sqlError)

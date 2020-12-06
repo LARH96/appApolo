@@ -18,16 +18,16 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
 {
     public partial class frmReporteFactura : Form
     {
-        private decimal _IdFactura;
+        private string _IdFactura;
         private static readonly ILog _MyLogControlEventos = log4net.LogManager.GetLogger("MyControlEventos");
         Usuario _Usuario = new Usuario();
 
-        public frmReporteFactura(decimal pIdFactura)
+        public frmReporteFactura(int pIdFactura)
         {
             _Usuario.Login = Settings.Default.Login;
             _Usuario.Password = Settings.Default.Password;
             InitializeComponent();
-            _IdFactura = pIdFactura;
+            _IdFactura = pIdFactura.ToString();
         }
 
         private void frmReporteFactura_Load(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
                 {
                     //Se le coloca al Adaptador la conexion a la BD.
                     FacturaTableAdapter.Connection = db._Conexion as System.Data.SqlClient.SqlConnection;
-                    this.FacturaTableAdapter.Fill(this.DSReportes.Factura, _IdFactura);
+                    this.FacturaTableAdapter.Fill(this.DSReportes.Factura, Convert.ToDecimal(_IdFactura));
                 }
 
                 string ruta = @"file:///" + @"C:/TEMP/qr.png";
