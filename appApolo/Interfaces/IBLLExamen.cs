@@ -26,5 +26,7 @@ namespace UTN.Winforms.Apolo.Interfaces
         #region Delete
         bool DeleteExamen(string pId);
         #endregion
+
+        string CalculaResultadoExamen(Examen pExamen, FacturaDetalle pFacturaDetalle);
     }
 }

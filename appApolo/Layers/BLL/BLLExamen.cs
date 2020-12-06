@@ -52,5 +52,35 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             IDALExamen _IDALExamen = new DALExamen();
             return _IDALExamen.DeleteExamen(pId);
         }
+
+        public string CalculaResultadoExamen(Examen pExamen, FacturaDetalle pFacturaDetalle)
+        {
+            string result = "";
+            DALExamen oDALExamen = new DALExamen();
+            DALRegistroExamen oDALRegistroExamen = new DALRegistroExamen();
+
+            RegistroExamen oRegistroExamen = new RegistroExamen();
+            Examen oExamen = new Examen();
+
+            oRegistroExamen = oDALRegistroExamen.ReadRegistroExamenByFilterFacturaYSecuencia(pFacturaDetalle.IdFactura,
+                                                                                             pFacturaDetalle.Secuencia);
+            oExamen = oDALExamen.ReadExamenById(pExamen.IdExamen);
+
+            if ((oRegistroExamen.Valor <= oExamen.ValorMaximo)
+                &&
+                (oRegistroExamen.Valor <= oExamen.ValorMinimo))
+            {
+                result = ResultadoExamen.Normal.ToString();
+            }else if (oRegistroExamen.Valor >= oExamen.ValorMaximo)
+            {
+                result = ResultadoExamen.Alto.ToString();
+            }
+            else if (oRegistroExamen.Valor <= oExamen.ValorMinimo)
+            {
+                result = ResultadoExamen.Bajo.ToString();
+            }
+
+            return result;
+        }
     }
 }

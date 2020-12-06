@@ -13,8 +13,9 @@ namespace UTN.Winforms.Apolo.Interfaces
         FacturaEncabezado SaveFactura(FacturaEncabezado pFactura);
         int GetNextNumeroFactura();
         int GetCurrentNumeroFactura();
-        List<FacturaExamenDTO> GetAllFacturaPendiente();
-        List<FacturaExamenDTO> ReadAllFacturaPendienteByFilter(string pIdPaciente);
+        List<FacturaExamenDTO> GetAllFactura(EstadoExamen pEstadoExamen);
+        List<FacturaExamenDTO> ReadAllFacturaByFilter(string pIdPaciente, EstadoExamen pEstadoExamen);
+        List<FacturaExamenDTO> GetAllFacturaByFilterTipoEntregaExamen(EstadoExamen pEstadoExamen, int pTipoEntregaExamen);
         bool UpdateEstadoDetalleFactura(FacturaDetalle oFacturaDetalle);
     }
 }

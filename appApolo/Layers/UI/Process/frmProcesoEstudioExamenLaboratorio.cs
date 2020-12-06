@@ -205,7 +205,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
             CambiarEstado(EstadoMantenimiento.Ninguno);
 
             // Cargar el DataGridView
-            this.dgvDetalle.DataSource = _IBLLFactura.GetAllFacturaPendiente();
+            this.dgvDetalle.DataSource = _IBLLFactura.GetAllFactura(EstadoExamen.Pendiente);
         }
 
         private void btnFiltroIdPaciente_Click(object sender, EventArgs e)
@@ -219,7 +219,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
                 filtro = "%" + filtro + "%";
                 this.dgvDetalle.AutoGenerateColumns = false;
 
-                this.dgvDetalle.DataSource = _IBLLFactura.ReadAllFacturaPendienteByFilter(filtro);
+                this.dgvDetalle.DataSource = _IBLLFactura.ReadAllFacturaByFilter(filtro, EstadoExamen.Pendiente);
             }
             catch (Exception er)
             {
@@ -228,7 +228,6 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
                 _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
                 // Mensaje de Error
                 MessageBox.Show("Se ha producido el siguiente error " + er.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 

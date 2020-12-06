@@ -1,4 +1,6 @@
 ﻿public enum EstadoExamen
 {
-    Disponible
+    Pendiente,  //de revisar por médico
+    Disponible, //de entrega a cliente
+    Entregado   //a cliente
 }

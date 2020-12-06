@@ -35,19 +35,24 @@ namespace UTN.Winforms.Apolo.Layers.BLL
         {
             DALFactura _DALFactura = new DALFactura();
             return _DALFactura.GetTotalFactura(pIdFactura);
-
         }
 
-        public List<FacturaExamenDTO> GetAllFacturaPendiente()
+        public List<FacturaExamenDTO> GetAllFactura(EstadoExamen pEstadoExamen)
         {
             IDALFactura _DALFactura = new DALFactura();
-            return _DALFactura.GetAllFacturaPendiente();
+            return _DALFactura.GetAllFactura(pEstadoExamen);
         }
 
-        public List<FacturaExamenDTO> ReadAllFacturaPendienteByFilter(string pIdPaciente)
+        public List<FacturaExamenDTO> ReadAllFacturaByFilter(string pIdPaciente, EstadoExamen pEstadoExamen)
         {
             IDALFactura _DALFactura = new DALFactura();
-            return _DALFactura.ReadAllFacturaPendienteByFilter(pIdPaciente);
+            return _DALFactura.ReadAllFacturaByFilter(pIdPaciente,pEstadoExamen);
+        }
+
+        public List<FacturaExamenDTO> GetAllFacturaByFilterTipoEntregaExamen(EstadoExamen pEstadoExamen, int pTipoEntregaExamen)
+        {
+            IDALFactura _DALFactura = new DALFactura();
+            return _DALFactura.GetAllFacturaByFilterTipoEntregaExamen(pEstadoExamen, pTipoEntregaExamen);
         }
 
         public bool UpdateEstadoDetalleFactura(FacturaDetalle oFacturaDetalle)

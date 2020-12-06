@@ -76,13 +76,15 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                                ,[Secuencia]
                                ,[idExamen]
                                ,[Costo]
-                               ,[Impuesto])
+                               ,[Impuesto]
+                               ,[EstadoExamen])
                          VALUES
                                (@idFactura
                                ,@Secuencia
                                ,@IdExamen
                                ,@Costo
-                               ,@Impuesto) ";
+                               ,@Impuesto
+                               ,@EstadoExamen) ";
 
                 // Guardar el detalle de la factura y a la vez rebajar el saldo del producto en Electronico
                 foreach (FacturaDetalle pFacturaDetalle in pFactura._ListaFacturaDetalle)
@@ -93,6 +95,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                     cmdFacturaDetalle.Parameters.AddWithValue("@IdExamen", pFacturaDetalle.Examen);
                     cmdFacturaDetalle.Parameters.AddWithValue("@Costo", pFacturaDetalle.Costo);
                     cmdFacturaDetalle.Parameters.AddWithValue("@Impuesto", pFacturaDetalle.Impuesto);
+                    cmdFacturaDetalle.Parameters.AddWithValue("@EstadoExamen", "Pendiente");
                     cmdFacturaDetalle.CommandText = sqlDetalle;
                     cmdFacturaDetalle.CommandType = CommandType.Text;
                     // Agregar a la lista de comandos
@@ -134,7 +137,6 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 throw;
             }
         }
-
         /// <summary>
         /// Extraer un consecutivo para asignar el numero de factura
         ///  Investigue como crear secuencias en SQLServer
@@ -184,7 +186,6 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
 
         }
-
         public int GetCurrentNumeroFactura()
         {
 
@@ -229,7 +230,6 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             }
 
         }
-
         public double GetTotalFactura(double pNumeroFactura)
         {
 
@@ -250,7 +250,6 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             return sumatoria;
 
         }
-
         private FacturaEncabezado GetFactura(double pNumeroFactura)
         {
             FacturaEncabezado oFacturaEncabezado = new FacturaEncabezado();
@@ -324,8 +323,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 throw;
             }
         }
-
-        public List<FacturaExamenDTO> GetAllFacturaPendiente()
+        public List<FacturaExamenDTO> GetAllFactura(EstadoExamen pEstadoExamen)
         {
             DataSet ds = null;
             List<FacturaExamenDTO> lista = new List<FacturaExamenDTO>();
@@ -336,10 +334,11 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                            FROM   DetalleFactura INNER JOIN
                                   Examen ON DetalleFactura.idExamen = Examen.id INNER JOIN
                                   FacturaEncabezado ON DetalleFactura.idFactura = FacturaEncabezado.id
-                            WHERE        (DetalleFactura.EstadoExamen IS NULL)";
+                            WHERE        (DetalleFactura.EstadoExamen = @EstadoExamen)";
 
             try
             {
+                command.Parameters.AddWithValue("@EstadoExamen", pEstadoExamen.ToString());
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
 
@@ -383,8 +382,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 throw;
             }
         }
-
-        public List<FacturaExamenDTO> ReadAllFacturaPendienteByFilter(string pIdPaciente)
+        public List<FacturaExamenDTO> ReadAllFacturaByFilter(string pIdPaciente, EstadoExamen pEstadoExamen)
         {
             DataSet ds = null;
             List<FacturaExamenDTO> lista = new List<FacturaExamenDTO>();
@@ -397,10 +395,11 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                            FROM   DetalleFactura INNER JOIN
                                   Examen ON DetalleFactura.idExamen = Examen.id INNER JOIN
                                   FacturaEncabezado ON DetalleFactura.idFactura = FacturaEncabezado.id
-                            WHERE        (DetalleFactura.EstadoExamen IS NULL) 
-							             AND FacturaEncabezado.idPaciente like @filtro";
+                            WHERE        (DetalleFactura.EstadoExamen = @EstadoExamen) 
+							             AND FacturaEncabezado.idPaciente like @IdPaciente";
 
-                command.Parameters.AddWithValue("@filtro", pIdPaciente);
+                command.Parameters.AddWithValue("@EstadoExamen", pEstadoExamen.ToString());
+                command.Parameters.AddWithValue("@IdPaciente", pIdPaciente);
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
 
@@ -443,7 +442,66 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 throw;
             }
         }
+        public List<FacturaExamenDTO> GetAllFacturaByFilterTipoEntregaExamen(EstadoExamen pEstadoExamen, int pTipoEntregaExamen)
+        {
+            DataSet ds = null;
+            List<FacturaExamenDTO> lista = new List<FacturaExamenDTO>();
+            SqlCommand command = new SqlCommand();
 
+            string sql = @"SELECT        FacturaEncabezado.idPaciente, DetalleFactura.idFactura, DetalleFactura.Secuencia, DetalleFactura.idExamen, Examen.Descripcion, TipoEntregaExamen.id
+FROM            DetalleFactura INNER JOIN
+                         Examen ON DetalleFactura.idExamen = Examen.id INNER JOIN
+                         FacturaEncabezado ON DetalleFactura.idFactura = FacturaEncabezado.id INNER JOIN
+                         TipoEntregaExamen ON FacturaEncabezado.idTipoEntregaExamen = TipoEntregaExamen.id
+WHERE        (DetalleFactura.EstadoExamen = @EstadoExamen) AND (TipoEntregaExamen.id = @TipoEntregaExamen)";
+
+            try
+            {
+                command.Parameters.AddWithValue("@EstadoExamen", pEstadoExamen.ToString());
+                command.Parameters.AddWithValue("@TipoEntregaExamen", pTipoEntregaExamen);
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        FacturaExamenDTO oFacturaExamenDTO = new FacturaExamenDTO();
+                        oFacturaExamenDTO.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
+                        oFacturaExamenDTO.IdFactura = Convert.ToInt32(dr["idFactura"].ToString());
+                        oFacturaExamenDTO.Secuencia = Convert.ToInt32(dr["Secuencia"].ToString());
+                        oFacturaExamenDTO.IdExamen = dr["idExamen"].ToString();
+                        oFacturaExamenDTO.DescripcionExamen = dr["Descripcion"].ToString();
+
+                        lista.Add(oFacturaExamenDTO);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
         public bool UpdateEstadoDetalleFactura(FacturaDetalle oFacturaDetalle)
         {
             string sql = @"UPDATE DetalleFactura

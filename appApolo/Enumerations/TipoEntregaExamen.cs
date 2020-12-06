@@ -1,0 +1,1 @@
+﻿enum TipoEntregaExamen { Presencial = 1, CorreoElectronico = 2 }

@@ -131,6 +131,62 @@ namespace UTN.Winforms.Apolo.Layers.DAL
             throw new NotImplementedException();
         }
 
+        public RegistroExamen ReadRegistroExamenByFilterFacturaYSecuencia(int pFactura, int pSecuencia)
+        {
+            DataSet ds = null;
+            RegistroExamen oRegistroExamen = null;
+            SqlCommand command = new SqlCommand();
+
+            try
+            {
+                string sql = @"SELECT * FROM RegistroExamen WHERE  idFactura = @IdFactura
+								                                   AND Secuencia = @IdSecuencia";
+                command.Parameters.AddWithValue("@IdFactura", pFactura);
+                command.Parameters.AddWithValue("@IdSecuencia", pSecuencia);
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        oRegistroExamen = new RegistroExamen();
+                        oRegistroExamen.SecuenciaRegistroExamen = Convert.ToInt32(dr["SecuenciaRegistroExamen"].ToString());
+                        oRegistroExamen.IdDoctorEspecialista = Convert.ToInt32(dr["idDoctorEspecialista"].ToString());
+                        oRegistroExamen.IdFactura = Convert.ToInt32(dr["idFactura"].ToString());
+                        oRegistroExamen.SecuenciaDetalleFact = Convert.ToInt32(dr["Secuencia"].ToString());
+                        oRegistroExamen.IdExamen = dr["idExamen"].ToString();
+                        oRegistroExamen.Valor = Convert.ToDouble(dr["Valor"].ToString()); //notar que este es double
+                        oRegistroExamen.FechaMuestra = DateTime.Parse(dr["FechaMuestra"].ToString());
+                    }
+                } // end if
+
+                return oRegistroExamen;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+
         public RegistroExamen ReadRegistroExamenById(string pId)
         {
             DataSet ds = null;

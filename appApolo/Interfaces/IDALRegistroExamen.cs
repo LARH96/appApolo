@@ -26,5 +26,7 @@ namespace UTN.Winforms.Apolo.Interfaces
         #region Delete
         bool DeleteRegistroExamen(string pId);
         #endregion
+
+        RegistroExamen ReadRegistroExamenByFilterFacturaYSecuencia(int pFactura, int pSecuencia);
     }
 }

@@ -31,13 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcesoEstudioExamenLaboratorio));
             this.tspDoctorEspecialista = new System.Windows.Forms.ToolStrip();
-            this.toolStripBtnGuardar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnLlenar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
             this.sptContainer = new System.Windows.Forms.SplitContainer();
             this.grpBxExamenes = new System.Windows.Forms.GroupBox();
             this.txtFiltroIdPaciente = new System.Windows.Forms.TextBox();
-            this.btnFiltroIdPaciente = new System.Windows.Forms.Button();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
             this.idPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +41,6 @@
             this.codExamen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxDatosExamenes = new System.Windows.Forms.GroupBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.LblFechaMuestra = new System.Windows.Forms.Label();
             this.dtpFechaMuestra = new System.Windows.Forms.DateTimePicker();
             this.txtValorResultExam = new System.Windows.Forms.TextBox();
@@ -59,6 +54,11 @@
             this.txtNumeroExamen = new System.Windows.Forms.TextBox();
             this.txtIdentificacionPaciente = new System.Windows.Forms.TextBox();
             this.erp = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnFiltroIdPaciente = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.toolStripBtnGuardar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnLlenar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
             this.tspDoctorEspecialista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sptContainer)).BeginInit();
             this.sptContainer.Panel1.SuspendLayout();
@@ -82,40 +82,6 @@
             this.tspDoctorEspecialista.Size = new System.Drawing.Size(963, 75);
             this.tspDoctorEspecialista.TabIndex = 4;
             this.tspDoctorEspecialista.Text = "toolStrip1";
-            // 
-            // toolStripBtnGuardar
-            // 
-            this.toolStripBtnGuardar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_save_black_48dp;
-            this.toolStripBtnGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnGuardar.Name = "toolStripBtnGuardar";
-            this.toolStripBtnGuardar.Size = new System.Drawing.Size(53, 72);
-            this.toolStripBtnGuardar.Text = "Guardar";
-            this.toolStripBtnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnGuardar.Click += new System.EventHandler(this.toolStripBtnGuardar_Click);
-            // 
-            // toolStripBtnLlenar
-            // 
-            this.toolStripBtnLlenar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_create_black_48dp;
-            this.toolStripBtnLlenar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnLlenar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnLlenar.Name = "toolStripBtnLlenar";
-            this.toolStripBtnLlenar.Size = new System.Drawing.Size(52, 72);
-            this.toolStripBtnLlenar.Text = "Llenar";
-            this.toolStripBtnLlenar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnLlenar.Click += new System.EventHandler(this.toolStripBtnLlenar_Click);
-            // 
-            // toolStripBtnSalir
-            // 
-            this.toolStripBtnSalir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtnSalir.Image")));
-            this.toolStripBtnSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnSalir.Name = "toolStripBtnSalir";
-            this.toolStripBtnSalir.Size = new System.Drawing.Size(52, 72);
-            this.toolStripBtnSalir.Text = "Salir";
-            this.toolStripBtnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnSalir.ToolTipText = "Salir de la pantalla Paciente";
-            this.toolStripBtnSalir.Click += new System.EventHandler(this.toolStripBtnSalir_Click);
             // 
             // sptContainer
             // 
@@ -152,18 +118,6 @@
             this.txtFiltroIdPaciente.Name = "txtFiltroIdPaciente";
             this.txtFiltroIdPaciente.Size = new System.Drawing.Size(100, 20);
             this.txtFiltroIdPaciente.TabIndex = 2;
-            // 
-            // btnFiltroIdPaciente
-            // 
-            this.btnFiltroIdPaciente.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_search_black_48dp;
-            this.btnFiltroIdPaciente.Location = new System.Drawing.Point(122, 9);
-            this.btnFiltroIdPaciente.Name = "btnFiltroIdPaciente";
-            this.btnFiltroIdPaciente.Size = new System.Drawing.Size(115, 51);
-            this.btnFiltroIdPaciente.TabIndex = 1;
-            this.btnFiltroIdPaciente.Text = "Buscar por ID paciente";
-            this.btnFiltroIdPaciente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFiltroIdPaciente.UseVisualStyleBackColor = true;
-            this.btnFiltroIdPaciente.Click += new System.EventHandler(this.btnFiltroIdPaciente_Click);
             // 
             // dgvDetalle
             // 
@@ -239,19 +193,6 @@
             this.grpBxDatosExamenes.TabIndex = 31;
             this.grpBxDatosExamenes.TabStop = false;
             this.grpBxDatosExamenes.Text = "Datos Exámen";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_cancel_black_48dp1;
-            this.btnCancelar.Location = new System.Drawing.Point(132, 211);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(117, 59);
-            this.btnCancelar.TabIndex = 50;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // LblFechaMuestra
             // 
@@ -360,6 +301,65 @@
             // erp
             // 
             this.erp.ContainerControl = this;
+            // 
+            // btnFiltroIdPaciente
+            // 
+            this.btnFiltroIdPaciente.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_search_black_48dp;
+            this.btnFiltroIdPaciente.Location = new System.Drawing.Point(122, 9);
+            this.btnFiltroIdPaciente.Name = "btnFiltroIdPaciente";
+            this.btnFiltroIdPaciente.Size = new System.Drawing.Size(115, 51);
+            this.btnFiltroIdPaciente.TabIndex = 1;
+            this.btnFiltroIdPaciente.Text = "Buscar por ID paciente";
+            this.btnFiltroIdPaciente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFiltroIdPaciente.UseVisualStyleBackColor = true;
+            this.btnFiltroIdPaciente.Click += new System.EventHandler(this.btnFiltroIdPaciente_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_cancel_black_48dp1;
+            this.btnCancelar.Location = new System.Drawing.Point(132, 211);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(117, 59);
+            this.btnCancelar.TabIndex = 50;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // toolStripBtnGuardar
+            // 
+            this.toolStripBtnGuardar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_save_black_48dp;
+            this.toolStripBtnGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnGuardar.Name = "toolStripBtnGuardar";
+            this.toolStripBtnGuardar.Size = new System.Drawing.Size(53, 72);
+            this.toolStripBtnGuardar.Text = "Guardar";
+            this.toolStripBtnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnGuardar.Click += new System.EventHandler(this.toolStripBtnGuardar_Click);
+            // 
+            // toolStripBtnLlenar
+            // 
+            this.toolStripBtnLlenar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_create_black_48dp;
+            this.toolStripBtnLlenar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnLlenar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnLlenar.Name = "toolStripBtnLlenar";
+            this.toolStripBtnLlenar.Size = new System.Drawing.Size(52, 72);
+            this.toolStripBtnLlenar.Text = "Llenar";
+            this.toolStripBtnLlenar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnLlenar.Click += new System.EventHandler(this.toolStripBtnLlenar_Click);
+            // 
+            // toolStripBtnSalir
+            // 
+            this.toolStripBtnSalir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtnSalir.Image")));
+            this.toolStripBtnSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnSalir.Name = "toolStripBtnSalir";
+            this.toolStripBtnSalir.Size = new System.Drawing.Size(52, 72);
+            this.toolStripBtnSalir.Text = "Salir";
+            this.toolStripBtnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnSalir.ToolTipText = "Salir de la pantalla Paciente";
+            this.toolStripBtnSalir.Click += new System.EventHandler(this.toolStripBtnSalir_Click);
             // 
             // frmProcesoEstudioExamenLaboratorio
             // 
