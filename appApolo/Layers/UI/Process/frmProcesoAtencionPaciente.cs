@@ -322,6 +322,8 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
 
                 // Agregar
                 _FacturaEncabezado.AddDetalle(oFacturaDetalle);
+                //Agrega XML
+                _FacturaEncabezado.XML = _FacturaEncabezado.CrearXML();
 
 
                 string[] lineaFactura = {oFacturaDetalle.Secuencia.ToString(),

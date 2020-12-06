@@ -614,7 +614,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!Costo.Value, "DSFactura") + Sum(Fields!Impuesto.Value, "DSFactura")</Value>
+                    <Value>=Sum(Fields!Costo.Value, "DSFactura")</Value>
                     <Style>
                       <Format>#,0.00;(#,0.00)</Format>
                     </Style>
@@ -1156,9 +1156,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox28</rd:DefaultName>
               <Top>0.99516cm</Top>
-              <Left>14.22289cm</Left>
+              <Left>13.08114cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.54cm</Width>
+              <Width>3.71293cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1249,7 +1249,7 @@
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Left</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
@@ -1314,7 +1314,7 @@
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Left</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>

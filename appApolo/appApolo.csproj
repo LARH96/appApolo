@@ -102,6 +102,7 @@
     <Compile Include="Entities\TipoExamen.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enumerations\EstadoExamen.cs" />
+    <Compile Include="Enumerations\EstadoHacienda.cs" />
     <Compile Include="Enumerations\EstadoMantenimiento.cs" />
     <Compile Include="Enumerations\ResultadoExamen.cs" />
     <Compile Include="Enumerations\Sexo.cs" />
