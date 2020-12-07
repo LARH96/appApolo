@@ -25,5 +25,11 @@
     <Setting Name="IdUsuario" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="NombreLaboratorio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Apolo S.A.</Value>
+    </Setting>
+    <Setting Name="CedJuridica" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9876543210</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

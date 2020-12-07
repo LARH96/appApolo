@@ -18,5 +18,10 @@ namespace UTN.Winforms.Apolo.Entities.DTO
 
         //Para Doctor
         public string DescripcionExamen { get; set; }
+
+        //Para Factura
+        public DateTime Fecha { get; set; }
+        public string XML { get; set; }
+
     }
 }

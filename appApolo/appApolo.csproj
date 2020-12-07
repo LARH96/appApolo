@@ -96,6 +96,7 @@
     <Compile Include="Entities\FacturaDetalle.cs" />
     <Compile Include="Entities\FacturaEncabezado.cs" />
     <Compile Include="Entities\Impuesto.cs" />
+    <Compile Include="Entities\MinisterioHacienda.cs" />
     <Compile Include="Entities\Paciente.cs" />
     <Compile Include="Entities\RegistroExamen.cs" />
     <Compile Include="Entities\Tarjeta.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Interfaces\IBLLFactura.cs" />
     <Compile Include="Interfaces\IBLLImpuesto.cs" />
     <Compile Include="Interfaces\IBLLLogin.cs" />
+    <Compile Include="Interfaces\IBLLMinisterioHacienda.cs" />
     <Compile Include="Interfaces\IBLLPaciente.cs" />
     <Compile Include="Interfaces\IBLLRegistroExamen.cs" />
     <Compile Include="Interfaces\IBLLTarjeta.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Interfaces\IDALFactura.cs" />
     <Compile Include="Interfaces\IDALImpuesto.cs" />
     <Compile Include="Interfaces\IDALLogin.cs" />
+    <Compile Include="Interfaces\IDALMinisterioHacienda.cs" />
     <Compile Include="Interfaces\IDALPaciente.cs" />
     <Compile Include="Interfaces\IDALRegistroExamen.cs" />
     <Compile Include="Interfaces\IDALTipoExamen.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Layers\BLL\BLLFactura.cs" />
     <Compile Include="Layers\BLL\BLLImpuesto.cs" />
     <Compile Include="Layers\BLL\BLLLogin.cs" />
+    <Compile Include="Layers\BLL\BLLMinisterioHacienda.cs" />
     <Compile Include="Layers\BLL\BLLPaciente.cs" />
     <Compile Include="Layers\BLL\BLLRegistroExamen.cs" />
     <Compile Include="Layers\BLL\BLLTarjeta.cs" />
@@ -142,6 +146,7 @@
     <Compile Include="Layers\DAL\DALFactura.cs" />
     <Compile Include="Layers\DAL\DALImpuesto.cs" />
     <Compile Include="Layers\DAL\DALLogin.cs" />
+    <Compile Include="Layers\DAL\DALMinisterioHacienda.cs" />
     <Compile Include="Layers\DAL\DALPaciente.cs" />
     <Compile Include="Layers\DAL\DALRegistroExamen.cs" />
     <Compile Include="Layers\DAL\DALTarjeta.cs" />

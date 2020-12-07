@@ -92,5 +92,29 @@ namespace UTN.Winforms.Apolo.Properties {
                 this["IdUsuario"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Apolo S.A.")]
+        public string NombreLaboratorio {
+            get {
+                return ((string)(this["NombreLaboratorio"]));
+            }
+            set {
+                this["NombreLaboratorio"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9876543210")]
+        public string CedJuridica {
+            get {
+                return ((string)(this["CedJuridica"]));
+            }
+            set {
+                this["CedJuridica"] = value;
+            }
+        }
     }
 }

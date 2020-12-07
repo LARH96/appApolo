@@ -75,7 +75,6 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
                     this.txtIdentificacionPaciente.Focus();
                     return;
                 }
-
                 if (_FacturaEncabezado == null)
                 {
                     MessageBox.Show("No hay datos por facturar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,6 +83,12 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
                 if (_FacturaEncabezado._ListaFacturaDetalle.Count == 0)
                 {
                     MessageBox.Show("No hay items en la factura ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (rdbCorreoElectronico.Checked == false && rdbPresencial.Checked == false)
+                {
+                    grpBxEntregaExamen.Focus();
+                    erpError.SetError(grpBxEntregaExamen, "Debe seleccionar un Tipo de Entrega de exámen");
                     return;
                 }
 
@@ -261,6 +266,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
         {
             IBLLImpuesto _BLLImpuesto = new BLLImpuesto();
             IBLLExamen _BLLExamen = new BLLExamen();
+            IBLLFactura _BLLFactura = new BLLFactura();
             FacturaDetalle oFacturaDetalle = new FacturaDetalle();
 
             try
@@ -323,7 +329,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Process
                 // Agregar
                 _FacturaEncabezado.AddDetalle(oFacturaDetalle);
                 //Agrega XML
-                _FacturaEncabezado.XML = _FacturaEncabezado.CrearXML();
+                _FacturaEncabezado.XML = _BLLFactura.CrearXMLFacturaIndividual(_FacturaEncabezado);
 
 
                 string[] lineaFactura = {oFacturaDetalle.Secuencia.ToString(),

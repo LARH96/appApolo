@@ -442,6 +442,106 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 throw;
             }
         }
+        public double ReadSumaCostoDetalleFacturaByFilterIdFactura(int pIdFactura)
+        {
+            DataSet ds = null;
+            List<double> lista = new List<double>();
+            SqlCommand command = new SqlCommand();
+            double resultado = 0d;
+
+            try
+            {
+                string sql = @"SELECT        SUM(Costo) AS Costo
+                               FROM            DetalleFactura
+                               WHERE        (idFactura = @idFactura)";
+
+                command.Parameters.AddWithValue("@idFactura", pIdFactura.ToString());
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        resultado += Convert.ToDouble(dr["Costo"].ToString());
+
+                    }
+                }
+
+                return resultado;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+        public double ReadSumaImpuestoDetalleFacturaByFilterIdFactura(int pIdFactura)
+        {
+            DataSet ds = null;
+            List<double> lista = new List<double>();
+            SqlCommand command = new SqlCommand();
+            double resultado = 0d;
+
+            try
+            {
+                string sql = @"SELECT        SUM(Impuesto) AS Impuesto
+                               FROM            DetalleFactura
+                               WHERE        (idFactura = @idFactura)";
+
+                command.Parameters.AddWithValue("@idFactura", pIdFactura.ToString());
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        resultado += Convert.ToDouble(dr["Impuesto"].ToString());
+
+                    }
+                }
+
+                return resultado;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
         public List<FacturaExamenDTO> GetAllFacturaByFilterTipoEntregaExamen(EstadoExamen pEstadoExamen, int pTipoEntregaExamen)
         {
             DataSet ds = null;
@@ -502,6 +602,59 @@ WHERE        (DetalleFactura.EstadoExamen = @EstadoExamen) AND (TipoEntregaExame
                 throw;
             }
         }
+        public List<FacturaExamenDTO> GetAllFacturaByFilterEstadoHaciendaSinEnviar()
+        {
+            DataSet ds = null;
+            List<FacturaExamenDTO> lista = new List<FacturaExamenDTO>();
+            SqlCommand command = new SqlCommand();
+
+            string sql = @"SELECT        id, idPaciente, Fecha, XML
+                            FROM            FacturaEncabezado
+                            WHERE        (EstadoHacienda IS NULL)";
+
+            try
+            {
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    ds = db.ExecuteReader(command, "query");
+                }
+
+                // Si devolvió filas
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+
+                    // Iterar en todas las filas y Mapearlas
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        FacturaExamenDTO oFacturaExamenDTO = new FacturaExamenDTO();
+                        oFacturaExamenDTO.IdFactura = Convert.ToInt32(dr["id"].ToString());
+                        oFacturaExamenDTO.IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString());
+                        oFacturaExamenDTO.Fecha = DateTime.Parse(dr["Fecha"].ToString());
+                        oFacturaExamenDTO.XML = dr["XML"].ToString();
+                        lista.Add(oFacturaExamenDTO);
+                    }
+                }
+
+                return lista;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
         public bool UpdateEstadoDetalleFactura(FacturaDetalle oFacturaDetalle)
         {
             string sql = @"UPDATE DetalleFactura
@@ -518,6 +671,45 @@ WHERE        (DetalleFactura.EstadoExamen = @EstadoExamen) AND (TipoEntregaExame
                 command.Parameters.AddWithValue("@EstadoExamen", oFacturaDetalle.EstadoExamen);
                 command.Parameters.AddWithValue("@idFactura", oFacturaDetalle.IdFactura);
                 command.Parameters.AddWithValue("@Secuencia", oFacturaDetalle.Secuencia);
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+
+                using (IDataBase db = FactoryDatabase.CreateDataBase(FactoryConexion.CreateConnection(_Usuario.Login, _Usuario.Password)))
+                {
+                    rows = db.ExecuteNonQuery(command, IsolationLevel.ReadCommitted);
+                }
+
+                // Si devuelve filas quiere decir que se salvo
+                return rows > 0;
+            }
+            catch (SqlException sqlError)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat("{0}\n", Utilitarios.CreateSQLExceptionsErrorDetails(MethodBase.GetCurrentMethod(), command, sqlError));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+            catch (Exception er)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendFormat(Utilitarios.CreateGenericErrorExceptionDetail(MethodBase.GetCurrentMethod(), er));
+                _MyLogControlEventos.ErrorFormat("Error {0}", msg.ToString());
+                throw;
+            }
+        }
+        public bool UpdateEstadoFacturaEncabezadoParaHacienda(FacturaExamenDTO pFacturaExamenDTO)
+        {
+
+            string sql = @"UPDATE FacturaEncabezado
+                           SET EstadoHacienda = 'Enviado'
+                           WHERE id = @id";
+            SqlCommand command = new SqlCommand();
+            double rows = 0;
+
+            try
+            {
+                // Pasar parámetros
+                command.Parameters.AddWithValue("@id", pFacturaExamenDTO.IdFactura);
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
 

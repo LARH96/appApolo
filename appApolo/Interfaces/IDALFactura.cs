@@ -15,7 +15,11 @@ namespace UTN.Winforms.Apolo.Interfaces
         int GetCurrentNumeroFactura();
         List<FacturaExamenDTO> GetAllFactura(EstadoExamen pEstadoExamen);
         List<FacturaExamenDTO> ReadAllFacturaByFilter(string pIdPaciente, EstadoExamen pEstadoExamen);
+        double ReadSumaCostoDetalleFacturaByFilterIdFactura(int pIdFactura);
+        double ReadSumaImpuestoDetalleFacturaByFilterIdFactura(int pIdFactura);
+        List<FacturaExamenDTO> GetAllFacturaByFilterEstadoHaciendaSinEnviar();
         bool UpdateEstadoDetalleFactura(FacturaDetalle oFacturaDetalle);
+        bool UpdateEstadoFacturaEncabezadoParaHacienda(FacturaExamenDTO pFacturaExamenDTO);
         List<FacturaExamenDTO> GetAllFacturaByFilterTipoEntregaExamen(EstadoExamen pEstadoExamen, int pTipoEntregaExamen);
     }
 }
