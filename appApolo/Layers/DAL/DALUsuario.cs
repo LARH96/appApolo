@@ -252,7 +252,7 @@ namespace UTN.Winforms.Apolo.Layers.DAL
                 command.Parameters.AddWithValue("@Contrasenna", pUsuario.Contrasenna);
                 command.Parameters.AddWithValue("@Nombre", pUsuario.Nombre);
                 command.Parameters.AddWithValue("@Apellidos", pUsuario.Apellidos);
-                command.Parameters.AddWithValue("@Fotografia", pUsuario.Fotografia.ToArray());
+                command.Parameters.AddWithValue("@Fotografia", "Foto");
                 command.CommandText = sql;
                 command.CommandType = CommandType.StoredProcedure;
 

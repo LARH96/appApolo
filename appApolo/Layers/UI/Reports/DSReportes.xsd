@@ -179,7 +179,7 @@ ORDER BY Examen.id</CommandText>
   <xs:element name="DSReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReportes" msprop:Generator_UserDSName="DSReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Factura" msprop:Generator_TableClassName="FacturaDataTable" msprop:Generator_TableVarName="tableFactura" msprop:Generator_RowChangedName="FacturaRowChanged" msprop:Generator_TablePropName="Factura" msprop:Generator_RowDeletingName="FacturaRowDeleting" msprop:Generator_RowChangingName="FacturaRowChanging" msprop:Generator_RowEvHandlerName="FacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturaRowDeleted" msprop:Generator_RowClassName="FacturaRow" msprop:Generator_UserTableName="Factura" msprop:Generator_RowEvArgName="FacturaRowChangeEvent">
+        <xs:element name="Factura" msprop:Generator_TableClassName="FacturaDataTable" msprop:Generator_TableVarName="tableFactura" msprop:Generator_TablePropName="Factura" msprop:Generator_RowDeletingName="FacturaRowDeleting" msprop:Generator_RowChangingName="FacturaRowChanging" msprop:Generator_RowEvHandlerName="FacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturaRowDeleted" msprop:Generator_UserTableName="Factura" msprop:Generator_RowChangedName="FacturaRowChanged" msprop:Generator_RowEvArgName="FacturaRowChangeEvent" msprop:Generator_RowClassName="FacturaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:decimal" />
@@ -253,7 +253,7 @@ ORDER BY Examen.id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ResultadoExamen" msprop:Generator_TableClassName="ResultadoExamenDataTable" msprop:Generator_TableVarName="tableResultadoExamen" msprop:Generator_RowChangedName="ResultadoExamenRowChanged" msprop:Generator_TablePropName="ResultadoExamen" msprop:Generator_RowDeletingName="ResultadoExamenRowDeleting" msprop:Generator_RowChangingName="ResultadoExamenRowChanging" msprop:Generator_RowEvHandlerName="ResultadoExamenRowChangeEventHandler" msprop:Generator_RowDeletedName="ResultadoExamenRowDeleted" msprop:Generator_RowClassName="ResultadoExamenRow" msprop:Generator_UserTableName="ResultadoExamen" msprop:Generator_RowEvArgName="ResultadoExamenRowChangeEvent">
+        <xs:element name="ResultadoExamen" msprop:Generator_TableClassName="ResultadoExamenDataTable" msprop:Generator_TableVarName="tableResultadoExamen" msprop:Generator_TablePropName="ResultadoExamen" msprop:Generator_RowDeletingName="ResultadoExamenRowDeleting" msprop:Generator_RowChangingName="ResultadoExamenRowChanging" msprop:Generator_RowEvHandlerName="ResultadoExamenRowChangeEventHandler" msprop:Generator_RowDeletedName="ResultadoExamenRowDeleted" msprop:Generator_UserTableName="ResultadoExamen" msprop:Generator_RowChangedName="ResultadoExamenRowChanged" msprop:Generator_RowEvArgName="ResultadoExamenRowChangeEvent" msprop:Generator_RowClassName="ResultadoExamenRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id">
@@ -314,7 +314,7 @@ ORDER BY Examen.id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SolicitudesDiarias" msprop:Generator_TableClassName="SolicitudesDiariasDataTable" msprop:Generator_TableVarName="tableSolicitudesDiarias" msprop:Generator_TablePropName="SolicitudesDiarias" msprop:Generator_RowDeletingName="SolicitudesDiariasRowDeleting" msprop:Generator_RowChangingName="SolicitudesDiariasRowChanging" msprop:Generator_RowEvHandlerName="SolicitudesDiariasRowChangeEventHandler" msprop:Generator_RowDeletedName="SolicitudesDiariasRowDeleted" msprop:Generator_UserTableName="SolicitudesDiarias" msprop:Generator_RowChangedName="SolicitudesDiariasRowChanged" msprop:Generator_RowEvArgName="SolicitudesDiariasRowChangeEvent" msprop:Generator_RowClassName="SolicitudesDiariasRow">
+        <xs:element name="SolicitudesDiarias" msprop:Generator_TableClassName="SolicitudesDiariasDataTable" msprop:Generator_TableVarName="tableSolicitudesDiarias" msprop:Generator_RowChangedName="SolicitudesDiariasRowChanged" msprop:Generator_TablePropName="SolicitudesDiarias" msprop:Generator_RowDeletingName="SolicitudesDiariasRowDeleting" msprop:Generator_RowChangingName="SolicitudesDiariasRowChanging" msprop:Generator_RowEvHandlerName="SolicitudesDiariasRowChangeEventHandler" msprop:Generator_RowDeletedName="SolicitudesDiariasRowDeleted" msprop:Generator_RowClassName="SolicitudesDiariasRow" msprop:Generator_UserTableName="SolicitudesDiarias" msprop:Generator_RowEvArgName="SolicitudesDiariasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idFactura" msprop:Generator_ColumnVarNameInTable="columnidFactura" msprop:Generator_ColumnPropNameInRow="idFactura" msprop:Generator_ColumnPropNameInTable="idFacturaColumn" msprop:Generator_UserColumnName="idFactura" type="xs:decimal" />
@@ -344,7 +344,7 @@ ORDER BY Examen.id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SolicitudesPacientes" msprop:Generator_TableClassName="SolicitudesPacientesDataTable" msprop:Generator_TableVarName="tableSolicitudesPacientes" msprop:Generator_TablePropName="SolicitudesPacientes" msprop:Generator_RowDeletingName="SolicitudesPacientesRowDeleting" msprop:Generator_RowChangingName="SolicitudesPacientesRowChanging" msprop:Generator_RowEvHandlerName="SolicitudesPacientesRowChangeEventHandler" msprop:Generator_RowDeletedName="SolicitudesPacientesRowDeleted" msprop:Generator_UserTableName="SolicitudesPacientes" msprop:Generator_RowChangedName="SolicitudesPacientesRowChanged" msprop:Generator_RowEvArgName="SolicitudesPacientesRowChangeEvent" msprop:Generator_RowClassName="SolicitudesPacientesRow">
+        <xs:element name="SolicitudesPacientes" msprop:Generator_TableClassName="SolicitudesPacientesDataTable" msprop:Generator_TableVarName="tableSolicitudesPacientes" msprop:Generator_RowChangedName="SolicitudesPacientesRowChanged" msprop:Generator_TablePropName="SolicitudesPacientes" msprop:Generator_RowDeletingName="SolicitudesPacientesRowDeleting" msprop:Generator_RowChangingName="SolicitudesPacientesRowChanging" msprop:Generator_RowEvHandlerName="SolicitudesPacientesRowChangeEventHandler" msprop:Generator_RowDeletedName="SolicitudesPacientesRowDeleted" msprop:Generator_RowClassName="SolicitudesPacientesRow" msprop:Generator_UserTableName="SolicitudesPacientes" msprop:Generator_RowEvArgName="SolicitudesPacientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idFactura" msprop:Generator_ColumnVarNameInTable="columnidFactura" msprop:Generator_ColumnPropNameInRow="idFactura" msprop:Generator_ColumnPropNameInTable="idFacturaColumn" msprop:Generator_UserColumnName="idFactura" type="xs:decimal" />
@@ -388,7 +388,7 @@ ORDER BY Examen.id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Examen" msprop:Generator_TableClassName="ExamenDataTable" msprop:Generator_TableVarName="tableExamen" msprop:Generator_TablePropName="Examen" msprop:Generator_RowDeletingName="ExamenRowDeleting" msprop:Generator_RowChangingName="ExamenRowChanging" msprop:Generator_RowEvHandlerName="ExamenRowChangeEventHandler" msprop:Generator_RowDeletedName="ExamenRowDeleted" msprop:Generator_UserTableName="Examen" msprop:Generator_RowChangedName="ExamenRowChanged" msprop:Generator_RowEvArgName="ExamenRowChangeEvent" msprop:Generator_RowClassName="ExamenRow">
+        <xs:element name="Examen" msprop:Generator_TableClassName="ExamenDataTable" msprop:Generator_TableVarName="tableExamen" msprop:Generator_RowChangedName="ExamenRowChanged" msprop:Generator_TablePropName="Examen" msprop:Generator_RowDeletingName="ExamenRowDeleting" msprop:Generator_RowChangingName="ExamenRowChanging" msprop:Generator_RowEvHandlerName="ExamenRowChangeEventHandler" msprop:Generator_RowDeletedName="ExamenRowDeleted" msprop:Generator_RowClassName="ExamenRow" msprop:Generator_UserTableName="Examen" msprop:Generator_RowEvArgName="ExamenRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id">

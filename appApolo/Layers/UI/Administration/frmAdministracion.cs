@@ -77,8 +77,8 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
                     oUsuario = this.dgvUsuarios.SelectedRows[0].DataBoundItem as Usuario;
 
                     //this.pbxFotografia.Image = new Bitmap(new MemoryStream(oUsuario.Fotografia)); //TODO
-                    this.pbxFotografia.SizeMode = PictureBoxSizeMode.StretchImage;
-                    this.pbxFotografia.Tag = oUsuario.Fotografia;
+                    //this.pbxFotografia.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //this.pbxFotografia.Tag = oUsuario.Fotografia;
 
                     msktxtIdentificación.Text = oUsuario.IdUsuario;
                     txtNombre.Text = oUsuario.Nombre;
@@ -157,12 +157,12 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
                 Usuario oUsuario = new Usuario();
 
                 #region validaCampos
-                if (this.pbxFotografia.Tag == null)
-                {
-                    MessageBox.Show(pbxFotografia, "Fotografía es requerida");
-                    pbxFotografia.Focus();
-                    return;
-                }
+                //if (this.pbxFotografia.Tag == null)
+                //{
+                //    MessageBox.Show(pbxFotografia, "Fotografía es requerida");
+                //    pbxFotografia.Focus();
+                //    return;
+                //}
                 if (string.IsNullOrEmpty(msktxtIdentificación.Text))
                 {
                     if (rdBtnDoctorEspecialista.Checked)
@@ -212,7 +212,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
                 #endregion
 
                 //oUsuario.Fotografia = (byte[])this.pbxFotografia.Tag;
-                oUsuario.Fotografia = null;
+                //oUsuario.Fotografia = null;
                 oUsuario.IdUsuario = msktxtIdentificación.Text;
                 oUsuario.Nombre = txtNombre.Text;
                 oUsuario.Apellidos = txtApellidos.Text;
@@ -258,9 +258,9 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
                     this.msktxtIdentificación.Text = _DoctorEspecialista.CodigoEspecialista;
                     this.txtNombre.Text = _DoctorEspecialista.Nombre;
                     this.txtApellidos.Text = _DoctorEspecialista.Apellidos;
-                    this.pbxFotografia.Image = new Bitmap(new MemoryStream(_DoctorEspecialista.Fotografia));
-                    this.pbxFotografia.SizeMode = PictureBoxSizeMode.StretchImage;
-                    this.pbxFotografia.Tag = _DoctorEspecialista.Fotografia;
+                    //this.pbxFotografia.Image = new Bitmap(new MemoryStream(_DoctorEspecialista.Fotografia));
+                    //this.pbxFotografia.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //this.pbxFotografia.Tag = _DoctorEspecialista.Fotografia;
                     this.txtNombreUsuario.Focus();
 
                     txtNombreUsuario.Enabled = true;
@@ -269,7 +269,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
                     txtConfirmarContrasenna.Enabled = true;
                     btnAceptar.Enabled = true;
                     btnCancelar.Enabled = true;
-                    pbxFotografia.Enabled = false;
+                    //pbxFotografia.Enabled = false;
                 }
             }
             catch (SqlException sqlError)
@@ -307,7 +307,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
 
         private void rdBtnOtro_CheckedChanged(object sender, EventArgs e)
         {
-            this.pbxFotografia.Enabled = true;
+            //this.pbxFotografia.Enabled = true;
             lblIdentificacion.Text = "Identificación";
             lblIdentificacion.Enabled = true;
             btnBuscarDocEspecialista.Enabled = false;
@@ -325,8 +325,8 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
 
         private void LimpiarCasillas()
         {
-            this.pbxFotografia.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_add_photo_alternate_black_48dp;
-            this.pbxFotografia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            //this.pbxFotografia.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_add_photo_alternate_black_48dp;
+            //this.pbxFotografia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             msktxtIdentificación.Clear();
             txtNombre.Clear();
             txtApellidos.Clear();
@@ -385,7 +385,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
                 case EstadoMantenimiento.Borrar:
                     break;
                 case EstadoMantenimiento.Ninguno:
-                    this.pbxFotografia.Enabled = false;
+                    //this.pbxFotografia.Enabled = false;
                     rdBtnDoctorEspecialista.Enabled = false;
                     rdBtnOtro.Enabled = false;
                     btnBuscarDocEspecialista.Enabled = false;
@@ -417,13 +417,13 @@ namespace UTN.Winforms.Apolo.Layers.UI.Administration
             {
                 try
                 {
-                    pbxFotografia.ImageLocation = opnFlDlogFotografia.FileName;
-                    pbxFotografia.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //pbxFotografia.ImageLocation = opnFlDlogFotografia.FileName;
+                    //pbxFotografia.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                    byte[] cadenaBytes = File.ReadAllBytes(opnFlDlogFotografia.FileName);
+                    //byte[] cadenaBytes = File.ReadAllBytes(opnFlDlogFotografia.FileName);
 
-                    // Guarla la imagenen Bytes en el Tag de la imagen.
-                    pbxFotografia.Tag = (byte[])cadenaBytes;
+                    //// Guarla la imagenen Bytes en el Tag de la imagen.
+                    //pbxFotografia.Tag = (byte[])cadenaBytes;
                 }
                 catch (Exception ex)
                 {

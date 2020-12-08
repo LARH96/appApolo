@@ -36,7 +36,6 @@
             this.toolStripBtnActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnBorrar = new System.Windows.Forms.ToolStripButton();
             this.pnlCrearDatosUsuario = new System.Windows.Forms.Panel();
-            this.pbxFotografia = new System.Windows.Forms.PictureBox();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.llblApellidos = new System.Windows.Forms.Label();
@@ -52,25 +51,23 @@
             this.txtContrasenna = new System.Windows.Forms.TextBox();
             this.lblConfirmarContrasenna = new System.Windows.Forms.Label();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
-            this.lblFotografia = new System.Windows.Forms.Label();
             this.gpBxTipoUsuario = new System.Windows.Forms.GroupBox();
             this.rdBtnOtro = new System.Windows.Forms.RadioButton();
             this.rdBtnDoctorEspecialista = new System.Windows.Forms.RadioButton();
             this.sptCAdministracion = new System.Windows.Forms.SplitContainer();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.erpError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.opnFlDlogFotografia = new System.Windows.Forms.OpenFileDialog();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fotografia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.erpError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.opnFlDlogFotografia = new System.Windows.Forms.OpenFileDialog();
             this.msMenuAdministración.SuspendLayout();
             this.pnlCrearDatosUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFotografia)).BeginInit();
             this.gpBxTipoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sptCAdministracion)).BeginInit();
             this.sptCAdministracion.Panel1.SuspendLayout();
@@ -141,7 +138,6 @@
             // pnlCrearDatosUsuario
             // 
             this.pnlCrearDatosUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlCrearDatosUsuario.Controls.Add(this.pbxFotografia);
             this.pnlCrearDatosUsuario.Controls.Add(this.txtApellidos);
             this.pnlCrearDatosUsuario.Controls.Add(this.txtNombre);
             this.pnlCrearDatosUsuario.Controls.Add(this.llblApellidos);
@@ -157,34 +153,21 @@
             this.pnlCrearDatosUsuario.Controls.Add(this.txtContrasenna);
             this.pnlCrearDatosUsuario.Controls.Add(this.lblConfirmarContrasenna);
             this.pnlCrearDatosUsuario.Controls.Add(this.txtNombreUsuario);
-            this.pnlCrearDatosUsuario.Controls.Add(this.lblFotografia);
             this.pnlCrearDatosUsuario.Location = new System.Drawing.Point(29, 85);
             this.pnlCrearDatosUsuario.Name = "pnlCrearDatosUsuario";
-            this.pnlCrearDatosUsuario.Size = new System.Drawing.Size(293, 350);
+            this.pnlCrearDatosUsuario.Size = new System.Drawing.Size(293, 234);
             this.pnlCrearDatosUsuario.TabIndex = 29;
-            // 
-            // pbxFotografia
-            // 
-            this.pbxFotografia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbxFotografia.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_add_photo_alternate_black_48dp;
-            this.pbxFotografia.Location = new System.Drawing.Point(102, 12);
-            this.pbxFotografia.Name = "pbxFotografia";
-            this.pbxFotografia.Size = new System.Drawing.Size(83, 85);
-            this.pbxFotografia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbxFotografia.TabIndex = 38;
-            this.pbxFotografia.TabStop = false;
-            this.pbxFotografia.Click += new System.EventHandler(this.pbxFotografia_Click);
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(136, 188);
+            this.txtApellidos.Location = new System.Drawing.Point(140, 75);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(100, 20);
             this.txtApellidos.TabIndex = 37;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(136, 162);
+            this.txtNombre.Location = new System.Drawing.Point(140, 49);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 36;
@@ -192,7 +175,7 @@
             // llblApellidos
             // 
             this.llblApellidos.AutoSize = true;
-            this.llblApellidos.Location = new System.Drawing.Point(13, 195);
+            this.llblApellidos.Location = new System.Drawing.Point(17, 82);
             this.llblApellidos.Name = "llblApellidos";
             this.llblApellidos.Size = new System.Drawing.Size(49, 13);
             this.llblApellidos.TabIndex = 35;
@@ -201,7 +184,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(13, 165);
+            this.lblNombre.Location = new System.Drawing.Point(17, 52);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 34;
@@ -209,7 +192,7 @@
             // 
             // msktxtIdentificación
             // 
-            this.msktxtIdentificación.Location = new System.Drawing.Point(136, 136);
+            this.msktxtIdentificación.Location = new System.Drawing.Point(140, 23);
             this.msktxtIdentificación.Mask = "00000000000000";
             this.msktxtIdentificación.Name = "msktxtIdentificación";
             this.msktxtIdentificación.Size = new System.Drawing.Size(100, 20);
@@ -219,7 +202,7 @@
             // lblIdentificacion
             // 
             this.lblIdentificacion.AutoSize = true;
-            this.lblIdentificacion.Location = new System.Drawing.Point(13, 139);
+            this.lblIdentificacion.Location = new System.Drawing.Point(17, 26);
             this.lblIdentificacion.Name = "lblIdentificacion";
             this.lblIdentificacion.Size = new System.Drawing.Size(10, 13);
             this.lblIdentificacion.TabIndex = 32;
@@ -228,7 +211,7 @@
             // cmbTipoPerfil
             // 
             this.cmbTipoPerfil.FormattingEnabled = true;
-            this.cmbTipoPerfil.Location = new System.Drawing.Point(137, 249);
+            this.cmbTipoPerfil.Location = new System.Drawing.Point(141, 136);
             this.cmbTipoPerfil.Name = "cmbTipoPerfil";
             this.cmbTipoPerfil.Size = new System.Drawing.Size(98, 21);
             this.cmbTipoPerfil.TabIndex = 30;
@@ -236,7 +219,7 @@
             // lblTipoPerfil
             // 
             this.lblTipoPerfil.AutoSize = true;
-            this.lblTipoPerfil.Location = new System.Drawing.Point(13, 257);
+            this.lblTipoPerfil.Location = new System.Drawing.Point(17, 144);
             this.lblTipoPerfil.Name = "lblTipoPerfil";
             this.lblTipoPerfil.Size = new System.Drawing.Size(54, 13);
             this.lblTipoPerfil.TabIndex = 29;
@@ -245,7 +228,7 @@
             // btnBuscarDocEspecialista
             // 
             this.btnBuscarDocEspecialista.Image = global::UTN.Winforms.Apolo.Properties.Resources.round_person_search_black_48dp;
-            this.btnBuscarDocEspecialista.Location = new System.Drawing.Point(242, 116);
+            this.btnBuscarDocEspecialista.Location = new System.Drawing.Point(246, 3);
             this.btnBuscarDocEspecialista.Name = "btnBuscarDocEspecialista";
             this.btnBuscarDocEspecialista.Size = new System.Drawing.Size(42, 40);
             this.btnBuscarDocEspecialista.TabIndex = 26;
@@ -255,7 +238,7 @@
             // lblNombreUsuario
             // 
             this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Location = new System.Drawing.Point(11, 226);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(15, 113);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
             this.lblNombreUsuario.Size = new System.Drawing.Size(83, 13);
             this.lblNombreUsuario.TabIndex = 3;
@@ -263,7 +246,7 @@
             // 
             // txtConfirmarContrasenna
             // 
-            this.txtConfirmarContrasenna.Location = new System.Drawing.Point(136, 309);
+            this.txtConfirmarContrasenna.Location = new System.Drawing.Point(140, 196);
             this.txtConfirmarContrasenna.Name = "txtConfirmarContrasenna";
             this.txtConfirmarContrasenna.Size = new System.Drawing.Size(100, 20);
             this.txtConfirmarContrasenna.TabIndex = 21;
@@ -271,7 +254,7 @@
             // lblContrasenna
             // 
             this.lblContrasenna.AutoSize = true;
-            this.lblContrasenna.Location = new System.Drawing.Point(13, 284);
+            this.lblContrasenna.Location = new System.Drawing.Point(17, 171);
             this.lblContrasenna.Name = "lblContrasenna";
             this.lblContrasenna.Size = new System.Drawing.Size(61, 13);
             this.lblContrasenna.TabIndex = 4;
@@ -279,7 +262,7 @@
             // 
             // txtContrasenna
             // 
-            this.txtContrasenna.Location = new System.Drawing.Point(136, 277);
+            this.txtContrasenna.Location = new System.Drawing.Point(140, 164);
             this.txtContrasenna.Name = "txtContrasenna";
             this.txtContrasenna.Size = new System.Drawing.Size(100, 20);
             this.txtContrasenna.TabIndex = 20;
@@ -287,7 +270,7 @@
             // lblConfirmarContrasenna
             // 
             this.lblConfirmarContrasenna.AutoSize = true;
-            this.lblConfirmarContrasenna.Location = new System.Drawing.Point(13, 316);
+            this.lblConfirmarContrasenna.Location = new System.Drawing.Point(17, 203);
             this.lblConfirmarContrasenna.Name = "lblConfirmarContrasenna";
             this.lblConfirmarContrasenna.Size = new System.Drawing.Size(107, 13);
             this.lblConfirmarContrasenna.TabIndex = 5;
@@ -295,19 +278,10 @@
             // 
             // txtNombreUsuario
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(136, 219);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(140, 106);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtNombreUsuario.TabIndex = 19;
-            // 
-            // lblFotografia
-            // 
-            this.lblFotografia.AutoSize = true;
-            this.lblFotografia.Location = new System.Drawing.Point(120, 100);
-            this.lblFotografia.Name = "lblFotografia";
-            this.lblFotografia.Size = new System.Drawing.Size(56, 13);
-            this.lblFotografia.TabIndex = 14;
-            this.lblFotografia.Text = "Fotografía";
             // 
             // gpBxTipoUsuario
             // 
@@ -351,7 +325,9 @@
             // 
             // sptCAdministracion.Panel1
             // 
+            this.sptCAdministracion.Panel1.Controls.Add(this.btnCancelar);
             this.sptCAdministracion.Panel1.Controls.Add(this.gpBxTipoUsuario);
+            this.sptCAdministracion.Panel1.Controls.Add(this.btnAceptar);
             this.sptCAdministracion.Panel1.Controls.Add(this.pnlCrearDatosUsuario);
             // 
             // sptCAdministracion.Panel2
@@ -379,35 +355,6 @@
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.Size = new System.Drawing.Size(465, 450);
             this.dgvUsuarios.TabIndex = 0;
-            // 
-            // erpError
-            // 
-            this.erpError.ContainerControl = this;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_cancel_black_48dp1;
-            this.btnCancelar.Location = new System.Drawing.Point(193, 528);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(106, 59);
-            this.btnCancelar.TabIndex = 33;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_done_outline_black_48dp;
-            this.btnAceptar.Location = new System.Drawing.Point(85, 528);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(102, 58);
-            this.btnAceptar.TabIndex = 32;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // id
             // 
@@ -451,13 +398,40 @@
             this.tipoPerfil.Name = "tipoPerfil";
             this.tipoPerfil.ReadOnly = true;
             // 
+            // erpError
+            // 
+            this.erpError.ContainerControl = this;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_cancel_black_48dp1;
+            this.btnCancelar.Location = new System.Drawing.Point(179, 334);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(106, 59);
+            this.btnCancelar.TabIndex = 33;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_done_outline_black_48dp;
+            this.btnAceptar.Location = new System.Drawing.Point(71, 334);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(102, 58);
+            this.btnAceptar.TabIndex = 32;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
             // frmAdministracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 589);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAceptar);
+            this.ClientSize = new System.Drawing.Size(871, 527);
             this.Controls.Add(this.sptCAdministracion);
             this.Controls.Add(this.msMenuAdministración);
             this.Name = "frmAdministracion";
@@ -468,7 +442,6 @@
             this.msMenuAdministración.PerformLayout();
             this.pnlCrearDatosUsuario.ResumeLayout(false);
             this.pnlCrearDatosUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFotografia)).EndInit();
             this.gpBxTipoUsuario.ResumeLayout(false);
             this.gpBxTipoUsuario.PerformLayout();
             this.sptCAdministracion.Panel1.ResumeLayout(false);
@@ -496,7 +469,6 @@
         private System.Windows.Forms.TextBox txtContrasenna;
         private System.Windows.Forms.Label lblConfirmarContrasenna;
         private System.Windows.Forms.TextBox txtNombreUsuario;
-        private System.Windows.Forms.Label lblFotografia;
         private System.Windows.Forms.GroupBox gpBxTipoUsuario;
         private System.Windows.Forms.RadioButton rdBtnOtro;
         private System.Windows.Forms.RadioButton rdBtnDoctorEspecialista;
@@ -513,7 +485,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.MaskedTextBox msktxtIdentificación;
         private System.Windows.Forms.Label lblIdentificacion;
-        private System.Windows.Forms.PictureBox pbxFotografia;
         private System.Windows.Forms.OpenFileDialog opnFlDlogFotografia;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
