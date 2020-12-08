@@ -390,6 +390,7 @@
     <EmbeddedResource Include="Layers\UI\Reports\rptEntregaExamenLaboratorio.rdlc" />
     <EmbeddedResource Include="Layers\UI\Reports\rptListaExamen.rdlc" />
     <EmbeddedResource Include="Layers\UI\Reports\rptReporteFactura.rdlc" />
+    <EmbeddedResource Include="Layers\UI\Reports\rptSolicitudesDiarias.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

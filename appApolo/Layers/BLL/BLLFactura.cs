@@ -133,7 +133,7 @@ namespace UTN.Winforms.Apolo.Layers.BLL
             factura.AppendChild(numeroFactura);
 
             XmlElement fecha = documento.CreateElement("fecha");
-            fecha.InnerText = pFacturaEncabezado.FechaFacturacion.ToString();
+            fecha.InnerText = pFacturaEncabezado.FechaFacturacion.Date.ToShortDateString();
             factura.AppendChild(fecha);
 
             XmlElement cliente = documento.CreateElement("cliente");
