@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using log4net;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
 {
     public partial class frmReporteSolicitudesDiarias : Form
     {
+        private static readonly ILog _MyLogControlEventos = LogManager.GetLogger("MyControlEventos");
+
         public frmReporteSolicitudesDiarias()
         {
             InitializeComponent();
@@ -28,7 +31,7 @@ namespace UTN.Winforms.Apolo.Layers.UI.Reports
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'DSReportes.SolicitudesDiarias' table. You can move, or remove it, as needed.
             this.SolicitudesDiariasTableAdapter.Fill(this.DSReportes.SolicitudesDiarias,

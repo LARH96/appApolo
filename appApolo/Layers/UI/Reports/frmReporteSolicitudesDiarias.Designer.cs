@@ -37,7 +37,7 @@
             this.SolicitudesDiariasTableAdapter = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportesTableAdapters.SolicitudesDiariasTableAdapter();
             this.tspDoctorEspecialista = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.lblFechaInicial = new System.Windows.Forms.Label();
@@ -96,15 +96,15 @@
             this.toolStripBtnSalir.ToolTipText = "Salir de la pantalla Paciente";
             this.toolStripBtnSalir.Click += new System.EventHandler(this.toolStripBtnSalir_Click);
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_search_black_48dp;
-            this.button1.Location = new System.Drawing.Point(37, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 42);
-            this.button1.TabIndex = 6;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBuscar.Image = global::UTN.Winforms.Apolo.Properties.Resources.baseline_search_black_48dp;
+            this.btnBuscar.Location = new System.Drawing.Point(37, 78);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(58, 42);
+            this.btnBuscar.TabIndex = 6;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dtpFechaInicial
             // 
@@ -149,7 +149,7 @@
             this.Controls.Add(this.lblFechaInicial);
             this.Controls.Add(this.dtpFechaFinal);
             this.Controls.Add(this.dtpFechaInicial);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.tspDoctorEspecialista);
             this.Controls.Add(this.rptVisor);
             this.Name = "frmReporteSolicitudesDiarias";
@@ -172,7 +172,7 @@
         private DSReportesTableAdapters.SolicitudesDiariasTableAdapter SolicitudesDiariasTableAdapter;
         private System.Windows.Forms.ToolStrip tspDoctorEspecialista;
         private System.Windows.Forms.ToolStripButton toolStripBtnSalir;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private System.Windows.Forms.Label lblFechaInicial;
