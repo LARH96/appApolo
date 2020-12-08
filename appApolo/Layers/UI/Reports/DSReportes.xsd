@@ -7,30 +7,6 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ApoloConnectionStringReportes" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ApoloConnectionStringReportes (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.UTN.Winforms.Apolo.Properties.Settings.GlobalReference.Default.ApoloConnectionStringReportes" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ExamenTableAdapter" GeneratorDataComponentClassName="ExamenTableAdapter" Name="Examen" UserDataComponentName="ExamenTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ApoloConnectionStringReportes (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Examen.id, Examen.Descripcion, Examen.Costo, Examen.ValorMinimo, Examen.ValorMaximo, TipoExamen.Descripcion AS Expr1
-FROM            Examen INNER JOIN
-                         TipoExamen ON Examen.idTipoExamen = TipoExamen.id
-ORDER BY Examen.id</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="id" DataSetColumn="idExamen" />
-              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
-              <Mapping SourceColumn="Costo" DataSetColumn="Costo" />
-              <Mapping SourceColumn="ValorMinimo" DataSetColumn="ValorMinimo" />
-              <Mapping SourceColumn="ValorMaximo" DataSetColumn="ValorMaximo" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="DescripcionTipoExamen" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FacturaTableAdapter" GeneratorDataComponentClassName="FacturaTableAdapter" Name="Factura" UserDataComponentName="FacturaTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ApoloConnectionStringReportes (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -171,6 +147,30 @@ WHERE        (FacturaEncabezado.Fecha &gt;= CAST(@FechaInicial AS date)) AND (Fa
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ExamenTableAdapter" GeneratorDataComponentClassName="ExamenTableAdapter" Name="Examen" UserDataComponentName="ExamenTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ApoloConnectionStringReportes (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Examen.id, TipoExamen.Descripcion, Examen.Descripcion AS Expr1, Examen.Costo, Examen.ValorMinimo, Examen.ValorMaximo
+FROM            Examen INNER JOIN
+                         TipoExamen ON Examen.idTipoExamen = TipoExamen.id
+ORDER BY Examen.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Costo" DataSetColumn="Costo" />
+              <Mapping SourceColumn="ValorMinimo" DataSetColumn="ValorMinimo" />
+              <Mapping SourceColumn="ValorMaximo" DataSetColumn="ValorMaximo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -179,36 +179,6 @@ WHERE        (FacturaEncabezado.Fecha &gt;= CAST(@FechaInicial AS date)) AND (Fa
   <xs:element name="DSReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReportes" msprop:Generator_UserDSName="DSReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Examen" msprop:Generator_TableClassName="ExamenDataTable" msprop:Generator_TableVarName="tableExamen" msprop:Generator_RowChangedName="ExamenRowChanged" msprop:Generator_TablePropName="Examen" msprop:Generator_RowDeletingName="ExamenRowDeleting" msprop:Generator_RowChangingName="ExamenRowChanging" msprop:Generator_RowEvHandlerName="ExamenRowChangeEventHandler" msprop:Generator_RowDeletedName="ExamenRowDeleted" msprop:Generator_RowClassName="ExamenRow" msprop:Generator_UserTableName="Examen" msprop:Generator_RowEvArgName="ExamenRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="idExamen" msdata:Caption="id" msprop:Generator_ColumnVarNameInTable="columnidExamen" msprop:Generator_ColumnPropNameInRow="idExamen" msprop:Generator_ColumnPropNameInTable="idExamenColumn" msprop:Generator_UserColumnName="idExamen">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" msprop:Generator_UserColumnName="Costo" type="xs:decimal" />
-              <xs:element name="ValorMinimo" msprop:Generator_ColumnVarNameInTable="columnValorMinimo" msprop:Generator_ColumnPropNameInRow="ValorMinimo" msprop:Generator_ColumnPropNameInTable="ValorMinimoColumn" msprop:Generator_UserColumnName="ValorMinimo" type="xs:decimal" />
-              <xs:element name="ValorMaximo" msprop:Generator_ColumnVarNameInTable="columnValorMaximo" msprop:Generator_ColumnPropNameInRow="ValorMaximo" msprop:Generator_ColumnPropNameInTable="ValorMaximoColumn" msprop:Generator_UserColumnName="ValorMaximo" type="xs:decimal" />
-              <xs:element name="DescripcionTipoExamen" msdata:Caption="Expr1" msprop:Generator_ColumnVarNameInTable="columnDescripcionTipoExamen" msprop:Generator_ColumnPropNameInRow="DescripcionTipoExamen" msprop:Generator_ColumnPropNameInTable="DescripcionTipoExamenColumn" msprop:Generator_UserColumnName="DescripcionTipoExamen">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Factura" msprop:Generator_TableClassName="FacturaDataTable" msprop:Generator_TableVarName="tableFactura" msprop:Generator_RowChangedName="FacturaRowChanged" msprop:Generator_TablePropName="Factura" msprop:Generator_RowDeletingName="FacturaRowDeleting" msprop:Generator_RowChangingName="FacturaRowChanging" msprop:Generator_RowEvHandlerName="FacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturaRowDeleted" msprop:Generator_RowClassName="FacturaRow" msprop:Generator_UserTableName="Factura" msprop:Generator_RowEvArgName="FacturaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
@@ -418,13 +388,39 @@ WHERE        (FacturaEncabezado.Fecha &gt;= CAST(@FechaInicial AS date)) AND (Fa
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Examen" msprop:Generator_TableClassName="ExamenDataTable" msprop:Generator_TableVarName="tableExamen" msprop:Generator_TablePropName="Examen" msprop:Generator_RowDeletingName="ExamenRowDeleting" msprop:Generator_RowChangingName="ExamenRowChanging" msprop:Generator_RowEvHandlerName="ExamenRowChangeEventHandler" msprop:Generator_RowDeletedName="ExamenRowDeleted" msprop:Generator_UserTableName="Examen" msprop:Generator_RowChangedName="ExamenRowChanged" msprop:Generator_RowEvArgName="ExamenRowChangeEvent" msprop:Generator_RowClassName="ExamenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" msprop:Generator_UserColumnName="Costo" type="xs:decimal" />
+              <xs:element name="ValorMinimo" msprop:Generator_ColumnVarNameInTable="columnValorMinimo" msprop:Generator_ColumnPropNameInRow="ValorMinimo" msprop:Generator_ColumnPropNameInTable="ValorMinimoColumn" msprop:Generator_UserColumnName="ValorMinimo" type="xs:decimal" />
+              <xs:element name="ValorMaximo" msprop:Generator_ColumnVarNameInTable="columnValorMaximo" msprop:Generator_ColumnPropNameInRow="ValorMaximo" msprop:Generator_ColumnPropNameInTable="ValorMaximoColumn" msprop:Generator_UserColumnName="ValorMaximo" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Examen" />
-      <xs:field xpath="mstns:idExamen" />
-    </xs:unique>
-    <xs:unique name="ResultadoExamen_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:ResultadoExamen" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
@@ -432,6 +428,10 @@ WHERE        (FacturaEncabezado.Fecha &gt;= CAST(@FechaInicial AS date)) AND (Fa
       <xs:selector xpath=".//mstns:SolicitudesDiarias" />
       <xs:field xpath="mstns:idFactura" />
       <xs:field xpath="mstns:Secuencia" />
+    </xs:unique>
+    <xs:unique name="Examen_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Examen" />
+      <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>
 </xs:schema>

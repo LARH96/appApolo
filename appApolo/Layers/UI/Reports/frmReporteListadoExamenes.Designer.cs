@@ -31,39 +31,39 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rptVisor = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DSReportes = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportes();
-            this.ExamenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ExamenTableAdapter = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportesTableAdapters.ExamenTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DSReportes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExamenBindingSource)).BeginInit();
+            this.dSReportes = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportes();
+            this.examenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.examenTableAdapter = new UTN.Winforms.Apolo.Layers.UI.Reports.DSReportesTableAdapters.ExamenTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examenBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rptVisor
             // 
             this.rptVisor.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DSListaExamenes";
-            reportDataSource1.Value = this.ExamenBindingSource;
+            reportDataSource1.Name = "DSListExamen";
+            reportDataSource1.Value = this.examenBindingSource;
             this.rptVisor.LocalReport.DataSources.Add(reportDataSource1);
-            this.rptVisor.LocalReport.ReportEmbeddedResource = "UTN.Winforms.Apolo.Layers.UI.Reports.rptListaExamen.rdlc";
+            this.rptVisor.LocalReport.ReportEmbeddedResource = "UTN.Winforms.Apolo.Layers.UI.Reports.rptListExamen.rdlc";
             this.rptVisor.Location = new System.Drawing.Point(0, 0);
             this.rptVisor.Name = "rptVisor";
             this.rptVisor.ServerReport.BearerToken = null;
             this.rptVisor.Size = new System.Drawing.Size(800, 450);
             this.rptVisor.TabIndex = 0;
             // 
-            // DSReportes
+            // dSReportes
             // 
-            this.DSReportes.DataSetName = "DSReportes";
-            this.DSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dSReportes.DataSetName = "DSReportes";
+            this.dSReportes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ExamenBindingSource
+            // examenBindingSource
             // 
-            this.ExamenBindingSource.DataMember = "Examen";
-            this.ExamenBindingSource.DataSource = this.DSReportes;
+            this.examenBindingSource.DataMember = "Examen";
+            this.examenBindingSource.DataSource = this.dSReportes;
             // 
-            // ExamenTableAdapter
+            // examenTableAdapter
             // 
-            this.ExamenTableAdapter.ClearBeforeFill = true;
+            this.examenTableAdapter.ClearBeforeFill = true;
             // 
             // frmReporteListadoExamenes
             // 
@@ -74,8 +74,8 @@
             this.Name = "frmReporteListadoExamenes";
             this.Text = "Listado Examenes";
             this.Load += new System.EventHandler(this.frmReporteListadoExamenes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DSReportes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExamenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSReportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examenBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,8 +83,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rptVisor;
-        private System.Windows.Forms.BindingSource ExamenBindingSource;
-        private DSReportes DSReportes;
-        private DSReportesTableAdapters.ExamenTableAdapter ExamenTableAdapter;
+        private DSReportes dSReportes;
+        private System.Windows.Forms.BindingSource examenBindingSource;
+        private DSReportesTableAdapters.ExamenTableAdapter examenTableAdapter;
     }
 }

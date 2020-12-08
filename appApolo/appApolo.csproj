@@ -389,7 +389,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\UI\Reports\rptEntregaExamenLaboratorio.rdlc" />
     <EmbeddedResource Include="Layers\UI\Reports\rptHistoricoSolicitudPaciente.rdlc" />
-    <EmbeddedResource Include="Layers\UI\Reports\rptListaExamen.rdlc" />
+    <EmbeddedResource Include="Layers\UI\Reports\rptListExamen.rdlc" />
     <EmbeddedResource Include="Layers\UI\Reports\rptReporteFactura.rdlc" />
     <EmbeddedResource Include="Layers\UI\Reports\rptSolicitudesDiarias.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
